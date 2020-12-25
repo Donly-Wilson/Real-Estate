@@ -7,6 +7,7 @@ export default class Listings extends Component {
     this.state = {
       currentPage: 1,
       postPerPage: 8,
+      currentView: ""
     };
     this.loopListing = this.loopListing.bind(this);
     this.paginate = this.paginate.bind(this);
@@ -62,7 +63,8 @@ export default class Listings extends Component {
                         <span>{listing.bedrooms} bedroom</span>
                       </div>
                     </div>
-                    <div className="view-btn">View Listing</div>
+                    <div className="view-btn" onClick={()=> this.currentView="viewListing"}>View Listing</div>
+                    {currentView === "viewListing" && <CurrentListing />}
                   </div>
                 </div>
               </div>

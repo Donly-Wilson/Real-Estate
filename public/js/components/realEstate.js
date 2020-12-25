@@ -333,7 +333,7 @@ var Header = function (_Component) {
         _react2.default.createElement(
           "div",
           { className: "logo" },
-          "Logo"
+          "M\xE1s Casas"
         ),
         _react2.default.createElement(
           "nav",
@@ -408,7 +408,8 @@ var Listings = function (_Component) {
 
     _this.state = {
       currentPage: 1,
-      postPerPage: 8
+      postPerPage: 8,
+      currentView: ""
     };
     _this.loopListing = _this.loopListing.bind(_this);
     _this.paginate = _this.paginate.bind(_this);
@@ -513,9 +514,12 @@ var Listings = function (_Component) {
                     ),
                     _react2.default.createElement(
                       "div",
-                      { className: "view-btn" },
+                      { className: "view-btn", onClick: function onClick() {
+                          return _this2.currentView = "viewListing";
+                        } },
                       "View Listing"
-                    )
+                    ),
+                    currentView === "viewListing" && _react2.default.createElement(CurrentListing, null)
                   )
                 )
               ),
