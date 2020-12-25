@@ -1,0 +1,310 @@
+#content-area {
+  min-width: 100vh;
+  overflow: auto;
+  width: 100%;
+}
+
+#filter {
+  background: $grey;
+  float: left;
+  max-width: 300px;
+  width: 21%;
+
+  .inside {
+    padding: 20px;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    font-weight: 500px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+  }
+
+  select {
+    background: transparent;
+    border: 1px solid #adabaa;
+    border-radius: 5px;
+    color: #1b1b1b;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 25px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .filters {
+    .title {
+      color: $darkGrey;
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    input[type="text"] {
+      border-radius: 5px;
+      display: inline-block;
+      border: 1px solid $darkGrey;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      margin-right: 2.5%;
+      padding: 0.4rem;
+      width: 45%;
+    }
+    &.extras {
+      label {
+        display: block;
+        padding: 10px 0;
+        width: 100%;
+        input[type="checkbox"] {
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+#listings {
+  //   display: inline-block;
+  float: left;
+  padding: 15px;
+  width: 79%;
+  background: $offWhite;
+
+  .search-area {
+    input[type="text"] {
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid $darkGrey;
+      font-size: 2rem;
+      font-weight: 200;
+      margin-bottom: 20px;
+      width: 70%;
+      color: $lightGrey;
+    }
+  }
+  .sortby-area {
+    margin-bottom: 20px;
+    .results {
+      color: $darkGrey;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+  }
+  .sort-options {
+    float: right;
+    select {
+      background: transparent;
+      border: 1px solid $lightGrey;
+      border-radius: 5px;
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-right: 15px;
+      padding: 1px;
+      vertical-align: top;
+    }
+    .view {
+      display: inline-block;
+      .fa {
+        font-size: 1.5rem;
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .listings-results {
+    height: 620px;
+    margin-bottom: 60px;
+    margin-top: 50px;
+    .listing {
+      background: #ffffff;
+      border-radius: 5px;
+      -webkit-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+      -moz-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+      box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+    }
+    .listing-img {
+      color: #ffffff;
+      padding: 15px;
+      position: relative;
+      // background image
+      background: url(https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739)
+        no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      min-height: 200px;
+      // border radius
+      -webkit-border-top-left-radius: 5px;
+      -webkit-border-top-right-radius: 5px;
+      -moz-border-radius-topleft: 5px;
+      -moz-border-radius-topright: 5px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      &:hover {
+        .details {
+          opacity: 1;
+        }
+        .address {
+          opacity: 0;
+        }
+      }
+      .address {
+        bottom: 20px;
+        font-size: 1.3rem;
+        position: absolute;
+        text-shadow: 0px 1px 4px rgba(91, 91, 91, 1);
+        text-transform: capitalize;
+        transition: all 0.4s ease-in-out;
+        opacity: 1;
+      }
+      .details {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        transition: all 0.4s ease-in-out;
+        opacity: 0;
+        padding: 30px;
+        // border radius
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-top-right-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        -moz-border-radius-topright: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4e02e5+0,9d1ced+100 */
+        background: rgba(78, 2, 229, 0.8); /* Old browsers */
+        background: -moz-linear-gradient(
+          -45deg,
+          rgba(78, 2, 229, 0.8) 0%,
+          rgba(157, 28, 237, 0.8) 100%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+          -45deg,
+          rgba(78, 2, 229, 0.8) 0%,
+          rgba(157, 28, 237, 0.8) 100%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+          135deg,
+          rgba(78, 2, 229, 0.8) 0%,
+          rgba(157, 28, 237, 0.8) 100%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4e02e5', endColorstr='#9d1ced',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+        .user-img {
+          border: 2px solid #ffffff;
+          border-radius: 50%;
+          display: inline-block;
+          height: 35px;
+          width: 35px;
+          // background image
+          background: url(https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739)
+            no-repeat center center;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+        .user-details {
+          display: inline-block;
+          font-size: 0.9rem;
+          font-weight: 300;
+          vertical-align: top;
+          .user-name {
+            // color: rgba(224, 224, 224, 1);
+            display: block;
+            margin-top: 5px;
+          }
+          .post-date {
+            color: rgba(224, 224, 224, 0.7);
+            display: block;
+            font-size: 0.9rem;
+          }
+        }
+        .listing-details {
+          margin-top: 20px;
+          margin-bottom: 10px;
+          .fa {
+            display: inline-block;
+            font-size: 20px;
+            margin-right: 15px;
+          }
+          .fas {
+            display: inline-block;
+          }
+          span {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 300;
+            position: relative;
+            top: 3px;
+            vertical-align: top;
+          }
+          .floor-space {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+    .bottom-info {
+      padding: 20px 15px;
+      .price {
+        color: $darkGrey;
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+      .location {
+        color: $lightGrey;
+        display: block;
+        font-size: 1.2rem;
+      }
+      .fa-map-marker {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+#pagination {
+  display: block;
+  text-align: center;
+  width: 100%;
+  .pagination-nums {
+    background: #ffffff;
+    display: inline-block;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+    -moz-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+    box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+  }
+  li {
+    display: inline-block;
+    padding: 20px 30px;
+    &.active,
+    &:hover {
+      background: $pink;
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: 700;
+    }
+  }
+}
+
+.view-btn {
+  background: black;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  max-width: 150px;
+  padding: 8px;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+  &:hover {
+    background: $pink;
+    cursor: pointer;
+  }
+}
