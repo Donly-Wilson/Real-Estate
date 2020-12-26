@@ -515,7 +515,7 @@ var Listings = function (_Component) {
                     _react2.default.createElement(
                       "div",
                       { className: "view-btn", onClick: function onClick() {
-                          return _this2.currentView = "viewListing";
+                          return _this2.state.currentView = "viewListing";
                         } },
                       "View Listing"
                     ),
