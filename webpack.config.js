@@ -6,8 +6,8 @@ const VENDOR_LIBS = ["babel-polyfill", "redux", "react-redux", "react-dom"];
 
 module.exports = {
   entry: {
-    realEstate: "./assets/js/realEstate/realEstate.js",
-    // regularJS: './assets/js/regularJS.js',
+    realEstate: "./src/components/App.js",
+    // realEstate: "./assets/js/realEstate/realEstate.js",
     vendor: VENDOR_LIBS,
   },
   output: {

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Header from "./Header";
+// import ReactDOM from "react-dom";
+// import Header from "./Header";
 import Filter from "./Filter";
 import Listings from "./Listings";
 import listingData from "./data/listingData";
 
-class App extends Component {
+export default class HomePage extends Component {
   constructor() {
     super();
     this.state = {
@@ -183,7 +183,6 @@ class App extends Component {
     return (
       <div>
         {" "}
-        <Header />
         <section id="content-area">
           <Filter
             change={this.change}
@@ -202,6 +201,5 @@ class App extends Component {
   }
 }
 
-const app = document.getElementById("app");
-
-ReactDOM.render(<App />, app);
+// const app = document.getElementById("app");
+// ReactDOM.render(<App />, app);

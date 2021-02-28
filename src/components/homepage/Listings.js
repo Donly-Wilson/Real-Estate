@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Pagination from "./Pagination";
+import { Link } from 'react-router-dom'
 
 export default class Listings extends Component {
   constructor() {
@@ -63,8 +64,9 @@ export default class Listings extends Component {
                         <span>{listing.bedrooms} bedroom</span>
                       </div>
                     </div>
-                    <div className="view-btn" onClick={()=> this.state.currentView="viewListing"}>View Listing</div>
-                    {currentView === "viewListing" && <CurrentListing />}
+                    <Link to={`/listing/${index}`}>
+                    <div className="view-btn">View Listing</div>
+                    </Link>
                   </div>
                 </div>
               </div>

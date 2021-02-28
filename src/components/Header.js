@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
   constructor() {
@@ -8,11 +9,18 @@ export default class Header extends Component {
 
   render() {
     return (
+
       <header>
-        <div className="logo">Más Casas</div>
+        <Link to="/">
+          <div className="logo">Más Casas</div>
+        </Link>
         <nav>
-          <a href="#">Create Ads</a>
-          <a href="#">About us</a>
+          <Link to="/createads">
+            Create Ads
+          </Link>
+          <Link to="/aboutus">
+            About us
+          </Link>
           <a href="#">Log In</a>
           <a href="#" className="register-btn">
             Register

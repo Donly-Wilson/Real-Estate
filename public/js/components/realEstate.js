@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 230:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12,7 +12,558 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(46);
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(106);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = function (_Component) {
+  _inherits(Header, _Component);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Header, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "header",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/" },
+          _react2.default.createElement(
+            "div",
+            { className: "logo" },
+            "M\xE1s Casas"
+          )
+        ),
+        _react2.default.createElement(
+          "nav",
+          null,
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/createads" },
+            "Create Ads"
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/aboutus" },
+            "About us"
+          ),
+          _react2.default.createElement(
+            "a",
+            { href: "#" },
+            "Log In"
+          ),
+          _react2.default.createElement(
+            "a",
+            { href: "#", className: "register-btn" },
+            "Register"
+          )
+        )
+      );
+    }
+  }]);
+
+  return Header;
+}(_react.Component);
+
+exports.default = Header;
+
+/***/ }),
+
+/***/ 237:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CreateAds = function (_Component) {
+  _inherits(CreateAds, _Component);
+
+  function CreateAds() {
+    _classCallCheck(this, CreateAds);
+
+    var _this = _possibleConstructorReturn(this, (CreateAds.__proto__ || Object.getPrototypeOf(CreateAds)).call(this));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(CreateAds, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        "create ads section"
+      );
+    }
+  }]);
+
+  return CreateAds;
+}(_react.Component);
+
+exports.default = CreateAds;
+
+/***/ }),
+
+/***/ 238:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Filter = __webpack_require__(244);
+
+var _Filter2 = _interopRequireDefault(_Filter);
+
+var _Listings = __webpack_require__(245);
+
+var _Listings2 = _interopRequireDefault(_Listings);
+
+var _listingData = __webpack_require__(247);
+
+var _listingData2 = _interopRequireDefault(_listingData);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import ReactDOM from "react-dom";
+// import Header from "./Header";
+
+
+var HomePage = function (_Component) {
+  _inherits(HomePage, _Component);
+
+  function HomePage() {
+    _classCallCheck(this, HomePage);
+
+    var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this));
+
+    _this.state = {
+      name: "Donly",
+      listingData: _listingData2.default,
+      city: "All",
+      homeType: "All",
+      bedrooms: "0",
+      min_price: 0,
+      max_price: 10000000,
+      min_floor_space: 0,
+      max_floor_space: 50000,
+      elevator: false,
+      finished_basement: false,
+      gym: false,
+      swimming_pool: false,
+      filteredData: _listingData2.default,
+      populateFormsData: "",
+      sortby: "price-dsc",
+      view: "box",
+      search: ""
+    };
+    _this.change = _this.change.bind(_this);
+    _this.filteredData = _this.filteredData.bind(_this);
+    _this.populateForms = _this.populateForms.bind(_this);
+    _this.changeView = _this.changeView.bind(_this);
+    return _this;
+  }
+
+  _createClass(HomePage, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var listingData = this.state.listingData.sort(function (a, b) {
+        a.price - b.price;
+      });
+
+      this.setState({
+        listingData: listingData
+      });
+    }
+  }, {
+    key: "change",
+    value: function change(event) {
+      var _this2 = this;
+
+      var name = event.target.name;
+      var value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
+      this.setState(_defineProperty({}, name, value), function () {
+        _this2.filteredData();
+        console.log(_this2.state);
+      });
+      console.log(event.target.name);
+    }
+  }, {
+    key: "changeView",
+    value: function changeView(viewName) {
+      this.setState({
+        view: viewName
+      });
+    }
+  }, {
+    key: "filteredData",
+    value: function filteredData() {
+      var _this3 = this;
+
+      var newData = this.state.listingData.filter(function (item) {
+        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space && item.bedrooms >= _this3.state.bedrooms;
+      });
+      console.log(newData);
+      if (this.state.city != "All") {
+        // console.log(newData);
+        newData = newData.filter(function (item) {
+          return item.city == _this3.state.city;
+        });
+      }
+
+      if (this.state.homeType != "All") {
+        newData = newData.filter(function (item) {
+          return item.homeType == _this3.state.homeType;
+        });
+      }
+
+      if (this.state.sortby == "price-dsc") {
+        newData = newData.sort(function (a, b) {
+          return a.price - b.price;
+        });
+      }
+
+      if (this.state.sortby == "price-asc") {
+        newData = newData.sort(function (a, b) {
+          return b.price - a.price;
+        });
+      }
+
+      if (this.state.search != "") {
+        newData = newData.filter(function (item) {
+          var city = item.city.toLowerCase();
+          var searchText = _this3.state.search.toLowerCase();
+          var currentlySearching = city.match(searchText);
+
+          if (currentlySearching != null) {
+            return true;
+          }
+        });
+      }
+
+      // if elevator is true then i will return all the listing with elevators with in thier extras
+      if (this.state.elevator == true) {
+        newData = newData.filter(function (item) {
+          return item.extra.includes("elevator");
+        });
+      }
+
+      if (this.state.gym == true) {
+        newData = newData.filter(function (item) {
+          return item.extra.includes("gym");
+        });
+      }
+
+      if (this.state.swimming_pool == true) {
+        newData = newData.filter(function (item) {
+          return item.extra.includes("swimming_pool");
+        });
+      }
+
+      if (this.state.finished_basement == true) {
+        newData = newData.filter(function (item) {
+          return item.extra.includes("finished_basement");
+        });
+      }
+      this.setState({ filteredData: newData });
+    }
+  }, {
+    key: "populateForms",
+    value: function populateForms() {
+      // city
+      var cities = this.state.listingData.map(function (item) {
+        return item.city;
+      });
+      cities = new Set(cities);
+      cities = [].concat(_toConsumableArray(cities));
+      cities = cities.sort();
+
+      // homeType
+      var homeTypes = this.state.listingData.map(function (item) {
+        return item.homeType;
+      });
+      homeTypes = new Set(homeTypes);
+      homeTypes = [].concat(_toConsumableArray(homeTypes));
+      homeTypes = homeTypes.sort();
+
+      // bedrooms
+      var bedrooms = this.state.listingData.map(function (item) {
+        return item.bedrooms;
+      });
+      bedrooms = new Set(bedrooms);
+      bedrooms = [].concat(_toConsumableArray(bedrooms));
+      bedrooms = bedrooms.sort();
+
+      this.setState({
+        populateFormsData: {
+          cities: cities,
+          homeTypes: homeTypes,
+          bedrooms: bedrooms
+        }
+        // () => console.log(this.state)
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        " ",
+        _react2.default.createElement(
+          "section",
+          { id: "content-area" },
+          _react2.default.createElement(_Filter2.default, {
+            change: this.change,
+            globalState: this.state,
+            populateAction: this.populateForms
+          }),
+          _react2.default.createElement(_Listings2.default, {
+            globalState: this.state,
+            listingData: this.state.filteredData,
+            change: this.change,
+            changeView: this.changeView
+          })
+        )
+      );
+    }
+  }]);
+
+  return HomePage;
+}(_react.Component);
+
+// const app = document.getElementById("app");
+// ReactDOM.render(<App />, app);
+
+
+exports.default = HomePage;
+
+/***/ }),
+
+/***/ 239:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ListingDetails = function (_Component) {
+  _inherits(ListingDetails, _Component);
+
+  function ListingDetails() {
+    _classCallCheck(this, ListingDetails);
+
+    var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(ListingDetails, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        "House details section"
+      );
+    }
+  }]);
+
+  return ListingDetails;
+}(_react.Component);
+
+exports.default = ListingDetails;
+
+/***/ }),
+
+/***/ 243:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(107);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(106);
+
+var _Header = __webpack_require__(236);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _HomePage = __webpack_require__(238);
+
+var _HomePage2 = _interopRequireDefault(_HomePage);
+
+var _CreateAds = __webpack_require__(237);
+
+var _CreateAds2 = _interopRequireDefault(_CreateAds);
+
+var _ListingDetails = __webpack_require__(239);
+
+var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+
+
+var App = function (_Component) {
+    _inherits(App, _Component);
+
+    function App() {
+        _classCallCheck(this, App);
+
+        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    }
+
+    _createClass(App, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                _reactRouterDom.BrowserRouter,
+                { basename: "/" },
+                _react2.default.createElement(
+                    "div",
+                    null,
+                    " ",
+                    _react2.default.createElement(_Header2.default, null),
+                    _react2.default.createElement(
+                        _reactRouterDom.Switch,
+                        null,
+                        _react2.default.createElement(
+                            _reactRouterDom.Route,
+                            { exact: true, path: "/" },
+                            _react2.default.createElement(_HomePage2.default, null)
+                        ),
+                        _react2.default.createElement(
+                            _reactRouterDom.Route,
+                            { path: "/createads" },
+                            _react2.default.createElement(_CreateAds2.default, null)
+                        ),
+                        _react2.default.createElement(
+                            _reactRouterDom.Route,
+                            { path: "/listing/:id" },
+                            _react2.default.createElement(_ListingDetails2.default, null)
+                        )
+                    )
+                )
+            )
+            // <div>
+            //     <Header />
+            //     <HomePage />
+            // </div>
+            ;
+        }
+    }]);
+
+    return App;
+}(_react.Component);
+
+var app = document.getElementById("app");
+_reactDom2.default.render(_react2.default.createElement(App, null), app);
+
+/***/ }),
+
+/***/ 244:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -288,7 +839,7 @@ exports.default = Filter;
 
 /***/ }),
 
-/***/ 231:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -300,95 +851,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(46);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Header = function (_Component) {
-  _inherits(Header, _Component);
-
-  function Header() {
-    _classCallCheck(this, Header);
-
-    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
-
-    _this.state = {};
-    return _this;
-  }
-
-  _createClass(Header, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "header",
-        null,
-        _react2.default.createElement(
-          "div",
-          { className: "logo" },
-          "M\xE1s Casas"
-        ),
-        _react2.default.createElement(
-          "nav",
-          null,
-          _react2.default.createElement(
-            "a",
-            { href: "#" },
-            "Create Ads"
-          ),
-          _react2.default.createElement(
-            "a",
-            { href: "#" },
-            "About us"
-          ),
-          _react2.default.createElement(
-            "a",
-            { href: "#" },
-            "Log In"
-          ),
-          _react2.default.createElement(
-            "a",
-            { href: "#", className: "register-btn" },
-            "Register"
-          )
-        )
-      );
-    }
-  }]);
-
-  return Header;
-}(_react.Component);
-
-exports.default = Header;
-
-/***/ }),
-
-/***/ 232:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(46);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Pagination = __webpack_require__(237);
+var _Pagination = __webpack_require__(246);
 
 var _Pagination2 = _interopRequireDefault(_Pagination);
+
+var _reactRouterDom = __webpack_require__(106);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -408,8 +879,8 @@ var Listings = function (_Component) {
 
     _this.state = {
       currentPage: 1,
-      postPerPage: 8,
-      currentView: ""
+      postPerPage: 8
+      // currentView: ""
     };
     _this.loopListing = _this.loopListing.bind(_this);
     _this.paginate = _this.paginate.bind(_this);
@@ -513,13 +984,14 @@ var Listings = function (_Component) {
                       )
                     ),
                     _react2.default.createElement(
-                      "div",
-                      { className: "view-btn", onClick: function onClick() {
-                          return _this2.state.currentView = "viewListing";
-                        } },
-                      "View Listing"
-                    ),
-                    currentView === "viewListing" && _react2.default.createElement(CurrentListing, null)
+                      _reactRouterDom.Link,
+                      { to: "/listing/" + index },
+                      _react2.default.createElement(
+                        "div",
+                        { className: "view-btn" },
+                        "View Listing"
+                      )
+                    )
                   )
                 )
               ),
@@ -732,122 +1204,7 @@ exports.default = Listings;
 
 /***/ }),
 
-/***/ 233:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var listingData = [{
-  address: "Grand Riviere",
-  city: "Castries",
-  state: "SLU",
-  bedrooms: 1,
-  price: 2100,
-  floorSpace: 2000,
-  extra: ["elevator", "gym"],
-  homeType: "Apartment",
-  image: "https://passiveincomemd.com/wp-content/uploads/2017/06/Front-Back-Building.jpg"
-}, {
-  address: "Cap Estate",
-  city: "Gros Islet",
-  state: "SLU",
-  bedrooms: 3,
-  price: 241000,
-  floorSpace: 22000,
-  extra: ["elevator", "gym"],
-  homeType: "Duplex",
-  image: "https://q-xx.bstatic.com/images/hotel/max1024x768/100/10016411.jpg"
-}, {
-  address: "Black Bay",
-  city: "Vieux Fort",
-  state: "SLU",
-  bedrooms: 5,
-  price: 10000,
-  floorSpace: 10000,
-  extra: ["elevator", "gym", "swimming_pool"],
-  homeType: "Apartment",
-  image: "https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739"
-}, {
-  address: "Lime Stone",
-  city: "Dennery",
-  state: "SLU",
-  bedrooms: 4,
-  price: 400000,
-  floorSpace: 7000,
-  extra: ["elevator", "Garage"],
-  homeType: "Studio",
-  image: "https://images.squarespace-cdn.com/content/5abbea6fc258b4f56d09219e/1524087111985-FMCVW3XY42FBBRZEC5Z5/greenfab.jpeg?content-type=image%2Fjpeg"
-}, {
-  address: "25th main street",
-  city: "Laborie",
-  state: "SLU",
-  bedrooms: 1,
-  price: 230000,
-  floorSpace: 8000,
-  extra: ["beach"],
-  homeType: "Room",
-  image: "https://rentivo.imagekit.io/cdn/tr:n-max/http://dujlrb80v4oq5.cloudfront.net/578/83959073_gw1418680.jpg"
-}, {
-  address: "Beach Pavillion",
-  city: "Soufriere",
-  state: "SLU",
-  bedrooms: 6,
-  price: 400000,
-  floorSpace: 7000,
-  extra: ["elevator", "swimming_pool"],
-  homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
-}, {
-  address: "Beach Pavillion",
-  city: "Soufriere",
-  state: "SLU",
-  bedrooms: 6,
-  price: 400000,
-  floorSpace: 7000,
-  extra: ["elevator", "swimming_pool"],
-  homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
-}, {
-  address: "Beach Pavillion",
-  city: "Soufriere",
-  state: "SLU",
-  bedrooms: 6,
-  price: 400000,
-  floorSpace: 7000,
-  extra: ["elevator", "swimming_pool"],
-  homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
-}, {
-  address: "Beach Pavillion",
-  city: "Soufriere",
-  state: "SLU",
-  bedrooms: 6,
-  price: 400000,
-  floorSpace: 7000,
-  extra: ["elevator", "swimming_pool"],
-  homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
-}, {
-  address: "Beach Pavillion",
-  city: "Soufriere",
-  state: "SLU",
-  bedrooms: 6,
-  price: 400000,
-  floorSpace: 7000,
-  extra: ["elevator", "swimming_pool"],
-  homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
-}];
-
-exports.default = listingData;
-
-/***/ }),
-
-/***/ 237:
+/***/ 246:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -859,11 +1216,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(46);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _immutabilityHelper = __webpack_require__(456);
+var _immutabilityHelper = __webpack_require__(464);
 
 var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -983,258 +1340,119 @@ exports.default = Pagination;
 
 /***/ }),
 
-/***/ 238:
+/***/ 247:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var listingData = [{
+  address: "Grand Riviere",
+  city: "Castries",
+  state: "SLU",
+  bedrooms: 1,
+  price: 2100,
+  floorSpace: 2000,
+  extra: ["elevator", "gym"],
+  homeType: "Apartment",
+  image: "https://passiveincomemd.com/wp-content/uploads/2017/06/Front-Back-Building.jpg"
+}, {
+  address: "Cap Estate",
+  city: "Gros Islet",
+  state: "SLU",
+  bedrooms: 3,
+  price: 241000,
+  floorSpace: 22000,
+  extra: ["elevator", "gym"],
+  homeType: "Duplex",
+  image: "https://q-xx.bstatic.com/images/hotel/max1024x768/100/10016411.jpg"
+}, {
+  address: "Black Bay",
+  city: "Vieux Fort",
+  state: "SLU",
+  bedrooms: 5,
+  price: 10000,
+  floorSpace: 10000,
+  extra: ["elevator", "gym", "swimming_pool"],
+  homeType: "Apartment",
+  image: "https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739"
+}, {
+  address: "Lime Stone",
+  city: "Dennery",
+  state: "SLU",
+  bedrooms: 4,
+  price: 400000,
+  floorSpace: 7000,
+  extra: ["elevator", "Garage"],
+  homeType: "Studio",
+  image: "https://images.squarespace-cdn.com/content/5abbea6fc258b4f56d09219e/1524087111985-FMCVW3XY42FBBRZEC5Z5/greenfab.jpeg?content-type=image%2Fjpeg"
+}, {
+  address: "25th main street",
+  city: "Laborie",
+  state: "SLU",
+  bedrooms: 1,
+  price: 230000,
+  floorSpace: 8000,
+  extra: ["beach"],
+  homeType: "Room",
+  image: "https://rentivo.imagekit.io/cdn/tr:n-max/http://dujlrb80v4oq5.cloudfront.net/578/83959073_gw1418680.jpg"
+}, {
+  address: "Beach Pavillion",
+  city: "Soufriere",
+  state: "SLU",
+  bedrooms: 6,
+  price: 400000,
+  floorSpace: 7000,
+  extra: ["elevator", "swimming_pool"],
+  homeType: "Hotel",
+  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+}, {
+  address: "Beach Pavillion",
+  city: "Soufriere",
+  state: "SLU",
+  bedrooms: 6,
+  price: 400000,
+  floorSpace: 7000,
+  extra: ["elevator", "swimming_pool"],
+  homeType: "Hotel",
+  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+}, {
+  address: "Beach Pavillion",
+  city: "Soufriere",
+  state: "SLU",
+  bedrooms: 6,
+  price: 400000,
+  floorSpace: 7000,
+  extra: ["elevator", "swimming_pool"],
+  homeType: "Hotel",
+  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+}, {
+  address: "Beach Pavillion",
+  city: "Soufriere",
+  state: "SLU",
+  bedrooms: 6,
+  price: 400000,
+  floorSpace: 7000,
+  extra: ["elevator", "swimming_pool"],
+  homeType: "Hotel",
+  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+}, {
+  address: "Beach Pavillion",
+  city: "Soufriere",
+  state: "SLU",
+  bedrooms: 6,
+  price: 400000,
+  floorSpace: 7000,
+  extra: ["elevator", "swimming_pool"],
+  homeType: "Hotel",
+  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+}];
 
-var _react = __webpack_require__(46);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(101);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _Header = __webpack_require__(231);
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _Filter = __webpack_require__(230);
-
-var _Filter2 = _interopRequireDefault(_Filter);
-
-var _Listings = __webpack_require__(232);
-
-var _Listings2 = _interopRequireDefault(_Listings);
-
-var _listingData = __webpack_require__(233);
-
-var _listingData2 = _interopRequireDefault(_listingData);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var App = function (_Component) {
-  _inherits(App, _Component);
-
-  function App() {
-    _classCallCheck(this, App);
-
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-    _this.state = {
-      name: "Donly",
-      listingData: _listingData2.default,
-      city: "All",
-      homeType: "All",
-      bedrooms: "0",
-      min_price: 0,
-      max_price: 10000000,
-      min_floor_space: 0,
-      max_floor_space: 50000,
-      elevator: false,
-      finished_basement: false,
-      gym: false,
-      swimming_pool: false,
-      filteredData: _listingData2.default,
-      populateFormsData: "",
-      sortby: "price-dsc",
-      view: "box",
-      search: ""
-    };
-    _this.change = _this.change.bind(_this);
-    _this.filteredData = _this.filteredData.bind(_this);
-    _this.populateForms = _this.populateForms.bind(_this);
-    _this.changeView = _this.changeView.bind(_this);
-    return _this;
-  }
-
-  _createClass(App, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var listingData = this.state.listingData.sort(function (a, b) {
-        a.price - b.price;
-      });
-
-      this.setState({
-        listingData: listingData
-      });
-    }
-  }, {
-    key: "change",
-    value: function change(event) {
-      var _this2 = this;
-
-      var name = event.target.name;
-      var value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
-      this.setState(_defineProperty({}, name, value), function () {
-        _this2.filteredData();
-        console.log(_this2.state);
-      });
-      console.log(event.target.name);
-    }
-  }, {
-    key: "changeView",
-    value: function changeView(viewName) {
-      this.setState({
-        view: viewName
-      });
-    }
-  }, {
-    key: "filteredData",
-    value: function filteredData() {
-      var _this3 = this;
-
-      var newData = this.state.listingData.filter(function (item) {
-        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space && item.bedrooms >= _this3.state.bedrooms;
-      });
-      console.log(newData);
-      if (this.state.city != "All") {
-        // console.log(newData);
-        newData = newData.filter(function (item) {
-          return item.city == _this3.state.city;
-        });
-      }
-
-      if (this.state.homeType != "All") {
-        newData = newData.filter(function (item) {
-          return item.homeType == _this3.state.homeType;
-        });
-      }
-
-      if (this.state.sortby == "price-dsc") {
-        newData = newData.sort(function (a, b) {
-          return a.price - b.price;
-        });
-      }
-
-      if (this.state.sortby == "price-asc") {
-        newData = newData.sort(function (a, b) {
-          return b.price - a.price;
-        });
-      }
-
-      if (this.state.search != "") {
-        newData = newData.filter(function (item) {
-          var city = item.city.toLowerCase();
-          var searchText = _this3.state.search.toLowerCase();
-          var currentlySearching = city.match(searchText);
-
-          if (currentlySearching != null) {
-            return true;
-          }
-        });
-      }
-
-      // if elevator is true then i will return all the listing with elevators with in thier extras
-      if (this.state.elevator == true) {
-        newData = newData.filter(function (item) {
-          return item.extra.includes("elevator");
-        });
-      }
-
-      if (this.state.gym == true) {
-        newData = newData.filter(function (item) {
-          return item.extra.includes("gym");
-        });
-      }
-
-      if (this.state.swimming_pool == true) {
-        newData = newData.filter(function (item) {
-          return item.extra.includes("swimming_pool");
-        });
-      }
-
-      if (this.state.finished_basement == true) {
-        newData = newData.filter(function (item) {
-          return item.extra.includes("finished_basement");
-        });
-      }
-      this.setState({ filteredData: newData });
-    }
-  }, {
-    key: "populateForms",
-    value: function populateForms() {
-      // city
-      var cities = this.state.listingData.map(function (item) {
-        return item.city;
-      });
-      cities = new Set(cities);
-      cities = [].concat(_toConsumableArray(cities));
-      cities = cities.sort();
-
-      // homeType
-      var homeTypes = this.state.listingData.map(function (item) {
-        return item.homeType;
-      });
-      homeTypes = new Set(homeTypes);
-      homeTypes = [].concat(_toConsumableArray(homeTypes));
-      homeTypes = homeTypes.sort();
-
-      // bedrooms
-      var bedrooms = this.state.listingData.map(function (item) {
-        return item.bedrooms;
-      });
-      bedrooms = new Set(bedrooms);
-      bedrooms = [].concat(_toConsumableArray(bedrooms));
-      bedrooms = bedrooms.sort();
-
-      this.setState({
-        populateFormsData: {
-          cities: cities,
-          homeTypes: homeTypes,
-          bedrooms: bedrooms
-        }
-        // () => console.log(this.state)
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        " ",
-        _react2.default.createElement(_Header2.default, null),
-        _react2.default.createElement(
-          "section",
-          { id: "content-area" },
-          _react2.default.createElement(_Filter2.default, {
-            change: this.change,
-            globalState: this.state,
-            populateAction: this.populateForms
-          }),
-          _react2.default.createElement(_Listings2.default, {
-            globalState: this.state,
-            listingData: this.state.filteredData,
-            change: this.change,
-            changeView: this.changeView
-          })
-        )
-      );
-    }
-  }]);
-
-  return App;
-}(_react.Component);
-
-var app = document.getElementById("app");
-
-_reactDom2.default.render(_react2.default.createElement(App, null), app);
+exports.default = listingData;
 
 /***/ })
 
-},[238]);
+},[243]);
