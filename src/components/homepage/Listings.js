@@ -65,7 +65,10 @@ export default class Listings extends Component {
                       </div>
                     </div>
                     <div className="view-btn">
-                    <Link to={`/listing/${index}`}>
+                    <Link to={{
+                      pathname: `/listing/${index}`,
+                      state: [{id: 1, name: 'Ford', color: 'red'}]
+                      }}>
                       View Listing
                     </Link>
                     </div>

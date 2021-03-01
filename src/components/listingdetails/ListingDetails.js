@@ -8,9 +8,10 @@ export default class ListingDetails extends Component {
       // id:useParams()
     };
   }
-
-
+  
   render() {
+    // const { state } = this.props.location
+    console.log(this.props.location.state);
     return (
       <div>
           House details section

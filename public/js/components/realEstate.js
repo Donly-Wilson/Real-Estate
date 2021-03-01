@@ -439,6 +439,8 @@ var ListingDetails = function (_Component) {
   _createClass(ListingDetails, [{
     key: "render",
     value: function render() {
+      // const { state } = this.props.location
+      console.log(this.props.location.state);
       return _react2.default.createElement(
         "div",
         null,
@@ -987,7 +989,10 @@ var Listings = function (_Component) {
                       { className: "view-btn" },
                       _react2.default.createElement(
                         _reactRouterDom.Link,
-                        { to: "/listing/" + index },
+                        { to: {
+                            pathname: "/listing/" + index,
+                            state: [{ id: 1, name: 'Ford', color: 'red' }]
+                          } },
                         "View Listing"
                       )
                     )
