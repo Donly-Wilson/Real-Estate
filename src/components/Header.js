@@ -9,10 +9,11 @@ export default class Header extends Component {
 
   render() {
     return (
-
       <header>
         <Link to="/">
-          <div className="logo">Más Casas</div>
+          <div className="logo">
+            Más Casas
+          </div>
         </Link>
         <nav>
           <Link to="/createads">

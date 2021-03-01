@@ -10,7 +10,7 @@ import ListingDetails from "./listingdetails/ListingDetails";
 class App extends Component {
 render() {
     return (
-        <Router basename="/">
+        <Router>
             <div>
                 {" "}
                 <Header />
@@ -30,10 +30,6 @@ render() {
                 </Switch>
             </div>
         </Router>
-        // <div>
-        //     <Header />
-        //     <HomePage />
-        // </div>
     );
   }
 }

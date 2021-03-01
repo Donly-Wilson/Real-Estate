@@ -420,6 +420,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import {useParams} from 'react-router-dom';
+
 var ListingDetails = function (_Component) {
   _inherits(ListingDetails, _Component);
 
@@ -428,7 +430,9 @@ var ListingDetails = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this));
 
-    _this.state = {};
+    _this.state = {
+      // id:useParams()
+    };
     return _this;
   }
 
@@ -508,7 +512,7 @@ var App = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 _reactRouterDom.BrowserRouter,
-                { basename: "/" },
+                null,
                 _react2.default.createElement(
                     "div",
                     null,
@@ -534,12 +538,7 @@ var App = function (_Component) {
                         )
                     )
                 )
-            )
-            // <div>
-            //     <Header />
-            //     <HomePage />
-            // </div>
-            ;
+            );
         }
     }]);
 
@@ -984,11 +983,11 @@ var Listings = function (_Component) {
                       )
                     ),
                     _react2.default.createElement(
-                      _reactRouterDom.Link,
-                      { to: "/listing/" + index },
+                      "div",
+                      { className: "view-btn" },
                       _react2.default.createElement(
-                        "div",
-                        { className: "view-btn" },
+                        _reactRouterDom.Link,
+                        { to: "/listing/" + index },
                         "View Listing"
                       )
                     )
@@ -1092,7 +1091,11 @@ var Listings = function (_Component) {
                     _react2.default.createElement(
                       "div",
                       { className: "view-btn" },
-                      "View Listing"
+                      _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: "/listing/" + index },
+                        "View Listing"
+                      )
                     )
                   )
                 )

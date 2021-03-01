@@ -64,9 +64,11 @@ export default class Listings extends Component {
                         <span>{listing.bedrooms} bedroom</span>
                       </div>
                     </div>
+                    <div className="view-btn">
                     <Link to={`/listing/${index}`}>
-                    <div className="view-btn">View Listing</div>
+                      View Listing
                     </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -113,7 +115,11 @@ export default class Listings extends Component {
                         <span>{listing.bedrooms} bedroom</span>
                       </div>
                     </div>
-                    <div className="view-btn">View Listing</div>
+                    <div className="view-btn">
+                    <Link to={`/listing/${index}`}>
+                      View Listing
+                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -248,6 +248,23 @@
             margin-bottom: 10px;
           }
         }
+        .view-btn {
+          background: black;
+          border-radius: 5px;
+          font-size: 0.9rem;
+          max-width: 150px;
+          padding: 8px;
+          text-align: center;
+          transition: background 0.3s ease-in-out;
+          a {
+            color: #ffffff;
+            text-decoration: none;
+          }
+          &:hover {
+            background: $pink;
+            cursor: pointer;
+          }
+        }
       }
     }
     .bottom-info {
@@ -292,19 +309,5 @@
       cursor: pointer;
       font-weight: 700;
     }
-  }
-}
-
-.view-btn {
-  background: black;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  max-width: 150px;
-  padding: 8px;
-  text-align: center;
-  transition: background 0.3s ease-in-out;
-  &:hover {
-    background: $pink;
-    cursor: pointer;
   }
 }
