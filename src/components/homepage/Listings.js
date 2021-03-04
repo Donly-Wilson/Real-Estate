@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Pagination from "./Pagination";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-export default class Listings extends Component {
+class Listings extends Component {
   constructor() {
     super();
     this.state = {
@@ -67,7 +68,7 @@ export default class Listings extends Component {
                     <div className="view-btn">
                     <Link to={{
                       pathname: `/listing/${index}`,
-                      state: [{id: 1, name: 'Ford', color: 'red'}]
+                      state: listing
                       }}>
                       View Listing
                     </Link>
@@ -186,3 +187,5 @@ export default class Listings extends Component {
     );
   }
 }
+
+export default withRouter(Listings);

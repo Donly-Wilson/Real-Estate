@@ -24,9 +24,7 @@ render() {
                     {/* <Route path = "/aboutus">
                         <AboutUs />
                     </Route> */}
-                    <Route path = "/listing/:id">
-                        <ListingDetails />
-                    </Route>
+                    <Route path = "/listing/:id" component={ListingDetails}/>
                 </Switch>
             </div>
         </Router>

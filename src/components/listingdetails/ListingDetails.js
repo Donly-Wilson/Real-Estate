@@ -2,19 +2,22 @@ import React, { Component } from "react";
 // import {useParams} from 'react-router-dom';
 
 export default class ListingDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      // id:useParams()
+      listing: this.props.location.state
     };
   }
-  
-  render() {
-    // const { state } = this.props.location
-    console.log(this.props.location.state);
+  componentDidMount () {
+    // Current listing that is selected to be viewed
+    // const listing = this.props.location.state;
+    // console.log(this.props.location.state);
+  }
+  render() {  
+    // console.log(this.state.listing.address);
     return (
       <div>
-          House details section
+          House is locating in {this.state.listing.address}
       </div>
     );
   }

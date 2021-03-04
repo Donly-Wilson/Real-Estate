@@ -46,6 +46,7 @@ gulp.task('browser-sync', ['styles'], function () {
           baseDir:'./public',
           middleware: [ historyApiFallback() ]
         },
+        online: true,
         notify: false,
         open: false //change this to true if you want the broser to open automatically 
     });

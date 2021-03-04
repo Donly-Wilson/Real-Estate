@@ -425,26 +425,33 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ListingDetails = function (_Component) {
   _inherits(ListingDetails, _Component);
 
-  function ListingDetails() {
+  function ListingDetails(props) {
     _classCallCheck(this, ListingDetails);
 
-    var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this));
+    var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this, props));
 
     _this.state = {
-      // id:useParams()
+      listing: _this.props.location.state
     };
     return _this;
   }
 
   _createClass(ListingDetails, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // Current listing that is selected to be viewed
+      // const listing = this.props.location.state;
+      // console.log(this.props.location.state);
+    }
+  }, {
     key: "render",
     value: function render() {
-      // const { state } = this.props.location
-      console.log(this.props.location.state);
+      // console.log(this.state.listing.address);
       return _react2.default.createElement(
         "div",
         null,
-        "House details section"
+        "House is locating in ",
+        this.state.listing.address
       );
     }
   }]);
@@ -533,11 +540,7 @@ var App = function (_Component) {
                             { path: "/createads" },
                             _react2.default.createElement(_CreateAds2.default, null)
                         ),
-                        _react2.default.createElement(
-                            _reactRouterDom.Route,
-                            { path: "/listing/:id" },
-                            _react2.default.createElement(_ListingDetails2.default, null)
-                        )
+                        _react2.default.createElement(_reactRouterDom.Route, { path: "/listing/:id", component: _ListingDetails2.default })
                     )
                 )
             );
@@ -991,7 +994,7 @@ var Listings = function (_Component) {
                         _reactRouterDom.Link,
                         { to: {
                             pathname: "/listing/" + index,
-                            state: [{ id: 1, name: 'Ford', color: 'red' }]
+                            state: listing
                           } },
                         "View Listing"
                       )
@@ -1208,7 +1211,7 @@ var Listings = function (_Component) {
   return Listings;
 }(_react.Component);
 
-exports.default = Listings;
+exports.default = (0, _reactRouterDom.withRouter)(Listings);
 
 /***/ }),
 
