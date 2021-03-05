@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 236:
+/***/ 155:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16,7 +16,88 @@ var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(106);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import {useParams} from 'react-router-dom';
+
+var ListingDetails = function (_Component) {
+  _inherits(ListingDetails, _Component);
+
+  function ListingDetails(props) {
+    _classCallCheck(this, ListingDetails);
+
+    var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this, props));
+
+    _this.state = {
+      listing: _this.props.location.state
+    };
+    return _this;
+  }
+
+  _createClass(ListingDetails, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // Current listing that is selected to be viewed
+      // const listing = this.props.location.state;
+      // console.log(this.props.location.state);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      // console.log(this.state.listing.address);
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "div",
+          null,
+          "IMAGES"
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          "Details House is locating in ",
+          this.state.listing.address
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          "Results"
+        )
+      );
+    }
+  }]);
+
+  return ListingDetails;
+}(_react.Component);
+
+exports.default = ListingDetails;
+
+/***/ }),
+
+/***/ 237:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(82);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -88,7 +169,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 237:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -142,7 +223,7 @@ exports.default = CreateAds;
 
 /***/ }),
 
-/***/ 238:
+/***/ 239:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -170,6 +251,12 @@ var _listingData = __webpack_require__(247);
 
 var _listingData2 = _interopRequireDefault(_listingData);
 
+var _reactRouterDom = __webpack_require__(82);
+
+var _ListingDetails = __webpack_require__(155);
+
+var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -188,10 +275,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var HomePage = function (_Component) {
   _inherits(HomePage, _Component);
 
-  function HomePage() {
+  function HomePage(props) {
     _classCallCheck(this, HomePage);
 
-    var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this));
+    var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
 
     _this.state = {
       name: "Donly",
@@ -362,6 +449,9 @@ var HomePage = function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var match = this.props.match;
+
+      console.log(match);
       return _react2.default.createElement(
         "div",
         null,
@@ -374,12 +464,21 @@ var HomePage = function (_Component) {
             globalState: this.state,
             populateAction: this.populateForms
           }),
-          _react2.default.createElement(_Listings2.default, {
-            globalState: this.state,
-            listingData: this.state.filteredData,
-            change: this.change,
-            changeView: this.changeView
-          })
+          _react2.default.createElement(
+            _reactRouterDom.Switch,
+            null,
+            _react2.default.createElement(
+              _reactRouterDom.Route,
+              { path: match.url, exact: true },
+              _react2.default.createElement(_Listings2.default, {
+                globalState: this.state,
+                listingData: this.state.filteredData,
+                change: this.change,
+                changeView: this.changeView
+              })
+            ),
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + '/listing/:id', exact: true, component: _ListingDetails2.default })
+          )
         )
       );
     }
@@ -388,78 +487,9 @@ var HomePage = function (_Component) {
   return HomePage;
 }(_react.Component);
 
+exports.default = (0, _reactRouterDom.withRouter)(HomePage);
 // const app = document.getElementById("app");
 // ReactDOM.render(<App />, app);
-
-
-exports.default = HomePage;
-
-/***/ }),
-
-/***/ 239:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(18);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import {useParams} from 'react-router-dom';
-
-var ListingDetails = function (_Component) {
-  _inherits(ListingDetails, _Component);
-
-  function ListingDetails(props) {
-    _classCallCheck(this, ListingDetails);
-
-    var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this, props));
-
-    _this.state = {
-      listing: _this.props.location.state
-    };
-    return _this;
-  }
-
-  _createClass(ListingDetails, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // Current listing that is selected to be viewed
-      // const listing = this.props.location.state;
-      // console.log(this.props.location.state);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      // console.log(this.state.listing.address);
-      return _react2.default.createElement(
-        "div",
-        null,
-        "House is locating in ",
-        this.state.listing.address
-      );
-    }
-  }]);
-
-  return ListingDetails;
-}(_react.Component);
-
-exports.default = ListingDetails;
 
 /***/ }),
 
@@ -479,21 +509,21 @@ var _reactDom = __webpack_require__(107);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(106);
+var _reactRouterDom = __webpack_require__(82);
 
-var _Header = __webpack_require__(236);
+var _Header = __webpack_require__(237);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _HomePage = __webpack_require__(238);
+var _HomePage = __webpack_require__(239);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _CreateAds = __webpack_require__(237);
+var _CreateAds = __webpack_require__(238);
 
 var _CreateAds2 = _interopRequireDefault(_CreateAds);
 
-var _ListingDetails = __webpack_require__(239);
+var _ListingDetails = __webpack_require__(155);
 
 var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
 
@@ -532,15 +562,14 @@ var App = function (_Component) {
                         null,
                         _react2.default.createElement(
                             _reactRouterDom.Route,
-                            { exact: true, path: "/" },
+                            { path: "/homes" },
                             _react2.default.createElement(_HomePage2.default, null)
                         ),
                         _react2.default.createElement(
                             _reactRouterDom.Route,
                             { path: "/createads" },
                             _react2.default.createElement(_CreateAds2.default, null)
-                        ),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: "/listing/:id", component: _ListingDetails2.default })
+                        )
                     )
                 )
             );
@@ -863,7 +892,7 @@ var _Pagination = __webpack_require__(246);
 
 var _Pagination2 = _interopRequireDefault(_Pagination);
 
-var _reactRouterDom = __webpack_require__(106);
+var _reactRouterDom = __webpack_require__(82);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -993,7 +1022,7 @@ var Listings = function (_Component) {
                       _react2.default.createElement(
                         _reactRouterDom.Link,
                         { to: {
-                            pathname: "/listing/" + index,
+                            pathname: _this2.props.match.url + "/listing/" + index,
                             state: listing
                           } },
                         "View Listing"
@@ -1101,7 +1130,7 @@ var Listings = function (_Component) {
                       { className: "view-btn" },
                       _react2.default.createElement(
                         _reactRouterDom.Link,
-                        { to: "/listing/" + index },
+                        { to: _this2.props.match.path + '/listing/' + index },
                         "View Listing"
                       )
                     )

@@ -67,7 +67,7 @@ class Listings extends Component {
                     </div>
                     <div className="view-btn">
                     <Link to={{
-                      pathname: `/listing/${index}`,
+                      pathname: `${this.props.match.url}/listing/${index}`,
                       state: listing
                       }}>
                       View Listing
@@ -120,7 +120,7 @@ class Listings extends Component {
                       </div>
                     </div>
                     <div className="view-btn">
-                    <Link to={`/listing/${index}`}>
+                    <Link to={this.props.match.path+'/listing/'+index}>
                       View Listing
                     </Link>
                     </div>

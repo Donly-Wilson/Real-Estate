@@ -17,7 +17,11 @@ export default class ListingDetails extends Component {
     // console.log(this.state.listing.address);
     return (
       <div>
-          House is locating in {this.state.listing.address}
+          <div>IMAGES</div>
+          <div>Details
+            House is locating in {this.state.listing.address}
+          </div>
+          <div>Results</div>
       </div>
     );
   }

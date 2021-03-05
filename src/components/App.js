@@ -15,7 +15,7 @@ render() {
                 {" "}
                 <Header />
                 <Switch>
-                    <Route exact path = "/">
+                    <Route path = "/homes">
                         <HomePage />
                     </Route>
                     <Route path = "/createads">
@@ -24,7 +24,6 @@ render() {
                     {/* <Route path = "/aboutus">
                         <AboutUs />
                     </Route> */}
-                    <Route path = "/listing/:id" component={ListingDetails}/>
                 </Switch>
             </div>
         </Router>

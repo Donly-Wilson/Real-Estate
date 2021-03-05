@@ -4,10 +4,12 @@ import React, { Component } from "react";
 import Filter from "./Filter";
 import Listings from "./Listings";
 import listingData from "./data/listingData";
+import {Route, Switch, withRouter } from 'react-router-dom';
+import ListingDetails from "../listingdetails/ListingDetails";
 
-export default class HomePage extends Component {
-  constructor() {
-    super();
+class HomePage extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       name: "Donly",
       listingData,
@@ -180,6 +182,8 @@ export default class HomePage extends Component {
   }
 
   render() {
+    const {match} = this.props;
+        console.log(match);
     return (
       <div>
         {" "}
@@ -189,17 +193,23 @@ export default class HomePage extends Component {
             globalState={this.state}
             populateAction={this.populateForms}
           />
-          <Listings
-            globalState={this.state}
-            listingData={this.state.filteredData}
-            change={this.change}
-            changeView={this.changeView}
-          />
+          <Switch>
+            <Route path={ match.url} exact={true}>
+              <Listings
+                globalState={this.state}
+                listingData={this.state.filteredData}
+                change={this.change}
+                changeView={this.changeView}
+              />
+            </Route>
+            <Route path={match.url + '/listing/:id'} exact={true} component={ListingDetails}/>
+          </Switch>
         </section>
       </div>
     );
   }
 }
 
+export default withRouter(HomePage);
 // const app = document.getElementById("app");
 // ReactDOM.render(<App />, app);
