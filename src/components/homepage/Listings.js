@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Pagination from "./Pagination";
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Listings extends Component {
   constructor() {
@@ -9,7 +8,6 @@ class Listings extends Component {
     this.state = {
       currentPage: 1,
       postPerPage: 8,
-      // currentView: ""
     };
     this.loopListing = this.loopListing.bind(this);
     this.paginate = this.paginate.bind(this);
@@ -20,7 +18,7 @@ class Listings extends Component {
   }
 
   loopListing() {
-    // Search through all Listing Data which is newly filtered Data
+    // Search through all Listing Data from homepage which is newly filtered Data
     var { listingData } = this.props;
 
     if (listingData == undefined || listingData.length == 0) {
@@ -42,7 +40,7 @@ class Listings extends Component {
                 className="listing-img"
                 style={{
                   background: `url("${listing.image}")
-          no-repeat center center`,
+                  no-repeat center center`,
                 }}
               >
                 <span className="address">{listing.address}</span>
@@ -175,7 +173,7 @@ class Listings extends Component {
             </div>
           </div>
         </section>
-        <div className="raw">
+        <div className="row">
           <section className="listings-results">{this.loopListing()}</section>
         </div>
         <Pagination

@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 155:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16,88 +16,7 @@ var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import {useParams} from 'react-router-dom';
-
-var ListingDetails = function (_Component) {
-  _inherits(ListingDetails, _Component);
-
-  function ListingDetails(props) {
-    _classCallCheck(this, ListingDetails);
-
-    var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this, props));
-
-    _this.state = {
-      listing: _this.props.location.state
-    };
-    return _this;
-  }
-
-  _createClass(ListingDetails, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // Current listing that is selected to be viewed
-      // const listing = this.props.location.state;
-      // console.log(this.props.location.state);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      // console.log(this.state.listing.address);
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(
-          "div",
-          null,
-          "IMAGES"
-        ),
-        _react2.default.createElement(
-          "div",
-          null,
-          "Details House is locating in ",
-          this.state.listing.address
-        ),
-        _react2.default.createElement(
-          "div",
-          null,
-          "Results"
-        )
-      );
-    }
-  }]);
-
-  return ListingDetails;
-}(_react.Component);
-
-exports.default = ListingDetails;
-
-/***/ }),
-
-/***/ 237:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(18);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(82);
+var _reactRouterDom = __webpack_require__(69);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -169,7 +88,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 238:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -223,7 +142,7 @@ exports.default = CreateAds;
 
 /***/ }),
 
-/***/ 239:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -239,21 +158,21 @@ var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Filter = __webpack_require__(244);
+var _Filter = __webpack_require__(243);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _Listings = __webpack_require__(245);
+var _Listings = __webpack_require__(244);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _listingData = __webpack_require__(247);
+var _listingData = __webpack_require__(246);
 
 var _listingData2 = _interopRequireDefault(_listingData);
 
-var _reactRouterDom = __webpack_require__(82);
+var _reactRouterDom = __webpack_require__(69);
 
-var _ListingDetails = __webpack_require__(155);
+var _ListingDetails = __webpack_require__(247);
 
 var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
 
@@ -450,8 +369,8 @@ var HomePage = function (_Component) {
     key: "render",
     value: function render() {
       var match = this.props.match;
+      // console.log(match);
 
-      console.log(match);
       return _react2.default.createElement(
         "div",
         null,
@@ -477,7 +396,13 @@ var HomePage = function (_Component) {
                 changeView: this.changeView
               })
             ),
-            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + '/listing/:id', exact: true, component: _ListingDetails2.default })
+            _react2.default.createElement(
+              _reactRouterDom.Route,
+              { path: match.url + "/listing/:id", exact: true },
+              _react2.default.createElement(_ListingDetails2.default, {
+                listingData: this.state.filteredData
+              })
+            )
           )
         )
       );
@@ -493,7 +418,7 @@ exports.default = (0, _reactRouterDom.withRouter)(HomePage);
 
 /***/ }),
 
-/***/ 243:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -509,23 +434,19 @@ var _reactDom = __webpack_require__(107);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(82);
+var _reactRouterDom = __webpack_require__(69);
 
-var _Header = __webpack_require__(237);
+var _Header = __webpack_require__(236);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _HomePage = __webpack_require__(239);
+var _HomePage = __webpack_require__(238);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _CreateAds = __webpack_require__(238);
+var _CreateAds = __webpack_require__(237);
 
 var _CreateAds2 = _interopRequireDefault(_CreateAds);
-
-var _ListingDetails = __webpack_require__(155);
-
-var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -534,7 +455,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+// import {HashRouter as Router, Route, Switch} from 'react-router-dom'; maybe for netlify
 
 
 var App = function (_Component) {
@@ -584,7 +505,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), app);
 
 /***/ }),
 
-/***/ 244:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -872,7 +793,7 @@ exports.default = Filter;
 
 /***/ }),
 
-/***/ 245:
+/***/ 244:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -888,11 +809,11 @@ var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Pagination = __webpack_require__(246);
+var _Pagination = __webpack_require__(245);
 
 var _Pagination2 = _interopRequireDefault(_Pagination);
 
-var _reactRouterDom = __webpack_require__(82);
+var _reactRouterDom = __webpack_require__(69);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -913,7 +834,6 @@ var Listings = function (_Component) {
     _this.state = {
       currentPage: 1,
       postPerPage: 8
-      // currentView: ""
     };
     _this.loopListing = _this.loopListing.bind(_this);
     _this.paginate = _this.paginate.bind(_this);
@@ -930,7 +850,7 @@ var Listings = function (_Component) {
     value: function loopListing() {
       var _this2 = this;
 
-      // Search through all Listing Data which is newly filtered Data
+      // Search through all Listing Data from homepage which is newly filtered Data
       var listingData = this.props.listingData;
 
 
@@ -957,7 +877,7 @@ var Listings = function (_Component) {
                 {
                   className: "listing-img",
                   style: {
-                    background: "url(\"" + listing.image + "\")\n          no-repeat center center"
+                    background: "url(\"" + listing.image + "\")\n                  no-repeat center center"
                   }
                 },
                 _react2.default.createElement(
@@ -1221,7 +1141,7 @@ var Listings = function (_Component) {
         ),
         _react2.default.createElement(
           "div",
-          { className: "raw" },
+          { className: "row" },
           _react2.default.createElement(
             "section",
             { className: "listings-results" },
@@ -1244,7 +1164,7 @@ exports.default = (0, _reactRouterDom.withRouter)(Listings);
 
 /***/ }),
 
-/***/ 246:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1380,7 +1300,7 @@ exports.default = Pagination;
 
 /***/ }),
 
-/***/ 247:
+/***/ 246:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1493,6 +1413,228 @@ var listingData = [{
 
 exports.default = listingData;
 
+/***/ }),
+
+/***/ 247:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(69);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ListingDetails = function (_Component) {
+  _inherits(ListingDetails, _Component);
+
+  function ListingDetails(props) {
+    _classCallCheck(this, ListingDetails);
+
+    var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this, props));
+
+    _this.state = {
+      listing: _this.props.location.state
+    };
+    return _this;
+  }
+
+  _createClass(ListingDetails, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // Current listing that is selected to be viewed
+      // const listing = this.props.location.state;
+      // console.log(this.props.location.state);
+    }
+  }, {
+    key: "loopListing",
+    value: function loopListing() {
+      var _this2 = this;
+
+      // Search through all Listing Data from homepage which is newly filtered Data
+      var listingData = this.props.listingData;
+
+
+      if (listingData == undefined || listingData.length == 0) {
+        return "Sorry your filter did not match any listing";
+      }
+
+      // ShowCase Fixed amount of listing for current page (postPerPage holds this amount)
+      // const indexOFLastPost = this.state.currentPage * this.state.postPerPage; //1*8=8
+      // const indexOfFirstPage = indexOFLastPost - this.state.postPerPage; //8-8=0
+      // const currentPost = listingData.slice(indexOfFirstPage, indexOFLastPost); //(0,8)
+
+      return listingData.map(function (listing, index) {
+        return _react2.default.createElement(
+          "div",
+          { className: "col-md-3", key: index },
+          _react2.default.createElement(
+            "div",
+            { className: "listing" },
+            _react2.default.createElement(
+              "div",
+              {
+                className: "listing-img",
+                style: {
+                  background: "url(\"" + listing.image + "\")\n                  no-repeat center center"
+                }
+              },
+              _react2.default.createElement(
+                "span",
+                { className: "address" },
+                listing.address
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "details" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "col-md-3" },
+                  _react2.default.createElement("div", { className: "user-img" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "col-md-9" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "user-details" },
+                    _react2.default.createElement(
+                      "span",
+                      { className: "user-name" },
+                      "Nina Smith"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "post-date" },
+                      "05/05/2020"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "listing-details" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "floor-space" },
+                      _react2.default.createElement("i", { className: "fa fa-square-o", "aria-hidden": "true" }),
+                      _react2.default.createElement(
+                        "span",
+                        null,
+                        listing.floorSpace,
+                        " ft\xB2"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "div",
+                      { className: "bedrooms" },
+                      _react2.default.createElement("i", { className: "fa fa-bed", "aria-hidden": "true" }),
+                      _react2.default.createElement(
+                        "span",
+                        null,
+                        listing.bedrooms,
+                        " bedroom"
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "view-btn" },
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: {
+                          pathname: "" + (_this2.props.location.pathname.split('/').slice(0, -1).join('/') + '/' + index),
+                          state: listing
+                        } },
+                      "View Listing"
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "bottom-info" },
+              _react2.default.createElement(
+                "span",
+                { className: "price" },
+                "$",
+                listing.price,
+                " "
+              ),
+              _react2.default.createElement(
+                "span",
+                { className: "location" },
+                " ",
+                _react2.default.createElement("i", { className: "fa fa-map-marker", "aria-hidden": "true" }),
+                listing.city,
+                ",",
+                listing.state
+              )
+            )
+          )
+        );
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log(this.state.listing);
+      return _react2.default.createElement(
+        "section",
+        { className: "current__listing" },
+        _react2.default.createElement(
+          "div",
+          { className: "current__listing__info" },
+          _react2.default.createElement(
+            "div",
+            { className: "current__listing__image" },
+            "IMAGES"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "current__listing__details" },
+            "Details House is locating in ",
+            this.state.listing.address
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "related" },
+          _react2.default.createElement(
+            "span",
+            { className: "related__amount" },
+            "64 Results"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "related__results" },
+            this.loopListing()
+          )
+        )
+      );
+    }
+  }]);
+
+  return ListingDetails;
+}(_react.Component);
+
+exports.default = (0, _reactRouterDom.withRouter)(ListingDetails);
+
 /***/ })
 
-},[243]);
+},[242]);

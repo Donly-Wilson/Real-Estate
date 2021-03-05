@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React, { Component,Fragment } from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-// import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+// import {HashRouter as Router, Route, Switch} from 'react-router-dom'; maybe for netlify
 import Header from "./Header";
 import HomePage from "./homepage/HomePage";
 import CreateAds from "./createAds/CreateAds";
-import ListingDetails from "./listingdetails/ListingDetails";
 
 class App extends Component {
 render() {

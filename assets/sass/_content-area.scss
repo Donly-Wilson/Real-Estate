@@ -2,6 +2,8 @@
   min-width: 100vh;
   overflow: auto;
   width: 100%;
+  display: flex;
+  // height: calc(100vh - 56px);
 }
 
 #filter {

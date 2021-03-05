@@ -183,7 +183,7 @@ class HomePage extends Component {
 
   render() {
     const {match} = this.props;
-        console.log(match);
+        // console.log(match);
     return (
       <div>
         {" "}
@@ -202,7 +202,13 @@ class HomePage extends Component {
                 changeView={this.changeView}
               />
             </Route>
-            <Route path={match.url + '/listing/:id'} exact={true} component={ListingDetails}/>
+
+            <Route path={`${match.url}/listing/:id`} exact={true}>
+              <ListingDetails
+              listingData={this.state.filteredData}
+              />
+            </Route>
+
           </Switch>
         </section>
       </div>
