@@ -1,3 +1,4 @@
+// 
 import React, { Component } from "react";
 import { Link, withRouter } from 'react-router-dom';
 
@@ -84,21 +85,57 @@ class ListingDetails extends Component {
     });
   }
 
-  render() {  
-    console.log(this.state.listing);
-    return (
-      <section className="current__listing">
-          <div className="current__listing__info">
-            <div className="current__listing__image">IMAGES</div>
-            <div className="current__listing__details">Details House is locating in {this.state.listing.address}</div>
+render() {  
+  console.log(this.state.listing);
+  return (
+    <section className="current__listing">
+        <div className="current__listing__info">
+          <div className="current__listing__images">
+            <div className="image__main">FT IMAGES</div>
+            <div className="image__sub">
+              <div className="image__sub__option">1st IMAGES</div>
+              <div className="image__sub__option">2nd IMAGES</div>
+              <div className="image__sub__option">3d IMAGES</div>
+            </div>
           </div>
-          <div className="related">
-            <span className="related__amount">64 Results</span>
-            <div className="related__results">{this.loopListing()}</div>
+          <div className="current__listing__details">
+            <div className="details__info">
+              <span className="details__info__price">$15,000 /Year</span>
+              <p className="details__info__location">{this.state.listing.address}, peachfield, UK</p>
+            </div>
+            <div className="details__plan">
+              <div className="details__plan__bedroom">Bedroom 
+                <div className="bedroom__amount">
+                   4 <i className="fa fa-bed" aria-hidden="true"></i> 
+                </div>
+              </div>
+              <div className="details__plan__bathroom">Bathroom 
+                <div className="bedroom__amount">
+                   4 <i className="fa fa-bed" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div className="details__plan__squarefoot">Area 
+                <div className="bedroom__amount"> 2309ft</div>
+              </div>
+            </div>
+            <div className="details__description">
+              <span>Description</span>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus laudantium voluptas dolores magni, aliquam vitae reiciendis blanditiis quae velit, cum modi? Cum labore earum provident.</p>
+            </div>
+            <div className="details__nearby">
+              <span>Close Locations</span>
+              <span>School 0.8miles</span>
+              <span>State Banks 1.5miles</span>
+            </div>
           </div>
-      </section>
-    );
-  }
+        </div>
+        <div className="related">
+          <span className="related__amount">64 Results</span>
+          <div className="related__results">{this.loopListing()}</div>
+        </div>
+    </section>
+  );
+}
 }
 
 export default withRouter(ListingDetails);
