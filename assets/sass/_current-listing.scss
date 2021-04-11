@@ -120,5 +120,9 @@
   //   Related Options
   .related {
     padding: 20px;
+    &__amount {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
   }
 }
