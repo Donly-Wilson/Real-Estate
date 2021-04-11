@@ -186,7 +186,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // (./homes) hyperlink or page
+
 // import ReactDOM from "react-dom";
 // import Header from "./Header";
 
@@ -1439,7 +1440,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // 
+
 
 var ListingDetails = function (_Component) {
   _inherits(ListingDetails, _Component);
@@ -1602,14 +1604,139 @@ var ListingDetails = function (_Component) {
           { className: "current__listing__info" },
           _react2.default.createElement(
             "div",
-            { className: "current__listing__image" },
-            "IMAGES"
+            { className: "current__listing__images" },
+            _react2.default.createElement(
+              "div",
+              { className: "image__main" },
+              "FT IMAGES"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "image__sub" },
+              _react2.default.createElement(
+                "div",
+                { className: "image__sub__option" },
+                "1st IMAGES"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "image__sub__option" },
+                "2nd IMAGES"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "image__sub__option" },
+                "3d IMAGES"
+              )
+            )
           ),
           _react2.default.createElement(
             "div",
             { className: "current__listing__details" },
-            "Details House is locating in ",
-            this.state.listing.address
+            _react2.default.createElement(
+              "div",
+              { className: "details__info" },
+              _react2.default.createElement(
+                "span",
+                { className: "details__info__price" },
+                "$15,000 /Year"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "details__info__location" },
+                this.state.listing.address,
+                ", peachfield, UK"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "details__plan" },
+              _react2.default.createElement(
+                "div",
+                { className: "details__plan__bedroom" },
+                "Bedroom",
+                _react2.default.createElement(
+                  "div",
+                  { className: "details__plan__amount" },
+                  "4 ",
+                  _react2.default.createElement("i", { className: "fa fa-bed", "aria-hidden": "true" })
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "details__plan__bathroom" },
+                "Bathroom",
+                _react2.default.createElement(
+                  "div",
+                  { className: "details__plan__amount" },
+                  "4 ",
+                  _react2.default.createElement("i", { className: "fa fa-bed", "aria-hidden": "true" })
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "details__plan__squarefoot" },
+                "Area",
+                _react2.default.createElement(
+                  "div",
+                  { className: "details__plan__amount" },
+                  " 2309ft"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "details__description" },
+              _react2.default.createElement(
+                "span",
+                { className: "details__description__title" },
+                "Description"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus laudantium voluptas dolores magni, aliquam vitae reiciendis blanditiis quae velit, cum modi? Cum labore earum provident."
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "details__nearby" },
+              _react2.default.createElement(
+                "span",
+                { className: "details__nearby__title" },
+                "Close Locations"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "details__nearby__spot" },
+                _react2.default.createElement(
+                  "span",
+                  null,
+                  _react2.default.createElement("i", { className: "fa fa-bed", "aria-hidden": "true" }),
+                  " School"
+                ),
+                _react2.default.createElement(
+                  "span",
+                  { className: "details__nearby__amount" },
+                  " 0.8 miles"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "details__nearby__spot" },
+                _react2.default.createElement(
+                  "span",
+                  null,
+                  _react2.default.createElement("i", { className: "fa fa-bed", "aria-hidden": "true" }),
+                  " State Banks"
+                ),
+                _react2.default.createElement(
+                  "span",
+                  { className: "details__nearby__amount" },
+                  " 1.5 miles"
+                )
+              )
+            )
           )
         ),
         _react2.default.createElement(

@@ -105,27 +105,37 @@ render() {
             </div>
             <div className="details__plan">
               <div className="details__plan__bedroom">Bedroom 
-                <div className="bedroom__amount">
+                <div className="details__plan__amount">
                    4 <i className="fa fa-bed" aria-hidden="true"></i> 
                 </div>
               </div>
               <div className="details__plan__bathroom">Bathroom 
-                <div className="bedroom__amount">
+                <div className="details__plan__amount">
                    4 <i className="fa fa-bed" aria-hidden="true"></i>
                 </div>
               </div>
               <div className="details__plan__squarefoot">Area 
-                <div className="bedroom__amount"> 2309ft</div>
+                <div className="details__plan__amount"> 2309ft</div>
               </div>
             </div>
             <div className="details__description">
-              <span>Description</span>
+              <span className="details__description__title">Description</span>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus laudantium voluptas dolores magni, aliquam vitae reiciendis blanditiis quae velit, cum modi? Cum labore earum provident.</p>
             </div>
             <div className="details__nearby">
-              <span>Close Locations</span>
-              <span>School 0.8miles</span>
-              <span>State Banks 1.5miles</span>
+              <span className="details__nearby__title">Close Locations</span>
+              <div className="details__nearby__spot">
+                <span>
+                <i className="fa fa-bed" aria-hidden="true"></i> School 
+                </span>
+                <span className="details__nearby__amount"> 0.8 miles</span>
+              </div>
+              <div className="details__nearby__spot">
+                <span>
+                  <i className="fa fa-bed" aria-hidden="true"></i> State Banks
+                </span>
+                <span className="details__nearby__amount"> 1.5 miles</span>
+              </div>
             </div>
           </div>
         </div>
