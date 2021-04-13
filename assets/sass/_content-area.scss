@@ -127,6 +127,17 @@
   -webkit-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
   -moz-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
   box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+  a{
+    text-decoration: none;
+  }
+  &:hover {
+    .details {
+      opacity: 1;
+    }
+    .furnished {
+      opacity: 0;
+    }
+  }
 }
 .listing-img {
   color: #ffffff;
@@ -144,22 +155,17 @@
   -webkit-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  &:hover {
-    .details {
-      opacity: 1;
-    }
-    .address {
-      opacity: 0;
-    }
-  }
-  .address {
-    bottom: 20px;
-    font-size: 1.3rem;
+  .furnished {
+    top: 15px;
+    font-size: 1rem;
     position: absolute;
-    text-shadow: 0px 1px 4px rgba(91, 91, 91, 1);
     text-transform: capitalize;
+    // text-shadow: 0px 1px 4px rgba(91, 91, 91, 1);
     transition: all 0.4s ease-in-out;
     opacity: 1;
+    background: #ffffff;
+    padding: 7px;
+    border-radius: 5px;
   }
   .details {
     position: absolute;
@@ -248,15 +254,16 @@
     }
     .view-btn {
       background: black;
-      border-radius: 5px;
+      border-radius: 50%;
       font-size: 0.9rem;
       max-width: 150px;
+      width:30px;
+      height:30px;
       padding: 8px;
       text-align: center;
       transition: background 0.3s ease-in-out;
-      a {
+      i {
         color: #ffffff;
-        text-decoration: none;
       }
       &:hover {
         background: $pink;

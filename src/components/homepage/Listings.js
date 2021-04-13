@@ -34,16 +34,21 @@ class Listings extends Component {
       if (this.props.globalState.view == "box") {
         //THIS IS THE BOX VIEW
         return (
-          <div className="col-md-3" key={index}>
+          <div className="col-md-4" key={index}>
             <div className="listing">
+            <Link to={{
+                      pathname: `${this.props.match.url}/listing/${index}`,
+                      state: listing
+                      }}>
               <div
                 className="listing-img"
                 style={{
                   background: `url("${listing.image}")
                   no-repeat center center`,
+                  backgroundSize: 'cover'
                 }}
               >
-                <span className="address">{listing.address}</span>
+                <span className="furnished">Furnished</span>
                 <div className="details">
                   <div className="col-md-3">
                     <div className="user-img"></div>
@@ -54,34 +59,31 @@ class Listings extends Component {
                       <span className="post-date">05/05/2020</span>
                     </div>
                     <div className="listing-details">
-                      <div className="floor-space">
+                      {/* <div className="floor-space">
                         <i className="fa fa-square-o" aria-hidden="true"></i>
                         <span>{listing.floorSpace} ft&sup2;</span>
-                      </div>
-                      <div className="bedrooms">
-                        <i className="fa fa-bed" aria-hidden="true"></i>
-                        <span>{listing.bedrooms} bedroom</span>
-                      </div>
+                      </div> */}
+                      
                     </div>
                     <div className="view-btn">
-                    <Link to={{
-                      pathname: `${this.props.match.url}/listing/${index}`,
-                      state: listing
-                      }}>
-                      View Listing
-                    </Link>
+                        <i className="fa fa-heart-o" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="bottom-info">
-                <span className="price">${listing.price} </span>
+                <span className="price">${listing.price} /month </span>
+                <div className="rooms">
+                  
+                  {/* <span>{listing.bedrooms} bedroom, bags ,cars and dogs</span> */}
+                  <span>{listing.bedrooms} Beds, 2 Baths, {listing.floorSpace} ft&sup2;</span>
+                </div>
                 <span className="location">
                   {" "}
-                  <i className="fa fa-map-marker" aria-hidden="true"></i>
-                  {listing.city},{listing.state}
+                  {listing.address}, {listing.city}, {listing.state}
                 </span>
               </div>
+              </Link>
             </div>
           </div>
         );
@@ -95,6 +97,7 @@ class Listings extends Component {
                 style={{
                   background: `url("${listing.image}")
           no-repeat center center`,
+          backgroundSize: 'cover'
                 }}
               >
                 <span className="address">{listing.address}</span>
@@ -108,14 +111,7 @@ class Listings extends Component {
                       <span className="post-date">05/05/2020</span>
                     </div>
                     <div className="listing-details">
-                      <div className="floor-space">
-                        <i className="fa fa-square-o" aria-hidden="true"></i>
-                        <span>{listing.floorSpace} ft&sup2;</span>
-                      </div>
-                      <div className="bedrooms">
-                        <i className="fa fa-bed" aria-hidden="true"></i>
-                        <span>{listing.bedrooms} bedroom</span>
-                      </div>
+                      
                     </div>
                     <div className="view-btn">
                     <Link to={this.props.match.path+'/listing/'+index}>
@@ -127,6 +123,14 @@ class Listings extends Component {
               </div>
               <div className="bottom-info">
                 <span className="price">${listing.price} </span>
+                <div className="bedrooms">
+                  
+                  <span>{listing.bedrooms} Beds, 2 Baths, {listing.floorSpace} ft&sup2;</span>
+                  <div className="floor-space">
+                        <i className="fa fa-square-o" aria-hidden="true"></i>
+                        <span>{listing.floorSpace} ft&sup2;</span>
+                      </div>
+                </div>
                 <span className="location">
                   {" "}
                   <i className="fa fa-map-marker" aria-hidden="true"></i>

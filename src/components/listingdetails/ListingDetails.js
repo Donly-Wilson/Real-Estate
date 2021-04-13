@@ -85,17 +85,36 @@ class ListingDetails extends Component {
     });
   }
 
-render() {  
+  render() {  
   console.log(this.state.listing);
+  const imageUrl = './img/home-details.png';
+  
   return (
     <section className="current__listing">
         <div className="current__listing__info">
           <div className="current__listing__images">
-            <div className="image__main">FT IMAGES</div>
+            <div className="image__main" style={{
+                  background: `url('../../img/home-display1.png')
+          no-repeat center center`,
+          backgroundSize: 'cover'
+                }}></div>
+                
             <div className="image__sub">
-              <div className="image__sub__option">1st IMAGES</div>
-              <div className="image__sub__option">2nd IMAGES</div>
-              <div className="image__sub__option">3d IMAGES</div>
+              <div className="image__sub__option" style={{
+                  background: `url('../../img/home-display2.png')
+          no-repeat center center`,
+          backgroundSize: 'cover'
+                }}></div>
+              <div className="image__sub__option" style={{
+                  background: `url('../../img/home-display3.png')
+          no-repeat center center`,
+          backgroundSize: 'cover'
+                }}></div>
+              <div className="image__sub__option" style={{
+                  background: `url('../../img/home-display4.png')
+          no-repeat center center`,
+          backgroundSize: 'cover'
+                }}></div>
             </div>
           </div>
           <div className="current__listing__details">
@@ -115,7 +134,7 @@ render() {
                 </div>
               </div>
               <div className="details__plan__squarefoot">Area 
-                <div className="details__plan__amount"> 2309ft</div>
+                <div className="details__plan__amount"> 2309ft &sup2;</div>
               </div>
             </div>
             <div className="details__description">
