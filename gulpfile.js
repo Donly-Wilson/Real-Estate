@@ -48,7 +48,7 @@ gulp.task('browser-sync', ['styles'], function () {
         },
         online: true,
         notify: false,
-        open: false //change this to true if you want the broser to open automatically 
+        open: false //change this to true if you want the browser to open automatically 
     });
 })
 

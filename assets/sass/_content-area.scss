@@ -72,64 +72,133 @@
   padding: 15px;
   width: 79%;
   background: $offWhite;
-
-  .search-area {
-    input[type="text"] {
-      background-color: transparent;
-      border: none;
-      border-bottom: 2px solid $darkGrey;
-      font-size: 2rem;
-      font-weight: 200;
-      margin-bottom: 20px;
-      width: 70%;
-      color: $lightGrey;
-    }
-  }
-  .sortby-area {
+}
+.search-area {
+  input[type="text"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $darkGrey;
+    font-size: 2rem;
+    font-weight: 200;
     margin-bottom: 20px;
-    .results {
-      color: $darkGrey;
-      font-size: 0.8rem;
-      display: inline-block;
-    }
+    width: 70%;
+    color: $lightGrey;
   }
-  .sort-options {
-    float: right;
-    select {
-      background: transparent;
-      border: 1px solid $lightGrey;
-      border-radius: 5px;
-      display: inline-block;
-      font-size: 0.9rem;
-      font-weight: 300;
+}
+.sortby-area {
+  margin-bottom: 20px;
+  .results {
+    color: $darkGrey;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+}
+.sort-options {
+  float: right;
+  select {
+    background: transparent;
+    border: 1px solid $lightGrey;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-right: 15px;
+    padding: 1px;
+    vertical-align: top;
+  }
+  .view {
+    display: inline-block;
+    .fa {
+      font-size: 1.5rem;
       margin-right: 15px;
-      padding: 1px;
-      vertical-align: top;
-    }
-    .view {
-      display: inline-block;
-      .fa {
-        font-size: 1.5rem;
-        margin-right: 15px;
-      }
     }
   }
+}
 
-  .listings-results {
-    height: 620px;
-    margin-bottom: 60px;
-    margin-top: 50px;
-    .listing {
-      background: #ffffff;
-      border-radius: 5px;
-      -webkit-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
-      -moz-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
-      box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+.listings-results {
+  height: 620px;
+  margin-bottom: 60px;
+  margin-top: 50px;
+}
+.listing {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+  -moz-box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+  box-shadow: 0px 9px 16px -4px rgba(224, 224, 224, 1);
+}
+.listing-img {
+  color: #ffffff;
+  padding: 15px;
+  position: relative;
+  // background image
+  background: url(https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739)
+    no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 150px;
+  // border radius
+  -webkit-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  &:hover {
+    .details {
+      opacity: 1;
     }
-    .listing-img {
-      color: #ffffff;
-      padding: 15px;
-      position: relative;
+    .address {
+      opacity: 0;
+    }
+  }
+  .address {
+    bottom: 20px;
+    font-size: 1.3rem;
+    position: absolute;
+    text-shadow: 0px 1px 4px rgba(91, 91, 91, 1);
+    text-transform: capitalize;
+    transition: all 0.4s ease-in-out;
+    opacity: 1;
+  }
+  .details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    padding: 30px;
+    // border radius
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4e02e5+0,9d1ced+100 */
+    background: rgba(78, 2, 229, 0.8); /* Old browsers */
+    background: -moz-linear-gradient(
+      -45deg,
+      rgba(78, 2, 229, 0.8) 0%,
+      rgba(157, 28, 237, 0.8) 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      -45deg,
+      rgba(78, 2, 229, 0.8) 0%,
+      rgba(157, 28, 237, 0.8) 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      135deg,
+      rgba(78, 2, 229, 0.8) 0%,
+      rgba(157, 28, 237, 0.8) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4e02e5', endColorstr='#9d1ced',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    .user-img {
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      display: inline-block;
+      height: 35px;
+      width: 35px;
       // background image
       background: url(https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739)
         no-repeat center center;
@@ -137,157 +206,89 @@
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-      min-height: 200px;
-      // border radius
-      -webkit-border-top-left-radius: 5px;
-      -webkit-border-top-right-radius: 5px;
-      -moz-border-radius-topleft: 5px;
-      -moz-border-radius-topright: 5px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      &:hover {
-        .details {
-          opacity: 1;
-        }
-        .address {
-          opacity: 0;
-        }
+    }
+    .user-details {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 300;
+      vertical-align: top;
+      .user-name {
+        // color: rgba(224, 224, 224, 1);
+        display: block;
+        margin-top: 5px;
       }
-      .address {
-        bottom: 20px;
-        font-size: 1.3rem;
-        position: absolute;
-        text-shadow: 0px 1px 4px rgba(91, 91, 91, 1);
-        text-transform: capitalize;
-        transition: all 0.4s ease-in-out;
-        opacity: 1;
-      }
-      .details {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: 0;
-        transition: all 0.4s ease-in-out;
-        opacity: 0;
-        padding: 30px;
-        // border radius
-        -webkit-border-top-left-radius: 5px;
-        -webkit-border-top-right-radius: 5px;
-        -moz-border-radius-topleft: 5px;
-        -moz-border-radius-topright: 5px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4e02e5+0,9d1ced+100 */
-        background: rgba(78, 2, 229, 0.8); /* Old browsers */
-        background: -moz-linear-gradient(
-          -45deg,
-          rgba(78, 2, 229, 0.8) 0%,
-          rgba(157, 28, 237, 0.8) 100%
-        ); /* FF3.6-15 */
-        background: -webkit-linear-gradient(
-          -45deg,
-          rgba(78, 2, 229, 0.8) 0%,
-          rgba(157, 28, 237, 0.8) 100%
-        ); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(
-          135deg,
-          rgba(78, 2, 229, 0.8) 0%,
-          rgba(157, 28, 237, 0.8) 100%
-        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4e02e5', endColorstr='#9d1ced',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-        .user-img {
-          border: 2px solid #ffffff;
-          border-radius: 50%;
-          display: inline-block;
-          height: 35px;
-          width: 35px;
-          // background image
-          background: url(https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739)
-            no-repeat center center;
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: cover;
-        }
-        .user-details {
-          display: inline-block;
-          font-size: 0.9rem;
-          font-weight: 300;
-          vertical-align: top;
-          .user-name {
-            // color: rgba(224, 224, 224, 1);
-            display: block;
-            margin-top: 5px;
-          }
-          .post-date {
-            color: rgba(224, 224, 224, 0.7);
-            display: block;
-            font-size: 0.9rem;
-          }
-        }
-        .listing-details {
-          margin-top: 20px;
-          margin-bottom: 10px;
-          .fa {
-            display: inline-block;
-            font-size: 20px;
-            margin-right: 15px;
-          }
-          .fas {
-            display: inline-block;
-          }
-          span {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 300;
-            position: relative;
-            top: 3px;
-            vertical-align: top;
-          }
-          .floor-space {
-            margin-bottom: 10px;
-          }
-        }
-        .view-btn {
-          background: black;
-          border-radius: 5px;
-          font-size: 0.9rem;
-          max-width: 150px;
-          padding: 8px;
-          text-align: center;
-          transition: background 0.3s ease-in-out;
-          a {
-            color: #ffffff;
-            text-decoration: none;
-          }
-          &:hover {
-            background: $pink;
-            cursor: pointer;
-          }
-        }
+      .post-date {
+        color: rgba(224, 224, 224, 0.7);
+        display: block;
+        font-size: 0.9rem;
       }
     }
-    .bottom-info {
-      padding: 20px 15px;
-      .price {
-        color: $darkGrey;
-        display: block;
-        font-size: 1.1rem;
-        margin-bottom: 10px;
+    .listing-details {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      .fa {
+        display: inline-block;
+        font-size: 20px;
+        margin-right: 15px;
       }
-      .location {
-        color: $lightGrey;
-        display: block;
-        font-size: 1.2rem;
+      .fas {
+        display: inline-block;
       }
-      .fa-map-marker {
-        margin-right: 10px;
+      span {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 300;
+        position: relative;
+        top: 3px;
+        vertical-align: top;
+      }
+      // .floor-space {
+      //   margin-bottom: 10px;
+      // }
+    }
+    .view-btn {
+      background: black;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      max-width: 150px;
+      padding: 8px;
+      text-align: center;
+      transition: background 0.3s ease-in-out;
+      a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      &:hover {
+        background: $pink;
+        cursor: pointer;
       }
     }
   }
 }
+.bottom-info {
+  color: $darkGrey;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 10px 15px;
+  .price {
+    display: block;
+    font-size: 1.2rem;
+    // font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .rooms{
+    margin-bottom: 10px;
+  }
+  .location {
+    color: $lightGrey;
+    display: block;
+  }
+  .fa-map-marker {
+    margin-right: 10px;
+  }
+}
+// }
+// }
 
 #pagination {
   display: block;
