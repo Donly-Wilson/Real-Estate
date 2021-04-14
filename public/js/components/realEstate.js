@@ -898,12 +898,12 @@ var Listings = function (_Component) {
                     { className: "details" },
                     _react2.default.createElement(
                       "div",
-                      { className: "col-md-3" },
-                      _react2.default.createElement("div", { className: "user-img" })
+                      { className: "user__img" },
+                      _react2.default.createElement("div", { className: "user__img__icon" })
                     ),
                     _react2.default.createElement(
                       "div",
-                      { className: "col-md-9" },
+                      { className: "detail-info" },
                       _react2.default.createElement(
                         "div",
                         { className: "user-details" },
@@ -918,7 +918,6 @@ var Listings = function (_Component) {
                           "05/05/2020"
                         )
                       ),
-                      _react2.default.createElement("div", { className: "listing-details" }),
                       _react2.default.createElement(
                         "div",
                         { className: "view-btn" },
@@ -970,7 +969,7 @@ var Listings = function (_Component) {
             { className: "col-md-12 col-lg-6", key: index },
             _react2.default.createElement(
               "div",
-              { className: "listing" },
+              { className: "listing", id: "listing__long__view" },
               _react2.default.createElement(
                 "div",
                 {
@@ -991,7 +990,7 @@ var Listings = function (_Component) {
                   _react2.default.createElement(
                     "div",
                     { className: "col-md-3" },
-                    _react2.default.createElement("div", { className: "user-img" })
+                    _react2.default.createElement("div", { className: "user__img__icon" })
                   ),
                   _react2.default.createElement(
                     "div",
@@ -1010,7 +1009,6 @@ var Listings = function (_Component) {
                         "05/05/2020"
                       )
                     ),
-                    _react2.default.createElement("div", { className: "listing-details" }),
                     _react2.default.createElement(
                       "div",
                       { className: "view-btn" },
@@ -1027,26 +1025,52 @@ var Listings = function (_Component) {
                 "div",
                 { className: "bottom-info" },
                 _react2.default.createElement(
-                  "span",
-                  { className: "price" },
-                  "$",
-                  listing.price,
-                  " "
-                ),
-                _react2.default.createElement(
                   "div",
-                  { className: "bedrooms" },
+                  { className: "listing__details__top" },
                   _react2.default.createElement(
-                    "span",
+                    "div",
                     null,
-                    listing.bedrooms,
-                    " Beds, 2 Baths, ",
-                    listing.floorSpace,
-                    " ft\xB2"
+                    _react2.default.createElement(
+                      "span",
+                      { className: "location" },
+                      " ",
+                      _react2.default.createElement("i", { className: "fa fa-map-marker", "aria-hidden": "true" }),
+                      listing.city,
+                      ",",
+                      listing.state
+                    )
                   ),
                   _react2.default.createElement(
                     "div",
+                    null,
+                    "Apartment"
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    null,
+                    _react2.default.createElement(
+                      "span",
+                      { className: "price" },
+                      "$",
+                      listing.price,
+                      " "
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "listing__details__bottom" },
+                  _react2.default.createElement(
+                    "div",
                     { className: "floor-space" },
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      listing.bedrooms,
+                      " Beds, 2 Baths, ",
+                      listing.floorSpace,
+                      " ft\xB2"
+                    ),
                     _react2.default.createElement("i", { className: "fa fa-square-o", "aria-hidden": "true" }),
                     _react2.default.createElement(
                       "span",
@@ -1054,16 +1078,26 @@ var Listings = function (_Component) {
                       listing.floorSpace,
                       " ft\xB2"
                     )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "user-details" },
+                    _react2.default.createElement(
+                      "span",
+                      { className: "user-name" },
+                      "Nina Smith"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "post-date" },
+                      "05/05/2020"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "post-date" },
+                      "Furnished"
+                    )
                   )
-                ),
-                _react2.default.createElement(
-                  "span",
-                  { className: "location" },
-                  " ",
-                  _react2.default.createElement("i", { className: "fa fa-map-marker", "aria-hidden": "true" }),
-                  listing.city,
-                  ",",
-                  listing.state
                 )
               )
             )

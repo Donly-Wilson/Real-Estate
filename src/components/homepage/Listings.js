@@ -50,21 +50,21 @@ class Listings extends Component {
               >
                 <span className="furnished">Furnished</span>
                 <div className="details">
-                  <div className="col-md-3">
-                    <div className="user-img"></div>
+                  <div className="user__img">
+                    <div className="user__img__icon"></div>
                   </div>
-                  <div className="col-md-9">
+                  <div className="detail-info">
                     <div className="user-details">
                       <span className="user-name">Nina Smith</span>
                       <span className="post-date">05/05/2020</span>
                     </div>
-                    <div className="listing-details">
-                      {/* <div className="floor-space">
+                    {/* <div className="listing-details">
+                      <div className="floor-space">
                         <i className="fa fa-square-o" aria-hidden="true"></i>
                         <span>{listing.floorSpace} ft&sup2;</span>
-                      </div> */}
+                      </div>
                       
-                    </div>
+                    </div> */}
                     <div className="view-btn">
                         <i className="fa fa-heart-o" aria-hidden="true"></i>
                     </div>
@@ -91,7 +91,7 @@ class Listings extends Component {
         //THIS IS THE LONG VIEW
         return (
           <div className="col-md-12 col-lg-6" key={index}>
-            <div className="listing">
+            <div className="listing" id="listing__long__view">
               <div
                 className="listing-img"
                 style={{
@@ -103,15 +103,12 @@ class Listings extends Component {
                 <span className="address">{listing.address}</span>
                 <div className="details">
                   <div className="col-md-3">
-                    <div className="user-img"></div>
+                    <div className="user__img__icon"></div>
                   </div>
                   <div className="col-md-9">
                     <div className="user-details">
                       <span className="user-name">Nina Smith</span>
                       <span className="post-date">05/05/2020</span>
-                    </div>
-                    <div className="listing-details">
-                      
                     </div>
                     <div className="view-btn">
                     <Link to={this.props.match.path+'/listing/'+index}>
@@ -122,20 +119,29 @@ class Listings extends Component {
                 </div>
               </div>
               <div className="bottom-info">
-                <span className="price">${listing.price} </span>
-                <div className="bedrooms">
-                  
-                  <span>{listing.bedrooms} Beds, 2 Baths, {listing.floorSpace} ft&sup2;</span>
-                  <div className="floor-space">
+                <div className="listing__details__top">
+                  <div><span className="location">
+                        {" "}
+                        <i className="fa fa-map-marker" aria-hidden="true"></i>
+                        {listing.city},{listing.state}
+                      </span></div>
+                  <div>Apartment</div>
+                  <div>
+                    <span className="price">${listing.price} </span>
+                  </div>
+                </div>
+                <div className="listing__details__bottom">
+                    <div className="floor-space">
+                        <span>{listing.bedrooms} Beds, 2 Baths, {listing.floorSpace} ft&sup2;</span>
                         <i className="fa fa-square-o" aria-hidden="true"></i>
                         <span>{listing.floorSpace} ft&sup2;</span>
-                      </div>
+                    </div>   
+                    <div className="user-details">
+                      <span className="user-name">Nina Smith</span>
+                      <span className="post-date">05/05/2020</span>
+                      <span className="post-date">Furnished</span>
+                    </div>
                 </div>
-                <span className="location">
-                  {" "}
-                  <i className="fa fa-map-marker" aria-hidden="true"></i>
-                  {listing.city},{listing.state}
-                </span>
               </div>
             </div>
           </div>
