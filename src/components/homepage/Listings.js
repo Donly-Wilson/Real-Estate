@@ -90,7 +90,7 @@ class Listings extends Component {
       } else {
         //THIS IS THE LONG VIEW
         return (
-          <div className="col-md-12 col-lg-6" key={index}>
+          <div className="col-md-12 col-lg-12" key={index}>
             <div className="listing" id="listing__long__view">
               <div
                 className="listing-img"
@@ -100,7 +100,6 @@ class Listings extends Component {
           backgroundSize: 'cover'
                 }}
               >
-                <span className="address">{listing.address}</span>
                 <div className="details">
                   <div className="col-md-3">
                     <div className="user__img__icon"></div>
@@ -120,14 +119,19 @@ class Listings extends Component {
               </div>
               <div className="bottom-info">
                 <div className="listing__details__top">
-                  <div><span className="location">
+                  <div>
+                    <span>For Sale</span>
+                    <span className="location">
                         {" "}
-                        <i className="fa fa-map-marker" aria-hidden="true"></i>
+                        <span className="address">{listing.address}</span>
+                        <br/>
                         {listing.city},{listing.state}
-                      </span></div>
+                    </span>
+                  </div>
                   <div>Apartment</div>
                   <div>
                     <span className="price">${listing.price} </span>
+                    <span className="original__price">${listing.price} </span>
                   </div>
                 </div>
                 <div className="listing__details__bottom">

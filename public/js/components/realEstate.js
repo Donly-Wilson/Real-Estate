@@ -966,7 +966,7 @@ var Listings = function (_Component) {
           //THIS IS THE LONG VIEW
           return _react2.default.createElement(
             "div",
-            { className: "col-md-12 col-lg-6", key: index },
+            { className: "col-md-12 col-lg-12", key: index },
             _react2.default.createElement(
               "div",
               { className: "listing", id: "listing__long__view" },
@@ -979,11 +979,6 @@ var Listings = function (_Component) {
                     backgroundSize: 'cover'
                   }
                 },
-                _react2.default.createElement(
-                  "span",
-                  { className: "address" },
-                  listing.address
-                ),
                 _react2.default.createElement(
                   "div",
                   { className: "details" },
@@ -1032,9 +1027,19 @@ var Listings = function (_Component) {
                     null,
                     _react2.default.createElement(
                       "span",
+                      null,
+                      "For Sale"
+                    ),
+                    _react2.default.createElement(
+                      "span",
                       { className: "location" },
                       " ",
-                      _react2.default.createElement("i", { className: "fa fa-map-marker", "aria-hidden": "true" }),
+                      _react2.default.createElement(
+                        "span",
+                        { className: "address" },
+                        listing.address
+                      ),
+                      _react2.default.createElement("br", null),
                       listing.city,
                       ",",
                       listing.state
@@ -1051,6 +1056,13 @@ var Listings = function (_Component) {
                     _react2.default.createElement(
                       "span",
                       { className: "price" },
+                      "$",
+                      listing.price,
+                      " "
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "original__price" },
                       "$",
                       listing.price,
                       " "
