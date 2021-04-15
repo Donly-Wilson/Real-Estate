@@ -491,21 +491,20 @@ var App = function (_Component) {
                             _reactRouterDom.Route,
                             { path: "/createads" },
                             _react2.default.createElement(_CreateAds2.default, null)
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "landing__page" },
-                        _react2.default.createElement(
-                            "p",
-                            null,
-                            "Landing Page under Constraction "
                         ),
-                        _react2.default.createElement("br", null),
                         _react2.default.createElement(
-                            _reactRouterDom.Link,
-                            { to: "/homes" },
-                            "View House Listings"
+                            "div",
+                            { className: "landing__page" },
+                            _react2.default.createElement(
+                                "p",
+                                null,
+                                "Landing Page under Constraction "
+                            ),
+                            _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { to: "/homes" },
+                                "View House Listings"
+                            )
                         )
                     )
                 )
