@@ -14,6 +14,17 @@ body {
   // background: purple;
 }
 
+.landing__page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  height:80vh;
+  p{
+    color:$lightGrey;
+  }
+}
+
 @import "header";
 @import "content-area";
 @import "current-listing";

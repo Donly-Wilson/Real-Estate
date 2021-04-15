@@ -1,9 +1,10 @@
 const gulp = require('gulp')
 const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
-// const concat = require('gulp-concat')
+const concat = require('gulp-concat')
 // const babel = require('gulp-babel')
 // const watch = require('gulp-watch')
+const shell = require('gulp-shell');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 var exec = require('child_process').exec;
@@ -60,9 +61,9 @@ gulp.task('webpack', (cb) => {
     });
 })
 
-// gulp.task('webpack', shell.task([
-//   'webpack'
-// ]))
+gulp.task('webpack', shell.task([
+  'webpack'
+]))
 
 // gulp.task('server', shell.task([
 //   'yarn run server'

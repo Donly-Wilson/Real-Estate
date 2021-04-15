@@ -134,9 +134,10 @@ class Listings extends Component {
                     <span className="original__price">${listing.price} </span>
                   </div>
                 </div>
+                <hr/>
                 <div className="listing__details__bottom">
                     <div className="floor-space">
-                        <span>{listing.bedrooms} Beds, 2 Baths, {listing.floorSpace} ft&sup2;</span>
+                        <span>{listing.bedrooms} Beds | 2 Baths | {listing.floorSpace} ft&sup2;</span>
                         <i className="fa fa-square-o" aria-hidden="true"></i>
                         <span>{listing.floorSpace} ft&sup2;</span>
                     </div>   

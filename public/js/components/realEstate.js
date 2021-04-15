@@ -492,6 +492,21 @@ var App = function (_Component) {
                             { path: "/createads" },
                             _react2.default.createElement(_CreateAds2.default, null)
                         )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "landing__page" },
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Landing Page under Constraction "
+                        ),
+                        _react2.default.createElement("br", null),
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: "/homes" },
+                            "View House Listings"
+                        )
                     )
                 )
             );
@@ -1069,6 +1084,7 @@ var Listings = function (_Component) {
                     )
                   )
                 ),
+                _react2.default.createElement("hr", null),
                 _react2.default.createElement(
                   "div",
                   { className: "listing__details__bottom" },
@@ -1079,7 +1095,7 @@ var Listings = function (_Component) {
                       "span",
                       null,
                       listing.bedrooms,
-                      " Beds, 2 Baths, ",
+                      " Beds | 2 Baths | ",
                       listing.floorSpace,
                       " ft\xB2"
                     ),
