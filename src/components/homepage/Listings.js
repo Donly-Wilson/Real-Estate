@@ -31,7 +31,7 @@ class Listings extends Component {
     const currentPost = listingData.slice(indexOfFirstPage, indexOFLastPost); //(0,8)
 
     return currentPost.map((listing, index) => {
-      if (this.props.globalState.view == "box") {
+      if (this.props.globalState.view == "tt") {
         //THIS IS THE BOX VIEW
         return (
           <div className="col-md-4" key={index}>
@@ -65,7 +65,7 @@ class Listings extends Component {
                       </div>
                       
                     </div> */}
-                    <div className="view-btn">
+                    <div className="favorite-btn">
                         <i className="fa fa-heart-o" aria-hidden="true"></i>
                     </div>
                   </div>
@@ -92,6 +92,7 @@ class Listings extends Component {
         return (
           <div className="col-md-12 col-lg-12" key={index}>
             <div className="listing" id="listing__long__view">
+            <Link to={this.props.match.path+'/listing/'+index}>
               <div
                 className="listing-img"
                 style={{
@@ -101,20 +102,16 @@ class Listings extends Component {
                 }}
               >
                 <div className="details">
-                  <div className="col-md-3">
+                  <div className="user__img">
                     <div className="user__img__icon"></div>
                   </div>
-                  <div className="col-md-9">
                     <div className="user-details">
                       <span className="user-name">Nina Smith</span>
                       <span className="post-date">05/05/2020</span>
-                    </div>
-                    <div className="view-btn">
-                    <Link to={this.props.match.path+'/listing/'+index}>
-                      View Listing
-                    </Link>
-                    </div>
                   </div>
+                    <div className="favorite-btn">
+                        <i className="fa fa-heart-o" aria-hidden="true"></i>
+                    </div>
                 </div>
               </div>
               <div className="bottom-info">
@@ -130,24 +127,28 @@ class Listings extends Component {
                   </div>
                   <div>Apartment</div>
                   <div>
+                    <span className="">New</span>
                     <span className="price">${listing.price} </span>
                     <span className="original__price">${listing.price} </span>
                   </div>
                 </div>
                 <hr/>
                 <div className="listing__details__bottom">
-                    <div className="floor-space">
-                        <span>{listing.bedrooms} Beds | 2 Baths | {listing.floorSpace} ft&sup2;</span>
-                        <i className="fa fa-square-o" aria-hidden="true"></i>
-                        <span>{listing.floorSpace} ft&sup2;</span>
+                    <div className="floor__area">
+                        <div>
+                          <span className="floor__area__bed">{listing.bedrooms} <i className="fa fa-bed" aria-hidden="true"></i></span>|
+                          <span className="floor__area__bath"> 2 <i className="fa fa-bath" aria-hidden="true"></i></span>| 
+                          <span className="floor__area__squarefoot">{listing.floorSpace} ft&sup2; <i className="fa fa fa-object-ungroup" aria-hidden="true"></i></span>
+                        </div>
                     </div>   
-                    <div className="user-details">
-                      <span className="user-name">Nina Smith</span>
-                      <span className="post-date">05/05/2020</span>
-                      <span className="post-date">Furnished</span>
+                    <div className="house__details">
+                      <span className="house__details__parking">Parking:</span>
+                      <span className="house__details__parking-area">Yard</span>
+                      <span className="house__details__furnished">Furnished</span>
                     </div>
                 </div>
               </div>
+              </Link>
             </div>
           </div>
         );

@@ -265,7 +265,7 @@
     //     margin-bottom: 10px;
     //   }
     // }
-    .view-btn {
+    .favorite-btn {
       background: #ffffff;
       border-radius: 50%;
       font-size: 0.9rem;
@@ -312,7 +312,10 @@
 // }
 
 #listing__long__view {
-  display: flex;
+  a{
+    display: flex;
+    width:100%;
+  }
   .listing-img {
     min-height: 180px;
     min-width: 270px;
@@ -328,6 +331,27 @@
     .listing__details__bottom{
       display: flex;
       justify-content: space-between;
+      .floor__area{
+        &__bed{
+          margin-right: 15px;
+        }
+        &__bath{
+          margin-right: 15px;
+          margin-left: 15px;
+        }
+        &__squarefoot{
+          margin-right: 15px;
+          margin-left: 15px;
+        }
+      }
+      .house__details{
+        &__parking{
+          margin-right: 15px;
+        }
+        &__parking-area{
+          margin-right: 50px;
+        }
+      }
     }
   }
 }
