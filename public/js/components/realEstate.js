@@ -491,20 +491,6 @@ var App = function (_Component) {
                             _reactRouterDom.Route,
                             { path: "/createads" },
                             _react2.default.createElement(_CreateAds2.default, null)
-                        ),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "landing__page" },
-                            _react2.default.createElement(
-                                "p",
-                                null,
-                                "Landing Page under Constraction "
-                            ),
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: "/homes" },
-                                "View House Listings"
-                            )
                         )
                     )
                 )
@@ -934,7 +920,7 @@ var Listings = function (_Component) {
                       ),
                       _react2.default.createElement(
                         "div",
-                        { className: "view-btn" },
+                        { className: "favorite-btn" },
                         _react2.default.createElement("i", { className: "fa fa-heart-o", "aria-hidden": "true" })
                       )
                     )
@@ -985,144 +971,158 @@ var Listings = function (_Component) {
               "div",
               { className: "listing", id: "listing__long__view" },
               _react2.default.createElement(
-                "div",
-                {
-                  className: "listing-img",
-                  style: {
-                    background: "url(\"" + listing.image + "\")\n          no-repeat center center",
-                    backgroundSize: 'cover'
-                  }
-                },
+                _reactRouterDom.Link,
+                { to: _this2.props.match.path + '/listing/' + index },
                 _react2.default.createElement(
                   "div",
-                  { className: "details" },
+                  {
+                    className: "listing-img",
+                    style: {
+                      background: "url(\"" + listing.image + "\")\n          no-repeat center center",
+                      backgroundSize: 'cover'
+                    }
+                  },
                   _react2.default.createElement(
                     "div",
-                    { className: "col-md-3" },
-                    _react2.default.createElement("div", { className: "user__img__icon" })
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    { className: "col-md-9" },
+                    { className: "details" },
                     _react2.default.createElement(
                       "div",
-                      { className: "user-details" },
-                      _react2.default.createElement(
-                        "span",
-                        { className: "user-name" },
-                        "Nina Smith"
-                      ),
-                      _react2.default.createElement(
-                        "span",
-                        { className: "post-date" },
-                        "05/05/2020"
-                      )
+                      { className: "user__img" },
+                      _react2.default.createElement("div", { className: "user__img__icon" })
                     ),
                     _react2.default.createElement(
                       "div",
-                      { className: "view-btn" },
+                      { className: "detail-info" },
                       _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { to: _this2.props.match.path + '/listing/' + index },
-                        "View Listing"
-                      )
-                    )
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: "bottom-info" },
-                _react2.default.createElement(
-                  "div",
-                  { className: "listing__details__top" },
-                  _react2.default.createElement(
-                    "div",
-                    null,
-                    _react2.default.createElement(
-                      "span",
-                      null,
-                      "For Sale"
-                    ),
-                    _react2.default.createElement(
-                      "span",
-                      { className: "location" },
-                      " ",
-                      _react2.default.createElement(
-                        "span",
-                        { className: "address" },
-                        listing.address
+                        "div",
+                        { className: "user-details" },
+                        _react2.default.createElement(
+                          "span",
+                          { className: "user-name" },
+                          "Nina Smith"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          { className: "post-date" },
+                          "05/05/2020"
+                        )
                       ),
-                      _react2.default.createElement("br", null),
-                      listing.city,
-                      ",",
-                      listing.state
-                    )
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    null,
-                    "Apartment"
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    null,
-                    _react2.default.createElement(
-                      "span",
-                      { className: "price" },
-                      "$",
-                      listing.price,
-                      " "
-                    ),
-                    _react2.default.createElement(
-                      "span",
-                      { className: "original__price" },
-                      "$",
-                      listing.price,
-                      " "
+                      _react2.default.createElement(
+                        "div",
+                        { className: "favorite-btn" },
+                        _react2.default.createElement("i", { className: "fa fa-heart-o", "aria-hidden": "true" })
+                      )
                     )
                   )
                 ),
-                _react2.default.createElement("hr", null),
                 _react2.default.createElement(
                   "div",
-                  { className: "listing__details__bottom" },
+                  { className: "bottom-info" },
                   _react2.default.createElement(
                     "div",
-                    { className: "floor-space" },
+                    { className: "listing__details__top" },
                     _react2.default.createElement(
-                      "span",
-                      null,
-                      listing.bedrooms,
-                      " Beds | 2 Baths | ",
-                      listing.floorSpace,
-                      " ft\xB2"
+                      "div",
+                      { className: "house__info" },
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__info__sell-option" },
+                        "For Sale"
+                      ),
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__info__location" },
+                        listing.address
+                      ),
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__info__address" },
+                        listing.city,
+                        ",",
+                        listing.state
+                      )
                     ),
-                    _react2.default.createElement("i", { className: "fa fa-square-o", "aria-hidden": "true" }),
                     _react2.default.createElement(
-                      "span",
+                      "div",
+                      { className: "house__info__type" },
+                      "Apartment"
+                    ),
+                    _react2.default.createElement(
+                      "div",
                       null,
-                      listing.floorSpace,
-                      " ft\xB2"
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__info__availability" },
+                        "New"
+                      ),
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__info__price" },
+                        "$",
+                        listing.price,
+                        " "
+                      ),
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__info__original-price" },
+                        "$",
+                        listing.price,
+                        " "
+                      )
                     )
                   ),
+                  _react2.default.createElement("hr", null),
                   _react2.default.createElement(
                     "div",
-                    { className: "user-details" },
+                    { className: "listing__details__bottom" },
                     _react2.default.createElement(
-                      "span",
-                      { className: "user-name" },
-                      "Nina Smith"
+                      "div",
+                      { className: "floor__area" },
+                      _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                          "span",
+                          { className: "floor__area__bed" },
+                          listing.bedrooms,
+                          " ",
+                          _react2.default.createElement("i", { className: "fa fa-bed", "aria-hidden": "true" })
+                        ),
+                        "|",
+                        _react2.default.createElement(
+                          "span",
+                          { className: "floor__area__bath" },
+                          " 2 ",
+                          _react2.default.createElement("i", { className: "fa fa-bath", "aria-hidden": "true" })
+                        ),
+                        "|",
+                        _react2.default.createElement(
+                          "span",
+                          { className: "floor__area__squarefoot" },
+                          listing.floorSpace,
+                          " ft\xB2 ",
+                          _react2.default.createElement("i", { className: "fa fa fa-object-ungroup", "aria-hidden": "true" })
+                        )
+                      )
                     ),
                     _react2.default.createElement(
-                      "span",
-                      { className: "post-date" },
-                      "05/05/2020"
-                    ),
-                    _react2.default.createElement(
-                      "span",
-                      { className: "post-date" },
-                      "Furnished"
+                      "div",
+                      { className: "house__details" },
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__details__parking" },
+                        "Parking:"
+                      ),
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__details__parking-area" },
+                        "Yard"
+                      ),
+                      _react2.default.createElement(
+                        "span",
+                        { className: "house__details__furnished" },
+                        "Furnished"
+                      )
                     )
                   )
                 )
