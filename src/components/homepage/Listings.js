@@ -31,7 +31,7 @@ class Listings extends Component {
     const currentPost = listingData.slice(indexOfFirstPage, indexOFLastPost); //(0,8)
 
     return currentPost.map((listing, index) => {
-      if (this.props.globalState.view == "tt") {
+      if (this.props.globalState.view == "box") {
         //THIS IS THE BOX VIEW
         return (
           <div className="col-md-4" key={index}>
@@ -92,47 +92,48 @@ class Listings extends Component {
         return (
           <div className="col-md-12 col-lg-12" key={index}>
             <div className="listing" id="listing__long__view">
-            <Link to={this.props.match.path+'/listing/'+index}>
+            {/* <Link to={this.props.match.path+'/listing/'+index}> */}
+            <Link to={{
+                      pathname: `${this.props.match.url}/listing/${index}`,
+                      state: listing
+                      }}>
               <div
                 className="listing-img"
                 style={{
                   background: `url("${listing.image}")
-          no-repeat center center`,
-          backgroundSize: 'cover'
+                  no-repeat center center`,
+                  backgroundSize: 'cover'
                 }}
               >
                 <div className="details">
                   <div className="user__img">
                     <div className="user__img__icon"></div>
                   </div>
+                  <div className="detail-info">
                     <div className="user-details">
                       <span className="user-name">Nina Smith</span>
                       <span className="post-date">05/05/2020</span>
-                  </div>
+                    </div>
                     <div className="favorite-btn">
                         <i className="fa fa-heart-o" aria-hidden="true"></i>
                     </div>
+                  </div>
                 </div>
               </div>
               <div className="bottom-info">
                 <div className="listing__details__top">
-                  <div>
-                    <span>For Sale</span>
-                    <span className="location">
-                        {" "}
-                        <span className="address">{listing.address}</span>
-                        <br/>
-                        {listing.city},{listing.state}
-                    </span>
+                  <div className="house__info">
+                    <span className="house__info__sell-option">For Sale</span>
+                    <span className="house__info__location">{listing.address}</span>
+                    <span className="house__info__address">{listing.city}, {listing.state}</span>
                   </div>
-                  <div>Apartment</div>
-                  <div>
-                    <span className="">New</span>
-                    <span className="price">${listing.price} </span>
-                    <span className="original__price">${listing.price} </span>
+                  <div className="house__info__type">Apartment</div>
+                  <div className="house__info__amount-section">
+                    <span className="house__info__availability">New</span>
+                    <span className="house__info__price">$ {listing.price} </span>
+                    <span className="house__info__original-price">$ {listing.price} </span>
                   </div>
                 </div>
-                <hr/>
                 <div className="listing__details__bottom">
                     <div className="floor__area">
                         <div>
