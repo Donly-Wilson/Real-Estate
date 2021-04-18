@@ -23,12 +23,12 @@ render() {
                     {/* <Route path = "/aboutus">
                         <AboutUs />
                     </Route> */}
-                    <div className="landing__page">
+                    {/* <div className="landing__page">
                         <p>Landing Page under Constraction </p>
                         <Link to="/homes">
                             View House Listings
                         </Link>
-                    </div>
+                    </div> */}
                 </Switch>
             </div>
         </Router>

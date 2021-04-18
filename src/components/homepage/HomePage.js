@@ -200,12 +200,16 @@ class HomePage extends Component {
               <Listings
                 globalState={this.state}
                 listingData={this.state.filteredData}
-                change={this.change}
+                  change={this.change}
                 changeView={this.changeView}
               />
             </Route>
 
-            <Route path={`${match.url}/listing/:id`} exact={true}>
+            <Route path={`${match.url}/listing/:id`} exact={true}
+            //This will remount the entire page instead of updating info(not recommended)
+            // render={props => <ListingDetails key={props.location.key} {...props} 
+            // listingData={this.state.filteredData}/>}
+            >
               <ListingDetails
               listingData={this.state.filteredData}
               />
