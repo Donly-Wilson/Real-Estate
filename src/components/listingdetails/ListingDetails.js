@@ -1,4 +1,3 @@
-// 
 import React, { Component } from "react";
 import { Link, withRouter } from 'react-router-dom';
 
@@ -6,14 +5,28 @@ class ListingDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listing: this.props.location.state
+      listing:''
     };
   }
+
   componentDidMount () {
     // Current listing that is selected to be viewed
-    // const listing = this.props.location.state;
-    // console.log(this.props.location.state);
+    this.initializeComponent();
   }
+
+  componentWillReceiveProps(nextProps){
+    //call your listing api through link and update state with new props
+    this.setState({
+      listing: nextProps.location.state
+    });
+    console.log(nextProps);
+ }
+
+ //Function to setting state listing to location.state
+ initializeComponent(){
+  this.state.listing = this.props.location.state;
+  console.log(this.props.location.key);
+ }
 
   loopListing() {
     // Search through all Listing Data from homepage which is newly filtered Data
@@ -30,64 +43,59 @@ class ListingDetails extends Component {
 
     return listingData.map((listing, index) => {
         return (
-          <div className="col-md-3" key={index}>
-            <div className="listing">
+          <div className="col-md-4" key={index}>
+          <div className="listing">
+          {/* pathname: `${this.props.location.pathname.replace(/[^/]*$/, index)}` same results as below's path */}
+            <Link to={{
+              pathname: `${this.props.location.pathname.split('/').slice(0,-1).join('/') + '/' + index}`,
+              state: listing
+              }}>
+            {/* </Link> */}
               <div
                 className="listing-img"
                 style={{
                   background: `url("${listing.image}")
                   no-repeat center center`,
+                  backgroundSize: 'cover'
                 }}
               >
-                <span className="address">{listing.address}</span>
+                <span className="furnished">Furnished</span>
                 <div className="details">
-                  <div className="col-md-3">
-                    <div className="user-img"></div>
+                  <div className="user__img">
+                    <div className="user__img__icon"></div>
                   </div>
-                  <div className="col-md-9">
+                  <div className="detail-info">
                     <div className="user-details">
                       <span className="user-name">Nina Smith</span>
                       <span className="post-date">05/05/2020</span>
                     </div>
-                    <div className="listing-details">
-                      <div className="floor-space">
-                        <i className="fa fa-square-o" aria-hidden="true"></i>
-                        <span>{listing.floorSpace} ft&sup2;</span>
-                      </div>
-                      <div className="bedrooms">
-                        <i className="fa fa-bed" aria-hidden="true"></i>
-                        <span>{listing.bedrooms} bedroom</span>
-                      </div>
-                    </div>
-                    <div className="view-btn">
-                      {/* pathname: `${this.props.location.pathname.replace(/[^/]*$/, index)}` same results as below's path */}
-                    <Link to={{
-                      pathname: `${this.props.location.pathname.split('/').slice(0,-1).join('/') + '/' + index}`,
-                      state: listing
-                      }}>
-                      View Listing
-                    </Link>
+                    <div className="favorite-btn">
+                        <i className="fa fa-heart-o" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="bottom-info">
-                <span className="price">${listing.price} </span>
+                <span className="price">${listing.price} /month </span>
+                <div className="rooms">
+                  <span>{listing.bedrooms} Beds, 2 Baths, {listing.floorSpace} ft&sup2;</span>
+                </div>
                 <span className="location">
                   {" "}
-                  <i className="fa fa-map-marker" aria-hidden="true"></i>
-                  {listing.city},{listing.state}
+                  {listing.address}, {listing.city}, {listing.state}
                 </span>
               </div>
-            </div>
+            </Link>
           </div>
+        </div>
+                      
         );
     });
   }
 
   render() {  
-  console.log(this.state.listing);
-  const imageUrl = './img/home-details.png';
+  // console.log(this.state.listing);
+  // const imageUrl = './img/home-details.png';
   
   return (
     <section className="current__listing">
@@ -125,12 +133,12 @@ class ListingDetails extends Component {
             <div className="details__plan">
               <div className="details__plan__bedroom">Bedroom 
                 <div className="details__plan__amount">
-                   4 <i className="fa fa-bed" aria-hidden="true"></i> 
+                {this.state.listing.bedrooms} <i className="fa fa-bed" aria-hidden="true"></i> 
                 </div>
               </div>
               <div className="details__plan__bathroom">Bathroom 
                 <div className="details__plan__amount">
-                   4 <i className="fa fa-bed" aria-hidden="true"></i>
+                   4 <i className="fa fa-bath" aria-hidden="true"></i>
                 </div>
               </div>
               <div className="details__plan__squarefoot">Area 
