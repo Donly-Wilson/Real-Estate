@@ -149,10 +149,10 @@
   // background image
   background: url(https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739)
     no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
   min-height: 150px;
   // border radius
   -webkit-radius: 5px;
@@ -167,6 +167,7 @@
     transition: all 0.4s ease-in-out;
     opacity: 1;
     background: #ffffff;
+    color: $customBlack;
     padding: 7px;
     border-radius: 5px;
   }
@@ -268,6 +269,8 @@
     .favorite-btn {
       background: #ffffff;
       border-radius: 50%;
+      color: $customBlack;
+      cursor: pointer;
       font-size: 0.9rem;
       max-width: 150px;
       width: 30px;
@@ -279,42 +282,39 @@
         color: $lightGrey;
       }
       &:hover {
-        background: $lightGrey;
-        color: #ffffff;
-        cursor: pointer;
+        i{
+          color: $pink;
+        }
       }
     }
   }
 }
 .bottom-info {
-  color: $darkGrey;
   font-size: 0.9rem;
   font-weight: 700;
   padding: 10px 15px;
+  color: $customBlack;
   .price {
-    display: block;
     font-size: 1.2rem;
+    display: block;
     // font-weight: 800;
     margin-bottom: 10px;
   }
   .rooms {
+    display: block;
     margin-bottom: 10px;
   }
   .location {
     color: $lightGrey;
-    display: block;
-  }
-  .fa-map-marker {
-    margin-right: 10px;
   }
 }
 // }
 // }
 
 #listing__long__view {
-  a{
+  a {
     display: flex;
-    width:100%;
+    width: 100%;
   }
   .listing-img {
     min-height: 180px;
@@ -323,32 +323,79 @@
   .bottom-info {
     width: 100%;
     .listing__details__top {
+      color: $darkGrey;
       height: 80%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      .house__info {
+        span {
+          display: block;
+        }
+        &__sell-option {
+          font-size: 12px;
+        }
+        &__price {
+          display: block;
+          font-size: 1.2rem;
+          margin-bottom: 5px;
+          margin-top: 20px;
+        }
+        &__original-price {
+          text-decoration: line-through;
+          color: $lightGrey;
+        }
+        // &__address {
+        // }
+        &__location {
+          color: $customBlack;
+          font-size: 1.4rem;
+          display: block;
+          margin-bottom: 10px;
+          margin-top: 20px;
+        }
+        &__type {
+          color: #5969ff;
+          background-color: rgba(89, 105, 255, 0.2);
+          padding: 5px 8px;
+          border-radius: 4px;
+        }
+        &__amount-section {
+          text-align: end;
+        }
+        &__availability {
+          background: #ff718e;
+          padding: 7px 15px;
+          text-align: center;
+          color: #ffffff;
+          border-radius: 5px;
+        }
+      }
     }
-    .listing__details__bottom{
+    .listing__details__bottom {
+      color: $lightGrey;
       display: flex;
       justify-content: space-between;
-      .floor__area{
-        &__bed{
+      padding: 15px 0;
+      border-top: 1px solid #7a7b7f;
+      .floor__area {
+        &__bed {
           margin-right: 15px;
         }
-        &__bath{
+        &__bath {
           margin-right: 15px;
           margin-left: 15px;
         }
-        &__squarefoot{
+        &__squarefoot {
           margin-right: 15px;
           margin-left: 15px;
         }
       }
-      .house__details{
-        &__parking{
-          margin-right: 15px;
+      .house__details {
+        &__parking {
+          margin-right: 8px;
         }
-        &__parking-area{
+        &__parking-area {
           margin-right: 50px;
         }
       }
@@ -371,12 +418,19 @@
   li {
     display: inline-block;
     padding: 20px 30px;
+    cursor: pointer;
     &.active,
     &:hover {
+      a{
+        color: #ffffff;
+      }
       background: $pink;
       color: #ffffff;
-      cursor: pointer;
       font-weight: 700;
+    }
+    a {
+      color: $customBlack;
+      text-decoration: none;
     }
   }
 }

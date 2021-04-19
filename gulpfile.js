@@ -61,9 +61,9 @@ gulp.task('webpack', (cb) => {
     });
 })
 
-gulp.task('webpack', shell.task([
-  'webpack'
-]))
+// gulp.task('webpack', shell.task([
+//   'webpack'
+// ]))
 
 // gulp.task('server', shell.task([
 //   'yarn run server'

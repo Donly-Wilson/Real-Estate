@@ -10,8 +10,12 @@ html,
 body {
   font-family: "Mulish","Roboto", sans-serif;
   box-sizing: border-box;
+  // color:$customBlack;
+}
+
+html,
+body {
   color:$customBlack;
-  // background: purple;
 }
 
 .landing__page{
