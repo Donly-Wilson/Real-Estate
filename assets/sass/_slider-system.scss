@@ -1,0 +1,15 @@
+.related__results__slider {
+  // height: 300px;
+  /* width: 1200px; */
+  // /* position: relative; */
+  overflow: hidden;
+  overflow-x: scroll;
+  &__system {
+    white-space: nowrap;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.3s ease-in-out;
+    [class*="col-"] {
+      float: none;
+    }
+  }
+}
