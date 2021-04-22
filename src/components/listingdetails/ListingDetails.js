@@ -5,7 +5,9 @@ class ListingDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listing:''
+      listing:this.checkListingResult(),
+      properties:this.props.listingData,
+      property:this.props.listingData[0]
     };
   }
 
@@ -19,13 +21,23 @@ class ListingDetails extends Component {
     this.setState({
       listing: nextProps.location.state
     });
-    console.log(nextProps);
+    // console.log(nextProps);
  }
+
+
+  // Use URL id number to fetch data if it can't with location state
+checkListingResult = () =>{
+  const listingResult =
+  (this.props.location.state && this.props.location.state.listing) != undefined
+    ? this.props.location.state.listing
+    : this.props.listingData[this.props.match.params.id];
+    return listingResult
+}
 
  //Function to setting state listing to location.state
  initializeComponent(){
   this.state.listing = this.props.location.state;
-  console.log(this.props.location.key);
+  // console.log(this.props.location.key);
  }
 
   loopListing() {
@@ -93,8 +105,24 @@ class ListingDetails extends Component {
     });
   }
 
+  //Variable that contains property link url id/index
+  propertyID = parseInt(this.props.match.params.id);
+  //Function to either add or subtract to the current id/index number
+  switchProperty(value) {
+    console.log(value);
+      let num;
+      num = (value == "previous_Property") ? --this.propertyID : ++this.propertyID;
+      this.setState({
+        property: this.state.properties[num]
+      })
+      console.log(this.props.match.params.id);
+      console.log(num);
+    }
+
+
   render() {  
-  // console.log(this.state.listing);
+  console.log(this.state);
+  console.log(this.props);
   // const imageUrl = './img/home-details.png';
   
   return (
@@ -106,7 +134,6 @@ class ListingDetails extends Component {
           no-repeat center center`,
           backgroundSize: 'cover'
                 }}></div>
-                
             <div className="image__sub">
               <div className="image__sub__option" style={{
                   background: `url('../../img/home-display2.png')
@@ -168,7 +195,15 @@ class ListingDetails extends Component {
         </div>
         <div className="related">
           <span className="related__amount">64 Results</span>
-          <div className="related__results">{this.loopListing()}</div>
+          <button className="left-btn" value="previous_Property" onClick ={() => this.switchProperty("previous_Property")}
+          disabled={this.props.match.params.id === 0}
+          >Left btn</button>
+          <button className="right-btn" value="next_Property" onClick ={() => this.switchProperty("next_Property")} 
+          disabled={this.props.match.params.id === this.state.listing.length-1}
+          >Right btn</button>
+          <div className="related__results__slider">
+            <div className="related__results__slider__system">{this.loopListing()}</div>
+          </div>
         </div>
     </section>
   );
