@@ -40,8 +40,21 @@ checkListingResult = () =>{
  initializeComponent(){
   this.state.listing = this.props.location.state;
   // console.log(this.props.location.key);
-    const width = document.querySelector('.col-md-4').clientWidth;
-    this.setState({ width });
+  const width = document.querySelector('.col-md-4').clientWidth;
+  this.setState({ width });
+  console.log(width);
+
+    window.addEventListener('resize', function resizeScreen(){
+      let  newWidth = document.querySelector('.col-md-4').clientWidth;
+      console.log(newWidth);
+      let newSliderShift = parseInt(this.state.propertyIndexNumber) * newWidth;
+      console.log(newSliderShift);
+      console.log(this.state.propertyIndexNumber);
+      this.setState({ 
+        width:newWidth,
+        sliderShift: newSliderShift
+      });
+    }.bind(this));
  }
 
   loopListing() {
@@ -132,6 +145,7 @@ checkListingResult = () =>{
 
   render() {  
   console.log(this.state);
+  console.log(this.state.propertyIndexNumber);
   // console.log(this.state.propertyIndexNumber*(100/this.state.properties.length));
   // console.log(`translateX(-${this.state.propertyIndexNumber*(100/this.state.properties.length)}%` + `-${25}%)`);
   // const imageUrl = './img/home-details.png';
