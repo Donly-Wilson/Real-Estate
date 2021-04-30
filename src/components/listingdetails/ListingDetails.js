@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter, ReactDom } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 
 class ListingDetails extends Component {
   constructor(props) {
@@ -7,7 +7,7 @@ class ListingDetails extends Component {
     this.state = {
       listing:this.checkListingResult(),
       properties:this.props.listingData,
-      property:this.props.listingData[0],
+      // property:this.props.listingData[0],
       propertyIndexNumber:this.propertyID,
       sliderShift: 0
     };
@@ -23,35 +23,34 @@ class ListingDetails extends Component {
     this.setState({
       listing: nextProps.location.state
     });
-    // console.log(nextProps);
  }
 
 
   // Use URL id number to fetch data if it can't with location state
-checkListingResult = () =>{
-  const listingResult =
-  (this.props.location.state && this.props.location.state.listing) != undefined
-    ? this.props.location.state.listing
-    : this.props.listingData[this.props.match.params.id];
-    return listingResult
+  checkListingResult = () =>{
+    const listingResult =
+    (this.props.location.state && this.props.location.state.listing) != undefined
+      ? this.props.location.state.listing
+      : this.props.listingData[this.props.match.params.id];
+      return listingResult
 }
 
- //Function to setting state listing to location.state
+ //Function that is ran when component starts
  initializeComponent(){
-  this.state.listing = this.props.location.state;
-  // console.log(this.props.location.key);
-  const width = document.querySelector('.col-md-4').clientWidth;
-  this.setState({ width });
-  console.log(width);
+  // This sets state listing to location.state
+    this.state.listing = this.props.location.state;
 
+    //This sets the slider listing to width to the variable
+    const listingCardWidth = document.querySelector('.col-md-4').clientWidth;
+    this.setState({ listingCardWidth });
+
+    //On window resize update state('listingCardWidth' & 'sliderShift') to new value
     window.addEventListener('resize', function resizeScreen(){
-      let  newWidth = document.querySelector('.col-md-4').clientWidth;
-      console.log(newWidth);
-      let newSliderShift = parseInt(this.state.propertyIndexNumber) * newWidth;
-      console.log(newSliderShift);
-      console.log(this.state.propertyIndexNumber);
+      let newWidth = document.querySelector('.col-md-4').clientWidth;
+      let newSliderShift = this.state.propertyIndexNumber * newWidth;
+
       this.setState({ 
-        width:newWidth,
+        listingCardWidth:newWidth,
         sliderShift: newSliderShift
       });
     }.bind(this));
@@ -66,10 +65,6 @@ checkListingResult = () =>{
     }
 
     // ShowCase Fixed amount of listing for current page (postPerPage holds this amount)
-    // const indexOFLastPost = this.state.currentPage * this.state.postPerPage; //1*8=8
-    // const indexOfFirstPage = indexOFLastPost - this.state.postPerPage; //8-8=0
-    // const currentPost = listingData.slice(indexOfFirstPage, indexOFLastPost); //(0,8)
-
     return listingData.map((listing, index) => {
         return (
           <div className="col-md-4" key={index}>
@@ -124,30 +119,23 @@ checkListingResult = () =>{
   //Variable that contains property link url id/index
   // propertyID = parseInt(this.props.match.params.id);
   propertyID = 0;
-  //Function to either add or subtract to the current id/index number
+
+  //Function to either add or subtract to the current id/index number and 
   switchProperty(value) {
-    console.log(value);
-      let num;
-      let sliderShift;
-      num = (value == "previous_Property") ? --this.propertyID : ++this.propertyID;
-      sliderShift = (value == "previous_Property") ? this.state.sliderShift  -= this.state.width: this.state.sliderShift += this.state.width;
+    //Increment and Decrement propertyID based on value
+    let num = (value == "previous_Property") ? --this.propertyID : ++this.propertyID;
+    //Update SliderShift based on value passed
+    let sliderShift = (value == "previous_Property") ? this.state.sliderShift  -= this.state.listingCardWidth: this.state.sliderShift += this.state.listingCardWidth;
+
       this.setState({
-        property: this.state.properties[num],
+        // property: this.state.properties[num],
         propertyIndexNumber:num,
         sliderShift: sliderShift
       })
-      console.log(this.props.match.params.id);
-      console.log(num);
-      // console.log(this.state.width);
-      // console.log(sliderShift);
     }
 
 
   render() {  
-  console.log(this.state);
-  console.log(this.state.propertyIndexNumber);
-  // console.log(this.state.propertyIndexNumber*(100/this.state.properties.length));
-  // console.log(`translateX(-${this.state.propertyIndexNumber*(100/this.state.properties.length)}%` + `-${25}%)`);
   // const imageUrl = './img/home-details.png';
   
   return (
