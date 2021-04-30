@@ -104,19 +104,19 @@ checkListingResult = () =>{
             </Link>
           </div>
         </div>
-                      
         );
     });
   }
 
   //Variable that contains property link url id/index
-  propertyID = parseInt(this.props.match.params.id);
+  // propertyID = parseInt(this.props.match.params.id);
+  propertyID = 0;
   //Function to either add or subtract to the current id/index number
   switchProperty(value) {
     console.log(value);
       let num;
-      num = (value == "previous_Property") ? --this.propertyID : ++this.propertyID;
       let sliderShift;
+      num = (value == "previous_Property") ? --this.propertyID : ++this.propertyID;
       sliderShift = (value == "previous_Property") ? this.state.sliderShift  -= this.state.width: this.state.sliderShift += this.state.width;
       this.setState({
         property: this.state.properties[num],
@@ -125,19 +125,15 @@ checkListingResult = () =>{
       })
       console.log(this.props.match.params.id);
       console.log(num);
-      console.log(this.state.width);
-      console.log(sliderShift);
+      // console.log(this.state.width);
+      // console.log(sliderShift);
     }
 
 
   render() {  
   console.log(this.state);
-  // console.log(this.props);
-
-  // console.log(this.props.match.params.id);
-  // console.log(this.state.properties.length-1);
-  console.log(this.state.propertyIndexNumber*(100/this.state.properties.length));
-  console.log(`translateX(-${this.state.propertyIndexNumber*(100/this.state.properties.length)}%` + `-${25}%)`);
+  // console.log(this.state.propertyIndexNumber*(100/this.state.properties.length));
+  // console.log(`translateX(-${this.state.propertyIndexNumber*(100/this.state.properties.length)}%` + `-${25}%)`);
   // const imageUrl = './img/home-details.png';
   
   return (
@@ -214,7 +210,7 @@ checkListingResult = () =>{
           disabled={this.state.propertyIndexNumber === 0}
           >Left btn</button>
           <button className="right-btn" value="next_Property" onClick ={() => this.switchProperty("next_Property")} 
-          disabled={this.state.propertyIndexNumber === this.state.properties.length-1}
+          disabled={this.state.propertyIndexNumber === this.state.properties.length-3}
           >Right btn</button>
           <div className="related__results__slider">
             <div className="related__results__slider__system" style={{
