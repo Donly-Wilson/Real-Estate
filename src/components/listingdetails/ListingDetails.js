@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, ReactDom } from 'react-router-dom';
 
 class ListingDetails extends Component {
   constructor(props) {
@@ -7,10 +7,12 @@ class ListingDetails extends Component {
     this.state = {
       listing:this.checkListingResult(),
       properties:this.props.listingData,
-      property:this.props.listingData[0]
+      property:this.props.listingData[0],
+      propertyIndexNumber:this.propertyID,
+      sliderShift: 0
     };
   }
-
+  
   componentDidMount () {
     // Current listing that is selected to be viewed
     this.initializeComponent();
@@ -38,6 +40,8 @@ checkListingResult = () =>{
  initializeComponent(){
   this.state.listing = this.props.location.state;
   // console.log(this.props.location.key);
+    const width = document.querySelector('.col-md-4').clientWidth;
+    this.setState({ width });
  }
 
   loopListing() {
@@ -112,17 +116,28 @@ checkListingResult = () =>{
     console.log(value);
       let num;
       num = (value == "previous_Property") ? --this.propertyID : ++this.propertyID;
+      let sliderShift;
+      sliderShift = (value == "previous_Property") ? this.state.sliderShift  -= this.state.width: this.state.sliderShift += this.state.width;
       this.setState({
-        property: this.state.properties[num]
+        property: this.state.properties[num],
+        propertyIndexNumber:num,
+        sliderShift: sliderShift
       })
       console.log(this.props.match.params.id);
       console.log(num);
+      console.log(this.state.width);
+      console.log(sliderShift);
     }
 
 
   render() {  
   console.log(this.state);
-  console.log(this.props);
+  // console.log(this.props);
+
+  // console.log(this.props.match.params.id);
+  // console.log(this.state.properties.length-1);
+  console.log(this.state.propertyIndexNumber*(100/this.state.properties.length));
+  console.log(`translateX(-${this.state.propertyIndexNumber*(100/this.state.properties.length)}%` + `-${25}%)`);
   // const imageUrl = './img/home-details.png';
   
   return (
@@ -196,13 +211,15 @@ checkListingResult = () =>{
         <div className="related">
           <span className="related__amount">64 Results</span>
           <button className="left-btn" value="previous_Property" onClick ={() => this.switchProperty("previous_Property")}
-          disabled={this.props.match.params.id === 0}
+          disabled={this.state.propertyIndexNumber === 0}
           >Left btn</button>
           <button className="right-btn" value="next_Property" onClick ={() => this.switchProperty("next_Property")} 
-          disabled={this.props.match.params.id === this.state.listing.length-1}
+          disabled={this.state.propertyIndexNumber === this.state.properties.length-1}
           >Right btn</button>
           <div className="related__results__slider">
-            <div className="related__results__slider__system">{this.loopListing()}</div>
+            <div className="related__results__slider__system" style={{
+              transform: `translateX(-${this.state.sliderShift}px)`
+            }}>{this.loopListing()}</div>
           </div>
         </div>
     </section>
