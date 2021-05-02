@@ -1,5 +1,8 @@
 .current__listing {
   width: 79%;
+  // width: 100%;
+  overflow: hidden;
+  background: $offWhite;
   &__info {
     min-height: 58vh;
     display: flex;
@@ -116,14 +119,6 @@
         font-weight: 600;
         float: right;
       }
-    }
-  }
-  //   Related Options
-  .related {
-    padding: 20px;
-    &__amount {
-      font-size: 1.3rem;
-      font-weight: 800;
     }
   }
 }

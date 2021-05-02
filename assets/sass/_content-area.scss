@@ -7,7 +7,8 @@
 }
 
 #filter {
-  background: $grey;
+  // background: $grey;
+  background: #fff;
   float: left;
   max-width: 300px;
   width: 21%;
@@ -53,6 +54,38 @@
       padding: 0.4rem;
       width: 45%;
     }
+    &.bathrooms {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .title {
+        flex: 100%;
+      }
+      label {
+        display: inline-block;
+        width: 40px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 8px;
+        transition: all 0.3s;
+        color: inherit;
+        background: hsla(200, 11.1%, 92.9%, 1);
+        &:hover {
+          background: #4c25ce;
+          color: #fff;
+        }
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      input[type="radio"]:checked + label {
+        background: #4c25ce;
+        color: #fff;
+      }
+    }
+
     &.extras {
       label {
         display: block;
@@ -111,6 +144,13 @@
     .fa {
       font-size: 1.5rem;
       margin-right: 15px;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+      color: #7a7b7f;
+      // border: 1px solid rgba(78, 2, 229, 0.7);
+      &:hover {
+        color: $pink;
+      }
     }
   }
 }
@@ -282,7 +322,7 @@
         color: $lightGrey;
       }
       &:hover {
-        i{
+        i {
           color: $pink;
         }
       }
@@ -421,7 +461,7 @@
     cursor: pointer;
     &.active,
     &:hover {
-      a{
+      a {
         color: #ffffff;
       }
       background: $pink;
