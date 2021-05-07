@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 236:
+/***/ 235:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88,7 +88,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 237:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -142,7 +142,7 @@ exports.default = CreateAds;
 
 /***/ }),
 
-/***/ 238:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -152,27 +152,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Filter = __webpack_require__(243);
+var _Filter = __webpack_require__(242);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _Listings = __webpack_require__(244);
+var _Listings = __webpack_require__(243);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _listingData = __webpack_require__(246);
+var _listingData = __webpack_require__(245);
 
 var _listingData2 = _interopRequireDefault(_listingData);
 
 var _reactRouterDom = __webpack_require__(69);
 
-var _ListingDetails = __webpack_require__(247);
+var _ListingDetails = __webpack_require__(246);
 
 var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
 
@@ -206,6 +208,7 @@ var HomePage = function (_Component) {
       city: "All",
       homeType: "All",
       bedrooms: "0",
+      bathrooms: "0",
       min_price: 0,
       max_price: 10000000,
       min_floor_space: 0,
@@ -264,11 +267,12 @@ var HomePage = function (_Component) {
       var _this3 = this;
 
       var newData = this.state.listingData.filter(function (item) {
-        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space && item.bedrooms >= _this3.state.bedrooms;
+        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space && item.bedrooms >= _this3.state.bedrooms && item.bathrooms >= _this3.state.bathrooms;
       });
       console.log(newData);
       if (this.state.city != "All") {
         // console.log(newData);
+        console.log(this.state);
         newData = newData.filter(function (item) {
           return item.city == _this3.state.city;
         });
@@ -357,11 +361,20 @@ var HomePage = function (_Component) {
       bedrooms = [].concat(_toConsumableArray(bedrooms));
       bedrooms = bedrooms.sort();
 
+      // bathrooms
+      var bathrooms = this.state.listingData.map(function (item) {
+        return item.bathrooms;
+      });
+      bathrooms = new Set(bathrooms);
+      bathrooms = [].concat(_toConsumableArray(bathrooms));
+      bathrooms = bathrooms.sort();
+
       this.setState({
         populateFormsData: {
           cities: cities,
           homeTypes: homeTypes,
-          bedrooms: bedrooms
+          bedrooms: bedrooms,
+          bathrooms: bathrooms
         }
         // () => console.log(this.state)
       });
@@ -369,6 +382,8 @@ var HomePage = function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var match = this.props.match;
       // console.log(match);
 
@@ -397,17 +412,13 @@ var HomePage = function (_Component) {
                 changeView: this.changeView
               })
             ),
-            _react2.default.createElement(
-              _reactRouterDom.Route,
-              { path: match.url + "/listing/:id", exact: true
-                //This will remount the entire page instead of updating info(not recommended)
-                // render={props => <ListingDetails key={props.location.key} {...props} 
-                // listingData={this.state.filteredData}/>}
-              },
-              _react2.default.createElement(_ListingDetails2.default, {
-                listingData: this.state.filteredData
-              })
-            )
+            _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/listing/:id", exact: true
+              //This will remount the entire page instead of updating info(not recommended)
+              , render: function render(props) {
+                return _react2.default.createElement(_ListingDetails2.default, _extends({}, props, {
+                  listingData: _this4.state.filteredData }));
+              }
+            })
           )
         )
       );
@@ -423,7 +434,7 @@ exports.default = (0, _reactRouterDom.withRouter)(HomePage);
 
 /***/ }),
 
-/***/ 242:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -441,15 +452,15 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouterDom = __webpack_require__(69);
 
-var _Header = __webpack_require__(236);
+var _Header = __webpack_require__(235);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _HomePage = __webpack_require__(238);
+var _HomePage = __webpack_require__(237);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _CreateAds = __webpack_require__(237);
+var _CreateAds = __webpack_require__(236);
 
 var _CreateAds2 = _interopRequireDefault(_CreateAds);
 
@@ -510,7 +521,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), app);
 
 /***/ }),
 
-/***/ 243:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -555,6 +566,7 @@ var Filter = function (_Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.props.populateAction();
+      console.log(this.props);
     }
   }, {
     key: "cities",
@@ -605,6 +617,20 @@ var Filter = function (_Component) {
         });
       }
     }
+    // bathrooms() {
+    //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
+    //     var { bedrooms } = this.props.globalState.populateFormsData;
+    //     // console.log(bedrooms);
+    //     return bedrooms.map((item) => {
+    //       return (
+    //         <option key={item} value={item}>
+    //           {item}+ BR
+    //         </option>
+    //       );
+    //     });
+    //   }
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -640,7 +666,7 @@ var Filter = function (_Component) {
           ),
           _react2.default.createElement(
             "label",
-            { htmlFor: "city" },
+            { htmlFor: "homeType" },
             "Home Type"
           ),
           _react2.default.createElement(
@@ -658,8 +684,47 @@ var Filter = function (_Component) {
             this.homeTypes()
           ),
           _react2.default.createElement(
+            "div",
+            { className: "filters bathrooms" },
+            _react2.default.createElement(
+              "span",
+              { className: "title" },
+              "Bathrooms"
+            ),
+            _react2.default.createElement("input", { type: "radio", id: "bathroom1", value: "1", name: "bathrooms", onChange: this.props.change }),
+            _react2.default.createElement(
+              "label",
+              { htmlFor: "bathroom1" },
+              "1+"
+            ),
+            _react2.default.createElement("input", { type: "radio", id: "bathroom2", value: "2", name: "bathrooms", onChange: this.props.change }),
+            _react2.default.createElement(
+              "label",
+              { htmlFor: "bathroom2" },
+              "2+"
+            ),
+            _react2.default.createElement("input", { type: "radio", id: "bathroom3", value: "3", name: "bathrooms", onChange: this.props.change }),
+            _react2.default.createElement(
+              "label",
+              { htmlFor: "bathroom3" },
+              "3+"
+            ),
+            _react2.default.createElement("input", { type: "radio", id: "bathroom4", value: "4", name: "bathrooms", onChange: this.props.change }),
+            _react2.default.createElement(
+              "label",
+              { htmlFor: "bathroom4" },
+              "4+"
+            ),
+            _react2.default.createElement("input", { type: "radio", id: "bathroom5", value: "5+", name: "bathrooms", onChange: this.props.change }),
+            _react2.default.createElement(
+              "label",
+              { htmlFor: "bathroom5" },
+              "5+"
+            )
+          ),
+          _react2.default.createElement(
             "label",
-            { htmlFor: "city" },
+            { htmlFor: "bedrooms" },
             "Bedrooms"
           ),
           _react2.default.createElement(
@@ -798,7 +863,7 @@ exports.default = Filter;
 
 /***/ }),
 
-/***/ 244:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -814,7 +879,7 @@ var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Pagination = __webpack_require__(245);
+var _Pagination = __webpack_require__(244);
 
 var _Pagination2 = _interopRequireDefault(_Pagination);
 
@@ -947,7 +1012,9 @@ var Listings = function (_Component) {
                       "span",
                       null,
                       listing.bedrooms,
-                      " Beds, 2 Baths, ",
+                      " Beds, ",
+                      listing.bathrooms,
+                      " Baths, ",
                       listing.floorSpace,
                       " ft\xB2"
                     )
@@ -1098,7 +1165,9 @@ var Listings = function (_Component) {
                         _react2.default.createElement(
                           "span",
                           { className: "floor__area__bath" },
-                          " 2 ",
+                          " ",
+                          listing.bathrooms,
+                          " ",
                           _react2.default.createElement("i", { className: "fa fa-bath", "aria-hidden": "true" })
                         ),
                         "|",
@@ -1220,7 +1289,7 @@ exports.default = (0, _reactRouterDom.withRouter)(Listings);
 
 /***/ }),
 
-/***/ 245:
+/***/ 244:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1236,7 +1305,7 @@ var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _immutabilityHelper = __webpack_require__(464);
+var _immutabilityHelper = __webpack_require__(462);
 
 var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -1356,7 +1425,7 @@ exports.default = Pagination;
 
 /***/ }),
 
-/***/ 246:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1370,6 +1439,7 @@ var listingData = [{
   city: "Castries",
   state: "SLU",
   bedrooms: 1,
+  bathrooms: 2,
   price: 2100,
   floorSpace: 2000,
   extra: ["elevator", "gym"],
@@ -1380,6 +1450,7 @@ var listingData = [{
   city: "Gros Islet",
   state: "SLU",
   bedrooms: 3,
+  bathrooms: 4,
   price: 241000,
   floorSpace: 22000,
   extra: ["elevator", "gym"],
@@ -1390,6 +1461,7 @@ var listingData = [{
   city: "Vieux Fort",
   state: "SLU",
   bedrooms: 5,
+  bathrooms: 3,
   price: 10000,
   floorSpace: 10000,
   extra: ["elevator", "gym", "swimming_pool"],
@@ -1400,6 +1472,7 @@ var listingData = [{
   city: "Dennery",
   state: "SLU",
   bedrooms: 4,
+  bathrooms: 2,
   price: 400000,
   floorSpace: 7000,
   extra: ["elevator", "Garage"],
@@ -1410,6 +1483,7 @@ var listingData = [{
   city: "Laborie",
   state: "SLU",
   bedrooms: 1,
+  bathrooms: 1,
   price: 230000,
   floorSpace: 8000,
   extra: ["beach"],
@@ -1420,6 +1494,7 @@ var listingData = [{
   city: "Soufriere",
   state: "SLU",
   bedrooms: 6,
+  bathrooms: 6,
   price: 400000,
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
@@ -1430,6 +1505,7 @@ var listingData = [{
   city: "Soufriere",
   state: "SLU",
   bedrooms: 6,
+  bathrooms: 3,
   price: 400000,
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
@@ -1440,6 +1516,7 @@ var listingData = [{
   city: "Soufriere",
   state: "SLU",
   bedrooms: 6,
+  bathrooms: 2,
   price: 400000,
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
@@ -1450,6 +1527,7 @@ var listingData = [{
   city: "Soufriere",
   state: "SLU",
   bedrooms: 6,
+  bathrooms: 5,
   price: 400000,
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
@@ -1460,6 +1538,7 @@ var listingData = [{
   city: "Soufriere",
   state: "SLU",
   bedrooms: 6,
+  bathrooms: 2,
   price: 400000,
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
@@ -1471,7 +1550,7 @@ exports.default = listingData;
 
 /***/ }),
 
-/***/ 247:
+/***/ 246:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1505,8 +1584,19 @@ var ListingDetails = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (ListingDetails.__proto__ || Object.getPrototypeOf(ListingDetails)).call(this, props));
 
+    _this.checkListingResult = function () {
+      var listingResult = (_this.props.location.state && _this.props.location.state.listing) != undefined ? _this.props.location.state.listing : _this.props.listingData[_this.props.match.params.id];
+      return listingResult;
+    };
+
+    _this.propertyID = 0;
+
     _this.state = {
-      listing: ''
+      listing: _this.checkListingResult(),
+      properties: _this.props.listingData,
+      // property:this.props.listingData[0],
+      propertyIndexNumber: _this.propertyID,
+      sliderShift: 0
     };
     return _this;
   }
@@ -1524,16 +1614,33 @@ var ListingDetails = function (_Component) {
       this.setState({
         listing: nextProps.location.state
       });
-      console.log(nextProps);
     }
 
-    //Function to setting state listing to location.state
+    // Use URL id number to fetch data if it can't with location state
 
   }, {
     key: 'initializeComponent',
+
+
+    //Function that is ran when component starts
     value: function initializeComponent() {
+      // This sets state listing to location.state
       this.state.listing = this.props.location.state;
-      console.log(this.props.location.key);
+
+      //This sets the slider listing to width to the variable
+      var listingCardWidth = document.querySelector('.col-md-4').clientWidth;
+      this.setState({ listingCardWidth: listingCardWidth });
+
+      //On window resize update state('listingCardWidth' & 'sliderShift') to new value
+      window.addEventListener('resize', function resizeScreen() {
+        var newWidth = document.querySelector('.col-md-4').clientWidth;
+        var newSliderShift = this.state.propertyIndexNumber * newWidth;
+
+        this.setState({
+          listingCardWidth: newWidth,
+          sliderShift: newSliderShift
+        });
+      }.bind(this));
     }
   }, {
     key: 'loopListing',
@@ -1549,10 +1656,6 @@ var ListingDetails = function (_Component) {
       }
 
       // ShowCase Fixed amount of listing for current page (postPerPage holds this amount)
-      // const indexOFLastPost = this.state.currentPage * this.state.postPerPage; //1*8=8
-      // const indexOfFirstPage = indexOFLastPost - this.state.postPerPage; //8-8=0
-      // const currentPost = listingData.slice(indexOfFirstPage, indexOFLastPost); //(0,8)
-
       return listingData.map(function (listing, index) {
         return _react2.default.createElement(
           'div',
@@ -1651,10 +1754,32 @@ var ListingDetails = function (_Component) {
         );
       });
     }
+
+    //Variable that contains property link url id/index
+    // propertyID = parseInt(this.props.match.params.id);
+
+  }, {
+    key: 'switchProperty',
+
+
+    //Function to either add or subtract to the current id/index number and 
+    value: function switchProperty(value) {
+      //Increment and Decrement propertyID based on value
+      var num = value == "previous_Property" ? --this.propertyID : ++this.propertyID;
+      //Update SliderShift based on value passed
+      var sliderShift = value == "previous_Property" ? this.state.sliderShift -= this.state.listingCardWidth : this.state.sliderShift += this.state.listingCardWidth;
+
+      this.setState({
+        // property: this.state.properties[num],
+        propertyIndexNumber: num,
+        sliderShift: sliderShift
+      });
+    }
   }, {
     key: 'render',
     value: function render() {
-      // console.log(this.state.listing);
+      var _this3 = this;
+
       // const imageUrl = './img/home-details.png';
 
       return _react2.default.createElement(
@@ -1667,7 +1792,7 @@ var ListingDetails = function (_Component) {
             'div',
             { className: 'current__listing__images' },
             _react2.default.createElement('div', { className: 'image__main', style: {
-                background: 'url(' + this.state.listing.image + ')\n          no-repeat center center',
+                background: 'url(\'../../img/home-display1.png\')\n          no-repeat center center',
                 backgroundSize: 'cover'
               } }),
             _react2.default.createElement(
@@ -1770,7 +1895,7 @@ var ListingDetails = function (_Component) {
                 _react2.default.createElement(
                   'span',
                   null,
-                  _react2.default.createElement('i', { className: 'fa fa-bed', 'aria-hidden': 'true' }),
+                  _react2.default.createElement('i', { className: 'fa fa-graduation-cap', 'aria-hidden': 'true' }),
                   ' School'
                 ),
                 _react2.default.createElement(
@@ -1785,7 +1910,7 @@ var ListingDetails = function (_Component) {
                 _react2.default.createElement(
                   'span',
                   null,
-                  _react2.default.createElement('i', { className: 'fa fa-bed', 'aria-hidden': 'true' }),
+                  _react2.default.createElement('i', { className: 'fa fa-university', 'aria-hidden': 'true' }),
                   ' State Banks'
                 ),
                 _react2.default.createElement(
@@ -1806,9 +1931,33 @@ var ListingDetails = function (_Component) {
             '64 Results'
           ),
           _react2.default.createElement(
+            'button',
+            { className: 'left-btn', value: 'previous_Property', onClick: function onClick() {
+                return _this3.switchProperty("previous_Property");
+              },
+              disabled: this.state.propertyIndexNumber === 0
+            },
+            '\u279C'
+          ),
+          _react2.default.createElement(
+            'button',
+            { className: 'right-btn', value: 'next_Property', onClick: function onClick() {
+                return _this3.switchProperty("next_Property");
+              },
+              disabled: this.state.propertyIndexNumber === this.state.properties.length - 3
+            },
+            '\u279C'
+          ),
+          _react2.default.createElement(
             'div',
-            { className: 'related__results' },
-            this.loopListing()
+            { className: 'related__results__slider' },
+            _react2.default.createElement(
+              'div',
+              { className: 'related__results__slider__system', style: {
+                  transform: 'translateX(-' + this.state.sliderShift + 'px)'
+                } },
+              this.loopListing()
+            )
           )
         )
       );
@@ -1822,4 +1971,4 @@ exports.default = (0, _reactRouterDom.withRouter)(ListingDetails);
 
 /***/ })
 
-},[242]);
+},[241]);

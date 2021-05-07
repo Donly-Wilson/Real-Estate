@@ -18,6 +18,7 @@ class HomePage extends Component {
       city: "All",
       homeType: "All",
       bedrooms: "0",
+      bathrooms: "0",
       min_price: 0,
       max_price: 10000000,
       min_floor_space: 0,
@@ -51,8 +52,8 @@ class HomePage extends Component {
   change(event) {
     var name = event.target.name;
     var value =
-      event.target.type === "checkbox"
-        ? event.target.checked
+      event.target.type === "checkbox" 
+        ? event.target.checked 
         : event.target.value;
     this.setState(
       {
@@ -78,12 +79,14 @@ class HomePage extends Component {
         item.price <= this.state.max_price &&
         item.floorSpace >= this.state.min_floor_space &&
         item.floorSpace <= this.state.max_floor_space &&
-        item.bedrooms >= this.state.bedrooms
+        item.bedrooms >= this.state.bedrooms &&
+        item.bathrooms >= this.state.bathrooms
       );
     });
     console.log(newData);
     if (this.state.city != "All") {
       // console.log(newData);
+      console.log(this.state);
       newData = newData.filter((item) => {
         return item.city == this.state.city;
       });
@@ -170,6 +173,14 @@ class HomePage extends Component {
     bedrooms = new Set(bedrooms);
     bedrooms = [...bedrooms];
     bedrooms = bedrooms.sort();
+    
+    // bathrooms
+    var bathrooms = this.state.listingData.map((item) => {
+      return item.bathrooms;
+    });
+    bathrooms = new Set(bathrooms);
+    bathrooms = [...bathrooms];
+    bathrooms = bathrooms.sort();
 
     this.setState(
       {
@@ -177,6 +188,7 @@ class HomePage extends Component {
           cities,
           homeTypes,
           bedrooms,
+          bathrooms,
         },
       }
       // () => console.log(this.state)
@@ -207,12 +219,12 @@ class HomePage extends Component {
 
             <Route path={`${match.url}/listing/:id`} exact={true}
             //This will remount the entire page instead of updating info(not recommended)
-            // render={props => <ListingDetails key={props.location.key} {...props} 
-            // listingData={this.state.filteredData}/>}
+            render={props => <ListingDetails {...props} 
+            listingData={this.state.filteredData}/>}
             >
-              <ListingDetails
+              {/* <ListingDetails
               listingData={this.state.filteredData}
-              />
+              /> */}
             </Route>
 
           </Switch>

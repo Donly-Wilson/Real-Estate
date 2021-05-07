@@ -193,13 +193,13 @@ class ListingDetails extends Component {
               <span className="details__nearby__title">Close Locations</span>
               <div className="details__nearby__spot">
                 <span>
-                <i className="fa fa-bed" aria-hidden="true"></i> School 
+                <i className="fa fa-graduation-cap" aria-hidden="true"></i> School 
                 </span>
                 <span className="details__nearby__amount"> 0.8 miles</span>
               </div>
               <div className="details__nearby__spot">
                 <span>
-                  <i className="fa fa-bed" aria-hidden="true"></i> State Banks
+                  <i className="fa fa-university" aria-hidden="true"></i> State Banks
                 </span>
                 <span className="details__nearby__amount"> 1.5 miles</span>
               </div>
@@ -210,10 +210,10 @@ class ListingDetails extends Component {
           <span className="related__amount">64 Results</span>
           <button className="left-btn" value="previous_Property" onClick ={() => this.switchProperty("previous_Property")}
           disabled={this.state.propertyIndexNumber === 0}
-          >Left btn</button>
+          >➜</button>
           <button className="right-btn" value="next_Property" onClick ={() => this.switchProperty("next_Property")} 
           disabled={this.state.propertyIndexNumber === this.state.properties.length-3}
-          >Right btn</button>
+          >➜</button>
           <div className="related__results__slider">
             <div className="related__results__slider__system" style={{
               transform: `translateX(-${this.state.sliderShift}px)`

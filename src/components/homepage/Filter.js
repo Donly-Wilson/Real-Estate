@@ -13,6 +13,7 @@ export default class Filter extends Component {
 
   componentWillMount() {
     this.props.populateAction();
+    console.log(this.props);
   }
 
   cities() {
@@ -54,6 +55,19 @@ export default class Filter extends Component {
       });
     }
   }
+  // bathrooms() {
+  //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
+  //     var { bedrooms } = this.props.globalState.populateFormsData;
+  //     // console.log(bedrooms);
+  //     return bedrooms.map((item) => {
+  //       return (
+  //         <option key={item} value={item}>
+  //           {item}+ BR
+  //         </option>
+  //       );
+  //     });
+  //   }
+  // }
 
   render() {
     return (
@@ -69,7 +83,7 @@ export default class Filter extends Component {
             <option value="All"> All</option>
             {this.cities()}
           </select>
-          <label htmlFor="city">Home Type</label>
+          <label htmlFor="homeType">Home Type</label>
           <select
             name="homeType"
             className="filters homeType"
@@ -78,7 +92,20 @@ export default class Filter extends Component {
             <option value="All"> All Homes</option>
             {this.homeTypes()}
           </select>
-          <label htmlFor="city">Bedrooms</label>
+          <div className="filters bathrooms">
+            <span className="title">Bathrooms</span>
+            <input type="radio" id="bathroom1" value="1" name="bathrooms" onChange={this.props.change}/>
+            <label htmlFor="bathroom1">1+</label>
+            <input type="radio" id="bathroom2" value="2" name="bathrooms" onChange={this.props.change}/>
+            <label htmlFor="bathroom2">2+</label>
+            <input type="radio" id="bathroom3" value="3" name="bathrooms" onChange={this.props.change}/>
+            <label htmlFor="bathroom3">3+</label>
+            <input type="radio" id="bathroom4" value="4" name="bathrooms" onChange={this.props.change}/>
+            <label htmlFor="bathroom4">4+</label>
+            <input type="radio" id="bathroom5" value="5+" name="bathrooms" onChange={this.props.change}/>
+            <label htmlFor="bathroom5">5+</label>
+          </div>
+          <label htmlFor="bedrooms">Bedrooms</label>
           <select
             name="bedrooms"
             className="filters bedrooms"

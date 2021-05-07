@@ -1,9 +1,57 @@
+//   Related Options
+.related {
+  padding: 20px;
+  position: relative;
+  &__amount {
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+  button {
+    background: #fff;
+    border: 1px solid #444a6e;
+    color: #444a6e;
+    border-radius: 50%;
+    font-size: 24px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: calc(50% - 25px);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      border: 1px solid rgba(78, 2, 229, 0.7);
+      color: rgba(78, 2, 229, 0.7);
+    }
+  }
+
+  button:disabled,
+  button[disabled] {
+    cursor: default;
+    opacity: 0;
+  }
+  .left-btn {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    unicode-bidi: bidi-override;
+    direction: rtl;
+  }
+  .right-btn {
+    right: 14px;
+  }
+}
 .related__results__slider {
   // height: 300px;
   /* width: 1200px; */
   // /* position: relative; */
   overflow: hidden;
-  overflow-x: scroll;
+  // overflow-x: scroll;
   &__system {
     white-space: nowrap;
     transform: translate3d(0, 0, 0);

@@ -76,7 +76,7 @@ class Listings extends Component {
                 <div className="rooms">
                   
                   {/* <span>{listing.bedrooms} bedroom, bags ,cars and dogs</span> */}
-                  <span>{listing.bedrooms} Beds, 2 Baths, {listing.floorSpace} ft&sup2;</span>
+                  <span>{listing.bedrooms} Beds, {listing.bathrooms} Baths, {listing.floorSpace} ft&sup2;</span>
                 </div>
                 <span className="location">
                   {" "}
@@ -138,7 +138,7 @@ class Listings extends Component {
                     <div className="floor__area">
                         <div>
                           <span className="floor__area__bed">{listing.bedrooms} <i className="fa fa-bed" aria-hidden="true"></i></span>|
-                          <span className="floor__area__bath"> 2 <i className="fa fa-bath" aria-hidden="true"></i></span>| 
+                          <span className="floor__area__bath"> {listing.bathrooms} <i className="fa fa-bath" aria-hidden="true"></i></span>| 
                           <span className="floor__area__squarefoot">{listing.floorSpace} ft&sup2; <i className="fa fa fa-object-ungroup" aria-hidden="true"></i></span>
                         </div>
                     </div>   
