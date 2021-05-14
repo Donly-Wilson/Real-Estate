@@ -12,11 +12,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(18);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(69);
+var _MobileNavigation = __webpack_require__(242);
+
+var _MobileNavigation2 = _interopRequireDefault(_MobileNavigation);
+
+var _Navigation = __webpack_require__(243);
+
+var _Navigation2 = _interopRequireDefault(_Navigation);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44,39 +50,8 @@ var Header = function (_Component) {
       return _react2.default.createElement(
         "header",
         null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/" },
-          _react2.default.createElement(
-            "div",
-            { className: "logo" },
-            "M\xE1s Casas"
-          )
-        ),
-        _react2.default.createElement(
-          "nav",
-          null,
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/createads" },
-            "Create Ads"
-          ),
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/aboutus" },
-            "About us"
-          ),
-          _react2.default.createElement(
-            "a",
-            { href: "#" },
-            "Log In"
-          ),
-          _react2.default.createElement(
-            "a",
-            { href: "#", className: "register-btn" },
-            "Register"
-          )
-        )
+        _react2.default.createElement(_Navigation2.default, null),
+        _react2.default.createElement(_MobileNavigation2.default, null)
       );
     }
   }]);
@@ -100,7 +75,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(18);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -156,25 +131,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(18);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Filter = __webpack_require__(242);
+var _Filter = __webpack_require__(244);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _Listings = __webpack_require__(243);
+var _Listings = __webpack_require__(245);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _listingData = __webpack_require__(245);
+var _listingData = __webpack_require__(247);
 
 var _listingData2 = _interopRequireDefault(_listingData);
 
-var _reactRouterDom = __webpack_require__(69);
+var _reactRouterDom = __webpack_require__(61);
 
-var _ListingDetails = __webpack_require__(246);
+var _ListingDetails = __webpack_require__(248);
 
 var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
 
@@ -221,18 +196,21 @@ var HomePage = function (_Component) {
       populateFormsData: "",
       sortby: "price-dsc",
       view: "box",
-      search: ""
+      search: "",
+      showFilter: true
     };
     _this.change = _this.change.bind(_this);
     _this.filteredData = _this.filteredData.bind(_this);
     _this.populateForms = _this.populateForms.bind(_this);
     _this.changeView = _this.changeView.bind(_this);
+    _this.toggleShowFilter = _this.toggleShowFilter.bind(_this);
     return _this;
   }
 
   _createClass(HomePage, [{
     key: "componentWillMount",
     value: function componentWillMount() {
+      // This organise/sorts data by price filter btn
       var listingData = this.state.listingData.sort(function (a, b) {
         a.price - b.price;
       });
@@ -240,6 +218,21 @@ var HomePage = function (_Component) {
       this.setState({
         listingData: listingData
       });
+
+      //Checks to see if windows is desktop or tablet and display filter accordingly
+      window.addEventListener('resize', function resizeScreen() {
+        var windowWidth = window.innerWidth;
+
+        if (windowWidth > 991) {
+          this.setState({
+            showFilter: true
+          });
+        } else {
+          this.setState({
+            showFilter: false
+          });
+        }
+      }.bind(this));
     }
   }, {
     key: "change",
@@ -380,6 +373,13 @@ var HomePage = function (_Component) {
       });
     }
   }, {
+    key: "toggleShowFilter",
+    value: function toggleShowFilter() {
+      this.setState(function (prevState) {
+        return { showFilter: !prevState.showFilter };
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
@@ -394,7 +394,7 @@ var HomePage = function (_Component) {
         _react2.default.createElement(
           "section",
           { id: "content-area" },
-          _react2.default.createElement(_Filter2.default, {
+          this.state.showFilter && _react2.default.createElement(_Filter2.default, {
             change: this.change,
             globalState: this.state,
             populateAction: this.populateForms
@@ -408,6 +408,7 @@ var HomePage = function (_Component) {
               _react2.default.createElement(_Listings2.default, {
                 globalState: this.state,
                 listingData: this.state.filteredData,
+                showFilter: this.toggleShowFilter,
                 change: this.change,
                 changeView: this.changeView
               })
@@ -442,7 +443,7 @@ exports.default = (0, _reactRouterDom.withRouter)(HomePage);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(18);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -450,7 +451,7 @@ var _reactDom = __webpack_require__(107);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(69);
+var _reactRouterDom = __webpack_require__(61);
 
 var _Header = __webpack_require__(235);
 
@@ -528,12 +529,227 @@ _reactDom2.default.render(_react2.default.createElement(App, null), app);
 
 
 Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(17);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(61);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var mobileNavigation = function (_Component) {
+    _inherits(mobileNavigation, _Component);
+
+    function mobileNavigation() {
+        _classCallCheck(this, mobileNavigation);
+
+        var _this = _possibleConstructorReturn(this, (mobileNavigation.__proto__ || Object.getPrototypeOf(mobileNavigation)).call(this));
+
+        _this.toggleMenu = function () {
+            _this.setState(function (prevState) {
+                return { openMenu: !prevState.openMenu };
+            });
+        };
+
+        _this.state = {
+            openMenu: false
+        };
+        return _this;
+    }
+
+    // This function toggles menu when it is triggered
+
+
+    _createClass(mobileNavigation, [{
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            console.log(this.state);
+            return _react2.default.createElement(
+                "section",
+                { className: "mobileNav" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "mobileNav__hamburger-menu", onClick: function onClick() {
+                            return _this2.toggleMenu();
+                        } },
+                    _react2.default.createElement("i", { className: "fa fa-bars", "aria-hidden": "true" })
+                ),
+                _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: "/" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "logo" },
+                        "M\xE1s Casas"
+                    )
+                ),
+                _react2.default.createElement(
+                    "nav",
+                    null,
+                    _react2.default.createElement(
+                        "a",
+                        { href: "#", className: "login" },
+                        "Log In"
+                    )
+                ),
+                this.state.openMenu && _react2.default.createElement(
+                    "div",
+                    { className: "mobileNav__menu" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "mobileNav__hamburger-menu", onClick: function onClick() {
+                                return _this2.toggleMenu();
+                            } },
+                        _react2.default.createElement("i", { className: "fa fa-times", "aria-hidden": "true" })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "logo" },
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: "/" },
+                            "M\xE1s Casas"
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "ul",
+                        { className: "mobileNav__menu__nav" },
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { to: "/createads" },
+                                "Create Ads"
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { to: "/aboutus" },
+                                "About us"
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#" },
+                                "Log In"
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#", className: "register-btn" },
+                                "Register"
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return mobileNavigation;
+}(_react.Component);
+
+exports.default = mobileNavigation;
+
+/***/ }),
+
+/***/ 243:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Navigation;
+
+var _react = __webpack_require__(17);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(61);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Navigation() {
+    return _react2.default.createElement(
+        'section',
+        { className: 'navigation' },
+        _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/' },
+            _react2.default.createElement(
+                'div',
+                { className: 'logo' },
+                'M\xE1s Casas'
+            )
+        ),
+        _react2.default.createElement(
+            'nav',
+            null,
+            _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/createads', className: 'createads' },
+                'Create Ads'
+            ),
+            _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/aboutus', className: 'aboutus' },
+                'About us'
+            ),
+            _react2.default.createElement(
+                'a',
+                { href: '#', className: 'login' },
+                'Log In'
+            ),
+            _react2.default.createElement(
+                'a',
+                { href: '#', className: 'register-btn' },
+                'Register'
+            )
+        )
+    );
+}
+
+/***/ }),
+
+/***/ 244:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(18);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -863,7 +1079,7 @@ exports.default = Filter;
 
 /***/ }),
 
-/***/ 243:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -875,15 +1091,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(18);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Pagination = __webpack_require__(244);
+var _Pagination = __webpack_require__(246);
 
 var _Pagination2 = _interopRequireDefault(_Pagination);
 
-var _reactRouterDom = __webpack_require__(69);
+var _reactRouterDom = __webpack_require__(61);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1216,6 +1432,11 @@ var Listings = function (_Component) {
         _react2.default.createElement(
           "section",
           { className: "search-area" },
+          _react2.default.createElement(
+            "button",
+            { className: "filter-btn", onClick: this.props.showFilter },
+            "F"
+          ),
           _react2.default.createElement("input", { type: "text", name: "search", onChange: this.props.change })
         ),
         _react2.default.createElement(
@@ -1289,7 +1510,7 @@ exports.default = (0, _reactRouterDom.withRouter)(Listings);
 
 /***/ }),
 
-/***/ 244:
+/***/ 246:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1301,11 +1522,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(18);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _immutabilityHelper = __webpack_require__(462);
+var _immutabilityHelper = __webpack_require__(464);
 
 var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -1425,7 +1646,7 @@ exports.default = Pagination;
 
 /***/ }),
 
-/***/ 245:
+/***/ 247:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1550,7 +1771,7 @@ exports.default = listingData;
 
 /***/ }),
 
-/***/ 246:
+/***/ 248:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1562,11 +1783,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(18);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(69);
+var _reactRouterDom = __webpack_require__(61);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1775,6 +1996,12 @@ var ListingDetails = function (_Component) {
         sliderShift: sliderShift
       });
     }
+
+    // componentWillUnmount() {
+    //   this.initializeComponent();
+    // }
+
+
   }, {
     key: 'render',
     value: function render() {

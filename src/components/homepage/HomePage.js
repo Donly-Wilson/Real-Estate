@@ -32,14 +32,17 @@ class HomePage extends Component {
       sortby: "price-dsc",
       view: "box",
       search: "",
+      showFilter: true,
     };
     this.change = this.change.bind(this);
     this.filteredData = this.filteredData.bind(this);
     this.populateForms = this.populateForms.bind(this);
     this.changeView = this.changeView.bind(this);
+    this.toggleShowFilter = this.toggleShowFilter.bind(this);
   }
 
   componentWillMount() {
+    // This organise/sorts data by price filter btn
     var listingData = this.state.listingData.sort((a, b) => {
       a.price - b.price;
     });
@@ -47,6 +50,21 @@ class HomePage extends Component {
     this.setState({
       listingData,
     });
+
+    //Checks to see if windows is desktop or tablet and display filter accordingly
+    window.addEventListener('resize', function resizeScreen(){
+      let windowWidth = window.innerWidth;
+      
+      if (windowWidth > 991){
+        this.setState({ 
+          showFilter: true,
+        });
+      }else{
+        this.setState({ 
+          showFilter: false,
+        });
+      }
+    }.bind(this));
   }
 
   change(event) {
@@ -195,6 +213,12 @@ class HomePage extends Component {
     );
   }
 
+  toggleShowFilter(){
+    this.setState((prevState)=>{
+      return {showFilter: !prevState.showFilter};
+  })
+}
+
   render() {
     const {match} = this.props;
         // console.log(match);
@@ -202,17 +226,18 @@ class HomePage extends Component {
       <div>
         {" "}
         <section id="content-area">
-          <Filter
+          {this.state.showFilter && <Filter
             change={this.change}
             globalState={this.state}
             populateAction={this.populateForms}
-          />
+            />}
           <Switch>
             <Route path={ match.url} exact={true}>
               <Listings
                 globalState={this.state}
                 listingData={this.state.filteredData}
-                  change={this.change}
+                showFilter={this.toggleShowFilter} 
+                change={this.change}
                 changeView={this.changeView}
               />
             </Route>

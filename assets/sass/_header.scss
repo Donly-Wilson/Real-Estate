@@ -1,33 +1,135 @@
 header {
-  background: $darkPurple;
+  background: #0c002b;
   color: #ffffff;
   overflow: auto;
   padding: 20px 15px;
-
-  .logo {
-    float: left;
-    color: #ffffff;
-  }
-
-  nav {
-    float: right;
-    a {
+  .navigation {
+    .logo {
+      float: left;
       color: #ffffff;
-      font-size: 0.9rem;
-      font-weight: 300;
-      padding: 10px 20px;
-      text-decoration: none;
-      text-transform: capitalize;
-      &:hover {
-        color: $pink;
-      }
-      &.register-btn {
-        background: $pink;
-        padding: 7px 25px;
-        text-align: center;
+    }
+
+    nav {
+      float: right;
+      a {
         color: #ffffff;
-        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: 300;
+        padding: 10px 20px;
+        text-decoration: none;
+        text-transform: capitalize;
+        &:hover {
+          color: $pink;
+        }
+        &.register-btn {
+          background: $pink;
+          padding: 7px 25px;
+          text-align: center;
+          color: #ffffff;
+          border-radius: 5px;
+        }
       }
     }
   }
+
+  /*Mobile Menu*/
+  .mobileNav {
+    &__hamburger-menu {
+      display: none;
+    }
+    .logo {
+      float: left;
+      color: #ffffff;
+    }
+    nav {
+      float: right;
+      a {
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 300;
+        padding: 10px 20px;
+        text-decoration: none;
+        text-transform: capitalize;
+        &:hover {
+          color: $pink;
+        }
+      }
+    }
+  }
+  .mobileNav__menu {
+    background: black;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    padding: 20px;
+    // display: none;
+    .logo {
+      font-size: 2rem;
+      text-align: center;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    &__nav {
+      margin-top: 30px;
+      li {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid;
+        a {
+          color: #fff;
+          display: block;
+          font-size: 1.2rem;
+          text-decoration: none;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* Tablet Responsive */
+@media (max-width: 991px) {
+  header {
+    .navigation {
+      display: none;
+    }
+    .mobileNav {
+      &__hamburger-menu {
+        display: block;
+        float: left;
+        font-size: 20px;
+        margin-right: 15px;
+        cursor: pointer;
+      }
+      &__menu {
+        // display: none;
+        .fa-times {
+          font-size: 35px;
+        }
+        .logo {
+          float: none;
+        }
+      }
+    }
+  }
+  #listings {
+    .search-area {
+      .filter-btn {
+        margin-right: 15px;
+        padding: 10px 15px;
+      }
+    }
+  }
+}
+
+/* Large-Phones Responsive */
+@media (min-width: 576px) and (max-width: 767px) {
+}
+
+/* Small-Phones Responsive */
+@media (min-width: 1px) and (max-width: 575px) {
 }

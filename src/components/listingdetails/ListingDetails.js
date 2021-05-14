@@ -134,6 +134,10 @@ class ListingDetails extends Component {
       })
     }
 
+    // componentWillUnmount() {
+    //   this.initializeComponent();
+    // }
+
 
   render() {  
   // const imageUrl = './img/home-details.png';

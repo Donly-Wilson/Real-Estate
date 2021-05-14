@@ -161,6 +161,7 @@ class Listings extends Component {
     return (
       <section id="listings">
         <section className="search-area">
+          <button className="filter-btn" onClick={this.props.showFilter }>F</button>
           <input type="text" name="search" onChange={this.props.change} />
         </section>
         <section className="sortby-area">

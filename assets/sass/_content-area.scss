@@ -3,6 +3,7 @@
   overflow: auto;
   width: 100%;
   display: flex;
+  // display: none;
   // height: calc(100vh - 56px);
 }
 
@@ -405,7 +406,8 @@
           text-align: end;
         }
         &__availability {
-          background: #ff718e;
+          // background: #ff718e;
+          background: $pink;
           padding: 7px 15px;
           text-align: center;
           color: #ffffff;
@@ -474,4 +476,37 @@
       text-decoration: none;
     }
   }
+}
+
+/* Tablet Responsive */
+@media (max-width: 991px) {
+  #content-area {
+    min-width: auto;
+
+    #filter {
+      // display: none;
+      position: fixed;
+      z-index: 21;
+      width: 100vw;
+      max-width: 100vw;
+      top: 0;
+      left: 0;
+      .inside {
+        overflow: scroll;
+        height: 100vh;
+      }
+    }
+
+    #listings {
+      width: auto;
+    }
+  }
+}
+
+/* Large-Phones Responsive */
+@media (min-width: 576px) and (max-width: 767px) {
+}
+
+/* Small-Phones Responsive */
+@media (min-width: 1px) and (max-width: 575px) {
 }
