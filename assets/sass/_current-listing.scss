@@ -1,10 +1,10 @@
 .current__listing {
-  width: 79%;
+  // width: 79%;
   // width: 100%;
   overflow: hidden;
   background: $offWhite;
   &__info {
-    min-height: 58vh;
+    // min-height: 58vh;
     display: flex;
   }
   // Current Image section
@@ -14,7 +14,7 @@
     .image__main {
       background: grey;
       border-radius: 5px;
-      height: 300px;
+      height: 450px;
       margin-bottom: 25px;
     }
     .image__sub {
@@ -23,7 +23,7 @@
       &__option {
         // display: inline-block;
         width: 32%;
-        height: 100px;
+        height: 150px;
         background: green;
 
         border-radius: 5px;
@@ -121,4 +121,55 @@
       }
     }
   }
+}
+
+/* laptop size Responsive */
+@media (max-width: 1440px) {
+  .current__listing {
+    &__info {
+      display: flex;
+    }
+    // Current Image section
+    &__images {
+      .image__main {
+        height: 300px;
+      }
+      .image__sub {
+        &__option {
+          height: 100px;
+        }
+      }
+    }
+  }
+}
+
+/* Tablet Responsive */
+@media (max-width: 991px) {
+}
+
+/* Large-Phones Responsive */
+@media (max-width: 767px) {
+  .current__listing {
+    width: 100%;
+    &__info {
+      flex-direction: column;
+      padding: 20px;
+    }
+    &__images {
+      width: 100%;
+      .image__main {
+        height: 250px;
+      }
+      .image__sub__option {
+        height: 84px;
+      }
+    }
+    &__details {
+      width: 100%;
+    }
+  }
+}
+
+/* Small-Phones Responsive */
+@media (min-width: 1px) and (max-width: 575px) {
 }

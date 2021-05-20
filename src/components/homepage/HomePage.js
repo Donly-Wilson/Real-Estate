@@ -8,6 +8,7 @@ import Listings from "./Listings";
 import listingData from "./data/listingData";
 import {Route, Switch, withRouter } from 'react-router-dom';
 import ListingDetails from "../listingdetails/ListingDetails";
+// import { FALSE } from "node-sass";
 
 class HomePage extends Component {
   constructor(props) {
@@ -52,19 +53,20 @@ class HomePage extends Component {
     });
 
     //Checks to see if windows is desktop or tablet and display filter accordingly
-    window.addEventListener('resize', function resizeScreen(){
-      let windowWidth = window.innerWidth;
-      
-      if (windowWidth > 991){
-        this.setState({ 
-          showFilter: true,
-        });
-      }else{
-        this.setState({ 
-          showFilter: false,
-        });
-      }
-    }.bind(this));
+  window.addEventListener('resize', function resizeScreen(){
+    let windowWidth = window.innerWidth;
+    
+    if (windowWidth > 991 || this.state.showFilter === true){
+      this.setState({ 
+        showFilter: true,
+      });
+    }
+      if(windowWidth < 991){
+      this.setState({ 
+        showFilter: false,
+      });
+    }
+  }.bind(this));
   }
 
   change(event) {
@@ -213,6 +215,7 @@ class HomePage extends Component {
     );
   }
 
+  //Function to toggle 'showFilter' state to 'true' or 'false'
   toggleShowFilter(){
     this.setState((prevState)=>{
       return {showFilter: !prevState.showFilter};
@@ -226,19 +229,20 @@ class HomePage extends Component {
       <div>
         {" "}
         <section id="content-area">
-          {this.state.showFilter && <Filter
+          {<Filter
             change={this.change}
             globalState={this.state}
             populateAction={this.populateForms}
+            showFilter={this.toggleShowFilter} 
             />}
           <Switch>
             <Route path={ match.url} exact={true}>
               <Listings
                 globalState={this.state}
                 listingData={this.state.filteredData}
-                showFilter={this.toggleShowFilter} 
                 change={this.change}
                 changeView={this.changeView}
+                showFilter={this.toggleShowFilter} 
               />
             </Route>
 

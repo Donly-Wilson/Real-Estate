@@ -9,6 +9,7 @@ export default class Filter extends Component {
     this.cities = this.cities.bind(this);
     this.homeTypes = this.homeTypes.bind(this);
     this.bedrooms = this.bedrooms.bind(this);
+    this.scrollAndCloseFilter = this.scrollAndCloseFilter.bind(this);
   }
 
   componentWillMount() {
@@ -55,6 +56,15 @@ export default class Filter extends Component {
       });
     }
   }
+
+  //This function closes filter and resets scroll position to top
+  scrollAndCloseFilter(){
+    let filterSection = document.querySelector('#filter');
+    //prop called to close filter
+    this.props.showFilter.call(this);
+    //function to push element to top after closing
+    filterSection.scrollTo(0,0);
+  }
   // bathrooms() {
   //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
   //     var { bedrooms } = this.props.globalState.populateFormsData;
@@ -71,7 +81,7 @@ export default class Filter extends Component {
 
   render() {
     return (
-      <section id="filter">
+      <section id="filter" style={{display: this.props.globalState.showFilter ? 'block' : 'none' }}>
         <div className="inside">
           <h4>Filter</h4>
           <label htmlFor="city">City</label>
@@ -185,6 +195,10 @@ export default class Filter extends Component {
                 onChange={this.props.change}
               />
             </label>
+          </div>
+          <div className="filter__footer">
+            <button className="filter__footer__reset-btn">Reset</button>
+            <button className="filter__footer__done-btn" onClick={this.scrollAndCloseFilter}>Done</button>
           </div>
         </div>
       </section>

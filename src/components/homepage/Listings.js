@@ -7,7 +7,7 @@ class Listings extends Component {
     super();
     this.state = {
       currentPage: 1,
-      postPerPage: 8,
+      postPerPage: 9,
     };
     this.loopListing = this.loopListing.bind(this);
     this.paginate = this.paginate.bind(this);
@@ -161,7 +161,9 @@ class Listings extends Component {
     return (
       <section id="listings">
         <section className="search-area">
-          <button className="filter-btn" onClick={this.props.showFilter }>F</button>
+          <button className="filter-btn" onClick={this.props.showFilter }>
+            <i className="fa fa-sliders" aria-hidden="true"></i>
+          </button>
           <input type="text" name="search" onChange={this.props.change} />
         </section>
         <section className="sortby-area">

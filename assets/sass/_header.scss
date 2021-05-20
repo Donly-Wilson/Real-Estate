@@ -38,12 +38,14 @@ header {
       display: none;
     }
     .logo {
+      display: none;
       float: left;
       color: #ffffff;
     }
     nav {
       float: right;
       a {
+        display: none;
         color: #ffffff;
         font-size: 0.9rem;
         font-weight: 300;
@@ -65,7 +67,6 @@ header {
     left: 0;
     z-index: 20;
     padding: 20px;
-    // display: none;
     .logo {
       font-size: 2rem;
       text-align: center;
@@ -105,6 +106,15 @@ header {
         margin-right: 15px;
         cursor: pointer;
       }
+      .logo {
+        display: block;
+      }
+      nav {
+        a {
+          display: block;
+          padding: 2px 20px;
+        }
+      }
       &__menu {
         // display: none;
         .fa-times {
@@ -113,14 +123,6 @@ header {
         .logo {
           float: none;
         }
-      }
-    }
-  }
-  #listings {
-    .search-area {
-      .filter-btn {
-        margin-right: 15px;
-        padding: 10px 15px;
       }
     }
   }

@@ -1,6 +1,6 @@
 #content-area {
-  min-width: 100vh;
-  overflow: auto;
+  // min-width: 100vh;
+  // overflow: auto;
   width: 100%;
   display: flex;
   // display: none;
@@ -11,8 +11,9 @@
   // background: $grey;
   background: #fff;
   float: left;
-  max-width: 300px;
-  width: 21%;
+  // max-width: 300px;
+  // width: 21%;
+  min-width: 21%;
 
   .inside {
     padding: 20px;
@@ -99,16 +100,31 @@
       }
     }
   }
+  .filter__footer {
+    display: none;
+  }
 }
 
 #listings {
   //   display: inline-block;
   float: left;
   padding: 15px;
-  width: 79%;
+  width: 100%;
   background: $offWhite;
 }
 .search-area {
+  .filter-btn {
+    display: none;
+    background: none;
+    color: #7a7b7f;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    &:hover {
+      color: $pink;
+    }
+  }
   input[type="text"] {
     background-color: transparent;
     border: none;
@@ -158,7 +174,7 @@
 }
 
 .listings-results {
-  height: 620px;
+  min-height: 620px;
   margin-bottom: 60px;
   margin-top: 50px;
 }
@@ -491,20 +507,92 @@
       max-width: 100vw;
       top: 0;
       left: 0;
-      .inside {
-        overflow: scroll;
-        height: 100vh;
+      overflow: scroll;
+      height: 100vh;
+      // .inside {
+      //   overflow: scroll;
+      //   height: 100vh;
+      // }
+      .filter__footer {
+        display: block;
       }
     }
 
     #listings {
       width: auto;
+      .search-area {
+        .filter-btn {
+          border: none;
+          display: inline;
+        }
+      }
+    }
+  }
+
+  #listing__long__view {
+    .bottom-info {
+      .listing__details__bottom {
+        .floor__area {
+          &__bed {
+            margin-right: 4px;
+          }
+          &__bath {
+            margin-right: 4px;
+            margin-left: 4px;
+          }
+          &__squarefoot {
+            margin-right: 4px;
+            margin-left: 4px;
+          }
+        }
+        .house__details {
+          &__parking-area {
+            margin-right: 40px;
+          }
+        }
+      }
     }
   }
 }
 
 /* Large-Phones Responsive */
-@media (min-width: 576px) and (max-width: 767px) {
+@media (max-width: 767px) {
+  #listing__long__view {
+    a {
+      flex-direction: column;
+      .listing-img {
+        min-height: 150px;
+      }
+    }
+
+    .bottom-info {
+      .listing__details__top {
+        .house__info {
+          &__location {
+            font-size: 1rem;
+          }
+          &__type {
+            padding: 5px 5px;
+            font-size: 13px;
+            align-self: flex-start;
+            margin-top: -4px;
+          }
+          &__availability {
+            padding: 4px 10px;
+            font-size: 13px;
+          }
+          &__price {
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      .listing__details__bottom {
+        align-items: center;
+        flex-direction: column-reverse;
+      }
+    }
+  }
 }
 
 /* Small-Phones Responsive */

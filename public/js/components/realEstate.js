@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 235:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16,11 +16,11 @@ var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _MobileNavigation = __webpack_require__(242);
+var _MobileNavigation = __webpack_require__(244);
 
 var _MobileNavigation2 = _interopRequireDefault(_MobileNavigation);
 
-var _Navigation = __webpack_require__(243);
+var _Navigation = __webpack_require__(245);
 
 var _Navigation2 = _interopRequireDefault(_Navigation);
 
@@ -63,7 +63,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 236:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -117,7 +117,7 @@ exports.default = CreateAds;
 
 /***/ }),
 
-/***/ 237:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -135,21 +135,21 @@ var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Filter = __webpack_require__(244);
+var _Filter = __webpack_require__(246);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _Listings = __webpack_require__(245);
+var _Listings = __webpack_require__(247);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _listingData = __webpack_require__(247);
+var _listingData = __webpack_require__(249);
 
 var _listingData2 = _interopRequireDefault(_listingData);
 
-var _reactRouterDom = __webpack_require__(61);
+var _reactRouterDom = __webpack_require__(60);
 
-var _ListingDetails = __webpack_require__(248);
+var _ListingDetails = __webpack_require__(250);
 
 var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
 
@@ -168,6 +168,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // import ReactDOM from "react-dom";
 // import Header from "./Header";
 
+
+// import { FALSE } from "node-sass";
 
 var HomePage = function (_Component) {
   _inherits(HomePage, _Component);
@@ -223,11 +225,12 @@ var HomePage = function (_Component) {
       window.addEventListener('resize', function resizeScreen() {
         var windowWidth = window.innerWidth;
 
-        if (windowWidth > 991) {
+        if (windowWidth > 991 || this.state.showFilter === true) {
           this.setState({
             showFilter: true
           });
-        } else {
+        }
+        if (windowWidth < 991) {
           this.setState({
             showFilter: false
           });
@@ -372,6 +375,9 @@ var HomePage = function (_Component) {
         // () => console.log(this.state)
       });
     }
+
+    //Function to toggle 'showFilter' state to 'true' or 'false'
+
   }, {
     key: "toggleShowFilter",
     value: function toggleShowFilter() {
@@ -394,10 +400,11 @@ var HomePage = function (_Component) {
         _react2.default.createElement(
           "section",
           { id: "content-area" },
-          this.state.showFilter && _react2.default.createElement(_Filter2.default, {
+          _react2.default.createElement(_Filter2.default, {
             change: this.change,
             globalState: this.state,
-            populateAction: this.populateForms
+            populateAction: this.populateForms,
+            showFilter: this.toggleShowFilter
           }),
           _react2.default.createElement(
             _reactRouterDom.Switch,
@@ -408,9 +415,9 @@ var HomePage = function (_Component) {
               _react2.default.createElement(_Listings2.default, {
                 globalState: this.state,
                 listingData: this.state.filteredData,
-                showFilter: this.toggleShowFilter,
                 change: this.change,
-                changeView: this.changeView
+                changeView: this.changeView,
+                showFilter: this.toggleShowFilter
               })
             ),
             _react2.default.createElement(_reactRouterDom.Route, { path: match.url + "/listing/:id", exact: true
@@ -435,7 +442,7 @@ exports.default = (0, _reactRouterDom.withRouter)(HomePage);
 
 /***/ }),
 
-/***/ 241:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -447,21 +454,21 @@ var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(107);
+var _reactDom = __webpack_require__(106);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(61);
+var _reactRouterDom = __webpack_require__(60);
 
-var _Header = __webpack_require__(235);
+var _Header = __webpack_require__(236);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _HomePage = __webpack_require__(237);
+var _HomePage = __webpack_require__(238);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _CreateAds = __webpack_require__(236);
+var _CreateAds = __webpack_require__(237);
 
 var _CreateAds2 = _interopRequireDefault(_CreateAds);
 
@@ -522,7 +529,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), app);
 
 /***/ }),
 
-/***/ 242:
+/***/ 244:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -538,7 +545,7 @@ var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(61);
+var _reactRouterDom = __webpack_require__(60);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -676,7 +683,7 @@ exports.default = mobileNavigation;
 
 /***/ }),
 
-/***/ 243:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -691,7 +698,7 @@ var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(61);
+var _reactRouterDom = __webpack_require__(60);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -737,7 +744,7 @@ function Navigation() {
 
 /***/ }),
 
-/***/ 244:
+/***/ 246:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -775,6 +782,7 @@ var Filter = function (_Component) {
     _this.cities = _this.cities.bind(_this);
     _this.homeTypes = _this.homeTypes.bind(_this);
     _this.bedrooms = _this.bedrooms.bind(_this);
+    _this.scrollAndCloseFilter = _this.scrollAndCloseFilter.bind(_this);
     return _this;
   }
 
@@ -833,6 +841,18 @@ var Filter = function (_Component) {
         });
       }
     }
+
+    //This function closes filter and resets scroll position to top
+
+  }, {
+    key: "scrollAndCloseFilter",
+    value: function scrollAndCloseFilter() {
+      var filterSection = document.querySelector('#filter');
+      //prop called to close filter
+      this.props.showFilter.call(this);
+      //function to push element to top after closing
+      filterSection.scrollTo(0, 0);
+    }
     // bathrooms() {
     //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
     //     var { bedrooms } = this.props.globalState.populateFormsData;
@@ -852,7 +872,7 @@ var Filter = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         "section",
-        { id: "filter" },
+        { id: "filter", style: { display: this.props.globalState.showFilter ? 'block' : 'none' } },
         _react2.default.createElement(
           "div",
           { className: "inside" },
@@ -1066,6 +1086,20 @@ var Filter = function (_Component) {
                 onChange: this.props.change
               })
             )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "filter__footer" },
+            _react2.default.createElement(
+              "button",
+              { className: "filter__footer__reset-btn" },
+              "Reset"
+            ),
+            _react2.default.createElement(
+              "button",
+              { className: "filter__footer__done-btn", onClick: this.scrollAndCloseFilter },
+              "Done"
+            )
           )
         )
       );
@@ -1079,7 +1113,7 @@ exports.default = Filter;
 
 /***/ }),
 
-/***/ 245:
+/***/ 247:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1095,11 +1129,11 @@ var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Pagination = __webpack_require__(246);
+var _Pagination = __webpack_require__(248);
 
 var _Pagination2 = _interopRequireDefault(_Pagination);
 
-var _reactRouterDom = __webpack_require__(61);
+var _reactRouterDom = __webpack_require__(60);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1119,7 +1153,7 @@ var Listings = function (_Component) {
 
     _this.state = {
       currentPage: 1,
-      postPerPage: 8
+      postPerPage: 9
     };
     _this.loopListing = _this.loopListing.bind(_this);
     _this.paginate = _this.paginate.bind(_this);
@@ -1435,7 +1469,7 @@ var Listings = function (_Component) {
           _react2.default.createElement(
             "button",
             { className: "filter-btn", onClick: this.props.showFilter },
-            "F"
+            _react2.default.createElement("i", { className: "fa fa-sliders", "aria-hidden": "true" })
           ),
           _react2.default.createElement("input", { type: "text", name: "search", onChange: this.props.change })
         ),
@@ -1510,7 +1544,7 @@ exports.default = (0, _reactRouterDom.withRouter)(Listings);
 
 /***/ }),
 
-/***/ 246:
+/***/ 248:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1526,7 +1560,7 @@ var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _immutabilityHelper = __webpack_require__(464);
+var _immutabilityHelper = __webpack_require__(467);
 
 var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -1646,7 +1680,7 @@ exports.default = Pagination;
 
 /***/ }),
 
-/***/ 247:
+/***/ 249:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1771,7 +1805,7 @@ exports.default = listingData;
 
 /***/ }),
 
-/***/ 248:
+/***/ 250:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1787,7 +1821,7 @@ var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(61);
+var _reactRouterDom = __webpack_require__(60);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2198,4 +2232,4 @@ exports.default = (0, _reactRouterDom.withRouter)(ListingDetails);
 
 /***/ })
 
-},[241]);
+},[243]);
