@@ -199,7 +199,7 @@ var HomePage = function (_Component) {
       sortby: "price-dsc",
       view: "box",
       search: "",
-      showFilter: true
+      showFilter: window.innerWidth > 991 ? true : _this.generateFilter()
     };
     _this.change = _this.change.bind(_this);
     _this.filteredData = _this.filteredData.bind(_this);
@@ -221,18 +221,25 @@ var HomePage = function (_Component) {
         listingData: listingData
       });
 
+      // this.generateFilter();
+    }
+  }, {
+    key: "generateFilter",
+    value: function generateFilter() {
+      var windowWidth = window.innerWidth;
+      console.log(windowWidth);
+
       //Checks to see if windows is desktop or tablet and display filter accordingly
       window.addEventListener('resize', function resizeScreen() {
-        var windowWidth = window.innerWidth;
-
-        if (windowWidth > 991 || this.state.showFilter === true) {
-          this.setState({
-            showFilter: true
-          });
-        }
+        windowWidth = window.innerWidth;
+        console.log(windowWidth);
         if (windowWidth < 991) {
           this.setState({
             showFilter: false
+          });
+        } else if (windowWidth > 991) {
+          this.setState({
+            showFilter: true
           });
         }
       }.bind(this));
@@ -600,6 +607,7 @@ var mobileNavigation = function (_Component) {
                     _react2.default.createElement(
                         "div",
                         { className: "logo" },
+                        _react2.default.createElement("img", { className: "logo__icon", src: "../../img/address.svg" }),
                         "M\xE1s Casas"
                     )
                 ),
@@ -628,6 +636,7 @@ var mobileNavigation = function (_Component) {
                         _react2.default.createElement(
                             _reactRouterDom.Link,
                             { to: "/" },
+                            _react2.default.createElement("img", { className: "logo__icon", src: "../../img/address.svg" }),
                             "M\xE1s Casas"
                         )
                     ),
@@ -712,6 +721,7 @@ function Navigation() {
             _react2.default.createElement(
                 'div',
                 { className: 'logo' },
+                _react2.default.createElement('img', { className: 'logo__icon', src: '../../img/address.svg' }),
                 'M\xE1s Casas'
             )
         ),

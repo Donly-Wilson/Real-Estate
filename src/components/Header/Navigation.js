@@ -6,7 +6,8 @@ export default function Navigation() {
             <section className="navigation">
             <Link to="/">
                 <div className="logo">
-                Más Casas
+                    <img className="logo__icon" src="../../img/address.svg"></img>
+                    Más Casas
                 </div>
             </Link>
             <nav>

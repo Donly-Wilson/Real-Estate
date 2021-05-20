@@ -7,10 +7,16 @@ header {
     .logo {
       float: left;
       color: #ffffff;
+      font-size: 20px;
+      &__icon {
+        width: 24px;
+        filter: invert(1);
+        margin-right: 5px;
+      }
     }
-
     nav {
       float: right;
+      display: flex;
       a {
         color: #ffffff;
         font-size: 0.9rem;
@@ -23,7 +29,7 @@ header {
         }
         &.register-btn {
           background: $pink;
-          padding: 7px 25px;
+          padding: 10px 25px;
           text-align: center;
           color: #ffffff;
           border-radius: 5px;
@@ -41,6 +47,12 @@ header {
       display: none;
       float: left;
       color: #ffffff;
+      font-size: 20px;
+      &__icon {
+        width: 24px;
+        filter: invert(1);
+        margin-right: 5px;
+      }
     }
     nav {
       float: right;
@@ -68,8 +80,13 @@ header {
     z-index: 20;
     padding: 20px;
     .logo {
-      font-size: 2rem;
+      font-size: 1.8rem;
       text-align: center;
+      &__icon {
+        width: 24px;
+        filter: invert(1);
+        margin-right: 5px;
+      }
       a {
         color: #fff;
         text-decoration: none;
@@ -112,7 +129,6 @@ header {
       nav {
         a {
           display: block;
-          padding: 2px 20px;
         }
       }
       &__menu {

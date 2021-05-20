@@ -33,7 +33,7 @@ class HomePage extends Component {
       sortby: "price-dsc",
       view: "box",
       search: "",
-      showFilter: true,
+      showFilter: window.innerWidth > 991 ? true : this.generateFilter(),
     };
     this.change = this.change.bind(this);
     this.filteredData = this.filteredData.bind(this);
@@ -52,22 +52,27 @@ class HomePage extends Component {
       listingData,
     });
 
-    //Checks to see if windows is desktop or tablet and display filter accordingly
-  window.addEventListener('resize', function resizeScreen(){
+    // this.generateFilter();
+  }
+  generateFilter(){
     let windowWidth = window.innerWidth;
+    console.log(windowWidth);
     
-    if (windowWidth > 991 || this.state.showFilter === true){
+    //Checks to see if windows is desktop or tablet and display filter accordingly
+    window.addEventListener('resize', function resizeScreen(){
+    windowWidth = window.innerWidth;
+    console.log(windowWidth);
+    if(windowWidth < 991){
+      this.setState({ 
+        showFilter: false,
+      });
+    }else if (windowWidth > 991){
       this.setState({ 
         showFilter: true,
       });
     }
-      if(windowWidth < 991){
-      this.setState({ 
-        showFilter: false,
-      });
-    }
   }.bind(this));
-  }
+}
 
   change(event) {
     var name = event.target.name;

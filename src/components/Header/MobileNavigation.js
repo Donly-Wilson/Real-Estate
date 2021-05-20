@@ -24,9 +24,10 @@ export default class mobileNavigation extends Component {
                     <i className="fa fa-bars" aria-hidden="true"></i>
                 </div>
                 <Link to="/">
-                    <div className="logo">
+                <div className="logo">
+                    <img className="logo__icon" src="../../img/address.svg"></img>
                     Más Casas
-                    </div>
+                </div>
                 </Link>
                 <nav>
                     <a href="#" className="login">Log In</a>
@@ -38,6 +39,7 @@ export default class mobileNavigation extends Component {
                     </div>
                     <div className="logo">
                         <Link to="/">
+                            <img className="logo__icon" src="../../img/address.svg"></img>
                             Más Casas
                         </Link>
                     </div>
