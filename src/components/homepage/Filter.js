@@ -64,6 +64,7 @@ export default class Filter extends Component {
     this.props.showFilter.call(this);
     //function to push element to top after closing
     filterSection.scrollTo(0,0);
+    document.body.style.overflow = "auto";
   }
   // bathrooms() {
   //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {

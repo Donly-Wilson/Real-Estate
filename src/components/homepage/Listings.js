@@ -11,6 +11,12 @@ class Listings extends Component {
     };
     this.loopListing = this.loopListing.bind(this);
     this.paginate = this.paginate.bind(this);
+    this.openFilter = this.openFilter.bind(this);
+  }
+
+  openFilter(){
+    this.props.showFilter.call(this);
+    document.body.style.overflow = "hidden";
   }
 
   paginate(pageNumber) {
@@ -161,7 +167,7 @@ class Listings extends Component {
     return (
       <section id="listings">
         <section className="search-area">
-          <button className="filter-btn" onClick={this.props.showFilter }>
+          <button className="filter-btn" onClick={this.openFilter}>
             <i className="fa fa-sliders" aria-hidden="true"></i>
           </button>
           <input type="text" name="search" onChange={this.props.change} />

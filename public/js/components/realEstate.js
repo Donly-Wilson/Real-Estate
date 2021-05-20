@@ -852,6 +852,7 @@ var Filter = function (_Component) {
       this.props.showFilter.call(this);
       //function to push element to top after closing
       filterSection.scrollTo(0, 0);
+      document.body.style.overflow = "auto";
     }
     // bathrooms() {
     //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
@@ -1157,10 +1158,17 @@ var Listings = function (_Component) {
     };
     _this.loopListing = _this.loopListing.bind(_this);
     _this.paginate = _this.paginate.bind(_this);
+    _this.openFilter = _this.openFilter.bind(_this);
     return _this;
   }
 
   _createClass(Listings, [{
+    key: "openFilter",
+    value: function openFilter() {
+      this.props.showFilter.call(this);
+      document.body.style.overflow = "hidden";
+    }
+  }, {
     key: "paginate",
     value: function paginate(pageNumber) {
       this.setState({ currentPage: pageNumber });
@@ -1468,7 +1476,7 @@ var Listings = function (_Component) {
           { className: "search-area" },
           _react2.default.createElement(
             "button",
-            { className: "filter-btn", onClick: this.props.showFilter },
+            { className: "filter-btn", onClick: this.openFilter },
             _react2.default.createElement("i", { className: "fa fa-sliders", "aria-hidden": "true" })
           ),
           _react2.default.createElement("input", { type: "text", name: "search", onChange: this.props.change })
