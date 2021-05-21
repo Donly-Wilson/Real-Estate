@@ -501,11 +501,11 @@
 
     #filter {
       // display: none;
-      position: fixed;
+      position: absolute;
       z-index: 21;
       width: 100vw;
       max-width: 100vw;
-      max-height: 9999px !important;
+      // max-height: 9999px !important;
       top: 0;
       left: 0;
       overflow: scroll;
