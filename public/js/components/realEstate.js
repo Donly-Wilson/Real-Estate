@@ -220,27 +220,26 @@ var HomePage = function (_Component) {
       this.setState({
         listingData: listingData
       });
-
-      // this.generateFilter();
     }
   }, {
     key: "generateFilter",
     value: function generateFilter() {
       var windowWidth = window.innerWidth;
-      console.log(windowWidth);
-
-      //Checks to see if windows is desktop or tablet and display filter accordingly
+      //Checks if windows size is desktop or tablet and display filter accordingly
       window.addEventListener('resize', function resizeScreen() {
-        windowWidth = window.innerWidth;
-        console.log(windowWidth);
-        if (windowWidth < 991) {
-          this.setState({
-            showFilter: false
-          });
-        } else if (windowWidth > 991) {
-          this.setState({
-            showFilter: true
-          });
+        //This ignores height, only resize on width change
+        if (window.innerWidth != windowWidth) {
+
+          windowWidth = window.innerWidth;
+          if (windowWidth < 991) {
+            this.setState({
+              showFilter: false
+            });
+          } else if (windowWidth > 991) {
+            this.setState({
+              showFilter: true
+            });
+          }
         }
       }.bind(this));
     }
