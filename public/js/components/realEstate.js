@@ -231,13 +231,14 @@ var HomePage = function (_Component) {
         if (window.innerWidth != windowWidth) {
 
           windowWidth = window.innerWidth;
-          if (windowWidth < 991) {
-            this.setState({
-              showFilter: false
-            });
-          } else if (windowWidth > 991) {
+          if (windowWidth > 991) {
             this.setState({
               showFilter: true
+            });
+            document.body.style.overflow = "auto";
+          } else if (windowWidth < 991) {
+            this.setState({
+              showFilter: false
             });
           }
         }
