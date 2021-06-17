@@ -1,8 +1,9 @@
 header {
-  background: #0c002b;
+  // background: #0c002b;
+  background: rgba(78, 2, 229, 0.8);
   color: #ffffff;
   overflow: auto;
-  padding: 20px 15px;
+  padding: 15px 15px;
   .navigation {
     .logo {
       float: left;
@@ -24,15 +25,25 @@ header {
         padding: 10px 20px;
         text-decoration: none;
         text-transform: capitalize;
+        transition: all 0.2s ease-in-out;
         &:hover {
-          color: $pink;
+          // color: $pink;
+          border-radius: 5px;
+          background-color: hsla(0, 0%, 80%, 0.4);
         }
         &.register-btn {
-          background: $pink;
+          // background: $pink;
+          background-color: hsla(0, 0%, 100%, 1);
+          color: $customBlack;
+          font-weight: 500;
           padding: 10px 25px;
           text-align: center;
-          color: #ffffff;
           border-radius: 5px;
+          margin-left: 10px;
+          // transition: all 0.2s ease-in-out;
+          &:hover {
+            color: #f95a47;
+          }
         }
       }
     }
