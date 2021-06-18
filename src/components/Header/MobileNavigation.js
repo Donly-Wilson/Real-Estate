@@ -30,7 +30,9 @@ export default class mobileNavigation extends Component {
                 </div>
                 </Link>
                 <nav>
-                    <a href="#" className="login">Log In</a>
+                <Link to="/homes" className="homes">
+                    Homes
+                </Link>
                 </nav>
                 {/* the below will be displayed if "openMenu" and div is true(div is always true) */}
                 {this.state.openMenu && <div className="mobileNav__menu">
@@ -50,7 +52,7 @@ export default class mobileNavigation extends Component {
                         <li><Link to="/aboutus">
                         About us
                         </Link></li>
-                        <li><a href="#">Log In</a></li>
+                        <li><Link to="/homes" className="homes">Homes</Link></li>
                         <li><a href="#" className="register-btn">
                         Register
                         </a></li>
