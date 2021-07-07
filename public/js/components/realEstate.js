@@ -948,7 +948,9 @@ var mobileNavigation = function (_Component) {
                         ),
                         _react2.default.createElement(
                             "li",
-                            null,
+                            { onClick: function onClick() {
+                                    return _this2.toggleMenu();
+                                } },
                             _react2.default.createElement(
                                 _reactRouterDom.Link,
                                 { to: "/homes", className: "homes" },

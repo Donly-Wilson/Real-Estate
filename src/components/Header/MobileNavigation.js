@@ -46,13 +46,13 @@ export default class mobileNavigation extends Component {
                         </Link>
                     </div>
                     <ul className="mobileNav__menu__nav">
-                        <li><Link to="#">
+                        <li ><Link to="#">
                         Create Ads
                         </Link></li>
                         <li><Link to="#">
                         About us
                         </Link></li>
-                        <li><Link to="/homes" className="homes">Homes</Link></li>
+                        <li onClick={() => this.toggleMenu()}><Link to="/homes" className="homes">Homes</Link></li>
                         <li><a href="#" className="register-btn">
                         Register
                         </a></li>
