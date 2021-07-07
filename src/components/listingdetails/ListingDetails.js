@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter} from 'react-router-dom';
+import ReactCSSTransitionReplace from 'react-css-transition-replace';
+
 
 class ListingDetails extends Component {
   constructor(props) {
@@ -7,6 +9,7 @@ class ListingDetails extends Component {
     this.state = {
       listing:this.checkListingResult(),
       properties:this.props.listingData,
+      // isLoaded:false,
       // property:this.props.listingData[0],
       propertyIndexNumber:this.propertyID,
       sliderShift: 0
@@ -19,7 +22,7 @@ class ListingDetails extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    //call your listing api through link and update state with new props
+    //call your listing api through link and update state with new props/new data to displayed
     this.setState({
       listing: nextProps.location.state
     });
@@ -37,8 +40,14 @@ class ListingDetails extends Component {
 
  //Function that is ran when component starts
  initializeComponent(){
+  //Check if location state is not defined then assign it ':id' slug(This is fixes manually typing url)
+  if (this.props.location.state == undefined){
+    this.props.location.state = this.state.properties[this.props.match.params.id];
+  }
+
   // This sets state listing to location.state
     this.state.listing = this.props.location.state;
+    // this.state.listing = this.state.properties[this.props.match.params.id];
 
     //This sets the slider listing to width to the variable
     const listingCardWidth = document.querySelector('.col-md-4').clientWidth;
@@ -77,12 +86,17 @@ class ListingDetails extends Component {
             {/* </Link> */}
               <div
                 className="listing-img"
-                style={{
-                  background: `url("${listing.image}")
-                  no-repeat center center`,
-                  backgroundSize: 'cover'
-                }}
+                // style={{
+                //   background: `url("${listing.image}")
+                //   no-repeat center center`,
+                //   backgroundSize: 'cover'
+                // }}
               >
+                <picture>
+                        <source srcSet={`${listing.thumbnailImg.webp}`} type="image/webp"/>
+                        <source srcSet="../../img/home-display1.png" type="image/png"/> 
+                        <img src="../../img/home-display2.png" alt="apartment"/>
+                </picture>
                 <span className="furnished">Furnished</span>
                 <div className="details">
                   <div className="user__img">
@@ -140,33 +154,53 @@ class ListingDetails extends Component {
 
 
   render() {  
-  // const imageUrl = './img/home-details.png';
+  // console.log(this.state.properties[this.props.match.params.id]);
+  // console.log(this.props.location);
+  // console.log(this.state.listing.detailImg[0].webp);
+  // console.log(this.props.listingData[this.props.match.params.id]);
   
   return (
     <section className="current__listing">
-        <div className="current__listing__info">
+        <ReactCSSTransitionReplace transitionName="fade-wait"
+                           transitionEnterTimeout={700} transitionLeaveTimeout={300}>
+        <div className="current__listing__info" key={this.state.listing.id}>
           <div className="current__listing__images">
-            <div className="image__main" style={{
-                  background: `url('../../img/home-display1.png')
-          no-repeat center center`,
-          backgroundSize: 'cover'
-                }}></div>
+            <div className="image__main" 
+            // style={{
+            //       background: `url('../../img/home-display1.png')
+            //       no-repeat center center`,
+            //       backgroundSize: 'cover'
+            //     }}
+                >
+                  <picture>
+                        <source srcSet={`${this.state.listing.detailImg[0].webp}`} type="image/webp"/>
+                        <source srcSet="../../img/home-display1.png" type="image/png"/> 
+                        <img src="../../img/home-display2.png" alt="apartment"/>
+                </picture>
+                </div>
             <div className="image__sub">
-              <div className="image__sub__option" style={{
-                  background: `url('../../img/home-display2.png')
-          no-repeat center center`,
-          backgroundSize: 'cover'
-                }}></div>
-              <div className="image__sub__option" style={{
-                  background: `url('../../img/home-display3.png')
-          no-repeat center center`,
-          backgroundSize: 'cover'
-                }}></div>
-              <div className="image__sub__option" style={{
-                  background: `url('../../img/home-display4.png')
-          no-repeat center center`,
-          backgroundSize: 'cover'
-                }}></div>
+              <div className="image__sub__option" 
+                >
+                <picture>
+                        <source srcSet="/img/listingDetails/home-display2.webp" type="image/webp"/>
+                        <source srcSet="../../img/listingDetails/home-display2.jpg" type="image/jpeg"/> 
+                        <img src="../../img/listingDetails/home-display2.jpg" alt="house_display_2"/>
+                </picture>
+                </div>
+              <div className="image__sub__option">
+                  <picture>
+                        <source srcSet="/img/apartment.webp" type="image/webp"/>
+                        <source srcSet="../../img/home-display3.png" type="image/png"/> 
+                        <img src="../../img/home-display2.png" alt="apartment"/>
+                </picture>
+                </div>
+              <div className="image__sub__option">
+                  <picture>
+                        <source srcSet="/img/apartment.webp" type="image/webp"/>
+                        <source srcSet="../../img/home-display4.png" type="image/png"/> 
+                        <img src="../../img/home-display2.png" alt="apartment"/>
+                </picture>
+                </div>
             </div>
           </div>
           <div className="current__listing__details">
@@ -191,7 +225,7 @@ class ListingDetails extends Component {
             </div>
             <div className="details__description">
               <span className="details__description__title">Description</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus laudantium voluptas dolores magni, aliquam vitae reiciendis blanditiis quae velit, cum modi? Cum labore earum provident.</p>
+              <p>{this.state.listing.description}</p>
             </div>
             <div className="details__nearby">
               <span className="details__nearby__title">Close Locations</span>
@@ -210,6 +244,8 @@ class ListingDetails extends Component {
             </div>
           </div>
         </div>
+        </ReactCSSTransitionReplace>
+
         <div className="related">
           <span className="related__amount">64 Results</span>
           <button className="left-btn" value="previous_Property" onClick ={() => this.switchProperty("previous_Property")}

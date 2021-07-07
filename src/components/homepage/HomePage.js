@@ -7,6 +7,9 @@ import Filter from "./Filter";
 import Listings from "./Listings";
 import listingData from "./data/listingData";
 import {Route, Switch, withRouter } from 'react-router-dom';
+import {ReactCSSTransitionGroup} from  'react-transition-group'
+import {CSSTransition, TransitionGroup} from  'react-transition-group'
+import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import ListingDetails from "../listingdetails/ListingDetails";
 // import { FALSE } from "node-sass";
 
@@ -40,6 +43,7 @@ class HomePage extends Component {
     this.populateForms = this.populateForms.bind(this);
     this.changeView = this.changeView.bind(this);
     this.toggleShowFilter = this.toggleShowFilter.bind(this);
+    this.generateFilter = this.generateFilter.bind(this);
   }
 
   componentWillMount() {
@@ -51,6 +55,15 @@ class HomePage extends Component {
     this.setState({
       listingData,
     });
+
+    this.generateFilter()
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.generateFilter);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.generateFilter);
   }
 
   generateFilter(){
@@ -92,6 +105,7 @@ class HomePage extends Component {
     );
     console.log(event.target.name);
   }
+
   changeView(viewName) {
     this.setState({
       view: viewName,
@@ -230,6 +244,7 @@ class HomePage extends Component {
 
   render() {
     const {match} = this.props;
+    const {location} = this.props;
         // console.log(match);
     return (
       <div>
@@ -240,7 +255,15 @@ class HomePage extends Component {
             globalState={this.state}
             populateAction={this.populateForms}
             showFilter={this.toggleShowFilter} 
+            filterData={this.filteredData} 
             />}
+              {/* <ReactCSSTransitionReplace
+          transitionName="fade-wait"
+          transitionEnterTimeout={900}
+          transitionLeaveTimeout={300}
+          style={{minWidth:'79%'}}
+        >
+          <div key={location.pathname}> */}
           <Switch>
             <Route path={ match.url} exact={true}>
               <Listings
@@ -248,10 +271,10 @@ class HomePage extends Component {
                 listingData={this.state.filteredData}
                 change={this.change}
                 changeView={this.changeView}
+                currentView={this.state.view}
                 showFilter={this.toggleShowFilter} 
               />
             </Route>
-
             <Route path={`${match.url}/listing/:id`} exact={true}
             //This will remount the entire page instead of updating info(not recommended)
             render={props => <ListingDetails {...props} 
@@ -261,8 +284,9 @@ class HomePage extends Component {
               listingData={this.state.filteredData}
               /> */}
             </Route>
-
           </Switch>
+          {/* </div>
+          </ReactCSSTransitionReplace> */}
         </section>
       </div>
     );

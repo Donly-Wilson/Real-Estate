@@ -10,6 +10,7 @@ export default class Filter extends Component {
     this.homeTypes = this.homeTypes.bind(this);
     this.bedrooms = this.bedrooms.bind(this);
     this.scrollAndCloseFilter = this.scrollAndCloseFilter.bind(this);
+    this.resetFilter = this.resetFilter.bind(this);
   }
 
   componentWillMount() {
@@ -66,6 +67,41 @@ export default class Filter extends Component {
     filterSection.scrollTo(0,0);
     document.body.style.overflow = "auto";
   }
+
+  //This function resets filter to default values
+  resetFilter(){
+    //All input and selects avalible
+    const formInputs = document.querySelectorAll('select,input');
+
+    formInputs.forEach((element) => {
+      console.log(this)
+      let type = element.type;
+      let name = element.name;
+      let tag = element.tagName.toLowerCase(); // normalize case
+      // it's ok to reset the value attr of text inputs, 
+      // password inputs, and textareas
+      // type == 'text' is left out ignoring search the input
+      if (type == 'number' || type == 'password' || tag == 'textarea'){
+        element.defaultValue = element.dataset.originalValue;
+        this.props.globalState[name] = element.defaultValue;
+
+      // checkboxes and radios need to have their checked state cleared 
+      // but should *not* have their 'value' changed
+      }else if (type == 'checkbox' || type == 'radio'){
+        element.checked = false;
+        this.props.globalState[name] = element.checked
+
+      // select elements need to have their 'selectedIndex' property set to -1
+      // (this works for both single and multiple select elements)
+    }else if (tag == 'select'){
+      element.selectedIndex = 0;
+      this.props.globalState[name] = element.value
+      }
+    })
+      
+    // Rerender or Recall filter data after all value have been reset in "globalState"
+    this.props.filterData()
+  }
   // bathrooms() {
   //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
   //     var { bedrooms } = this.props.globalState.populateFormsData;
@@ -97,7 +133,7 @@ export default class Filter extends Component {
           <label htmlFor="homeType">Home Type</label>
           <select
             name="homeType"
-            className="filters homeType"
+            className="filters homeType threeRem"
             onChange={this.props.change}
           >
             <option value="All"> All Homes</option>
@@ -119,7 +155,7 @@ export default class Filter extends Component {
           <label htmlFor="bedrooms">Bedrooms</label>
           <select
             name="bedrooms"
-            className="filters bedrooms"
+            className="filters bedrooms threeRem"
             onChange={this.props.change}
           >
             {this.bedrooms()}
@@ -127,78 +163,142 @@ export default class Filter extends Component {
           <div className="filters price">
             <span className="title">Price</span>
             <input
-              type="text"
+              type="number"
               name="min_price"
               className="min-price"
               onChange={this.props.change}
               value={this.props.globalState.min_price}
+              data-original-value="0"
             />
             <input
-              type="text"
+              type="number"
               name="max_price"
               className="max-price"
               onChange={this.props.change}
               value={this.props.globalState.max_price}
+              data-original-value="10000000"
             />
           </div>
-          <div className="filters floor-space">
+          <div className="filters floor-space threeRem">
             <span className="title">Floor Space</span>
             <input
-              type="text"
+              type="number"
               name="min_floor_space"
               className="min-floor-space"
               onChange={this.props.change}
               value={this.props.globalState.min_floor_space}
+              data-original-value="0"
             />
             <input
-              type="text"
+              type="number"
               name="max_floor_space"
               className="max-floor-space"
               onChange={this.props.change}
               value={this.props.globalState.max_floor_space}
+              data-original-value="50000"
             />
           </div>
           <div className="filters extras">
             <span className="title">Extras</span>
-            <label htmlFor="extras">
-              <span>Elevators</span>
+            <label className="extras__checkbox__label">
+              Elevators
               <input
                 type="checkbox"
                 name="elevator"
                 value="elevator"
                 onChange={this.props.change}
               />
+                <span className="extras__custom__checkbox">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      d="M1.73 12.91l6.37 6.37L22.79 4.59"
+                    />
+                  </svg>
+                </span>
             </label>
-            <label htmlFor="extras">
-              <span>Swimming Pool</span>
+            <label className="extras__checkbox__label">
+              Swimming Pool
               <input
                 type="checkbox"
                 name="swimming_pool"
                 value="swimming_pool"
                 onChange={this.props.change}
               />
+              <span className="extras__custom__checkbox">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      d="M1.73 12.91l6.37 6.37L22.79 4.59"
+                    />
+                  </svg>
+                </span>
             </label>
-            <label htmlFor="extras">
-              <span>Finished Basement</span>
+            <label className="extras__checkbox__label">
+              Finished Basement
               <input
                 type="checkbox"
                 name="finished_basement"
                 value="finished_basement"
                 onChange={this.props.change}
               />
+              <span className="extras__custom__checkbox">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      d="M1.73 12.91l6.37 6.37L22.79 4.59"
+                    />
+                  </svg>
+                </span>
             </label>
-            <label htmlFor="extras">
-              <span>Gym</span>
+            <label className="extras__checkbox__label">
+              Gym
               <input
                 type="checkbox"
                 name="gym"
                 value="gym"
                 onChange={this.props.change}
               />
+              <span className="extras__custom__checkbox">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      d="M1.73 12.91l6.37 6.37L22.79 4.59"
+                    />
+                  </svg>
+                </span>
             </label>
           </div>
           <div className="filter__footer">
-            <button className="filter__footer__reset-btn">Reset</button>
+            <button className="filter__footer__reset-btn" onClick={this.resetFilter}>Reset</button>
             <button className="filter__footer__done-btn" onClick={this.scrollAndCloseFilter}>Done</button>
           </div>
         </div>

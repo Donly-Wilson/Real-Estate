@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 236:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12,15 +12,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _MobileNavigation = __webpack_require__(244);
+var _MobileNavigation = __webpack_require__(186);
 
 var _MobileNavigation2 = _interopRequireDefault(_MobileNavigation);
 
-var _Navigation = __webpack_require__(245);
+var _Navigation = __webpack_require__(187);
 
 var _Navigation2 = _interopRequireDefault(_Navigation);
 
@@ -63,7 +63,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 237:
+/***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75,7 +75,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -117,7 +117,7 @@ exports.default = CreateAds;
 
 /***/ }),
 
-/***/ 238:
+/***/ 180:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -131,25 +131,31 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Filter = __webpack_require__(246);
+var _Filter = __webpack_require__(188);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _Listings = __webpack_require__(247);
+var _Listings = __webpack_require__(189);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _listingData = __webpack_require__(249);
+var _listingData = __webpack_require__(191);
 
 var _listingData2 = _interopRequireDefault(_listingData);
 
-var _reactRouterDom = __webpack_require__(60);
+var _reactRouterDom = __webpack_require__(38);
 
-var _ListingDetails = __webpack_require__(250);
+var _reactTransitionGroup = __webpack_require__(446);
+
+var _reactCssTransitionReplace = __webpack_require__(110);
+
+var _reactCssTransitionReplace2 = _interopRequireDefault(_reactCssTransitionReplace);
+
+var _ListingDetails = __webpack_require__(192);
 
 var _ListingDetails2 = _interopRequireDefault(_ListingDetails);
 
@@ -206,6 +212,7 @@ var HomePage = function (_Component) {
     _this.populateForms = _this.populateForms.bind(_this);
     _this.changeView = _this.changeView.bind(_this);
     _this.toggleShowFilter = _this.toggleShowFilter.bind(_this);
+    _this.generateFilter = _this.generateFilter.bind(_this);
     return _this;
   }
 
@@ -220,6 +227,18 @@ var HomePage = function (_Component) {
       this.setState({
         listingData: listingData
       });
+
+      this.generateFilter();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.addEventListener("resize", this.generateFilter);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener("resize", this.generateFilter);
     }
   }, {
     key: "generateFilter",
@@ -398,6 +417,7 @@ var HomePage = function (_Component) {
       var _this4 = this;
 
       var match = this.props.match;
+      var location = this.props.location;
       // console.log(match);
 
       return _react2.default.createElement(
@@ -411,7 +431,8 @@ var HomePage = function (_Component) {
             change: this.change,
             globalState: this.state,
             populateAction: this.populateForms,
-            showFilter: this.toggleShowFilter
+            showFilter: this.toggleShowFilter,
+            filterData: this.filteredData
           }),
           _react2.default.createElement(
             _reactRouterDom.Switch,
@@ -424,6 +445,7 @@ var HomePage = function (_Component) {
                 listingData: this.state.filteredData,
                 change: this.change,
                 changeView: this.changeView,
+                currentView: this.state.view,
                 showFilter: this.toggleShowFilter
               })
             ),
@@ -449,7 +471,265 @@ exports.default = (0, _reactRouterDom.withRouter)(HomePage);
 
 /***/ }),
 
-/***/ 243:
+/***/ 181:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(38);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LandingPage = function (_Component) {
+    _inherits(LandingPage, _Component);
+
+    function LandingPage() {
+        _classCallCheck(this, LandingPage);
+
+        return _possibleConstructorReturn(this, (LandingPage.__proto__ || Object.getPrototypeOf(LandingPage)).apply(this, arguments));
+    }
+
+    _createClass(LandingPage, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'jumbo' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'jumbo__background' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'jumbo__background__image' },
+                        _react2.default.createElement(
+                            'picture',
+                            null,
+                            _react2.default.createElement('source', { srcset: '/img/apartment.webp', type: 'image/webp' }),
+                            _react2.default.createElement('source', { srcset: '/img/apartment.jpg', type: 'image/jpeg' }),
+                            _react2.default.createElement('img', { src: '/img/apartment.jpg', alt: 'apartment' })
+                        )
+                    ),
+                    _react2.default.createElement('div', { className: 'jumbo__background__overlay' })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'jumbo__info' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'container' },
+                        _react2.default.createElement(
+                            'p',
+                            { className: 'jumbo__info__intro' },
+                            'We will help you find your ',
+                            _react2.default.createElement(
+                                'span',
+                                null,
+                                'wonderful'
+                            ),
+                            ' home'
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'jumbo__info__search' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: '' },
+                                _react2.default.createElement(
+                                    'select',
+                                    { className: 'property__select__picker', 'data-style': 'btn-info' },
+                                    _react2.default.createElement(
+                                        'option',
+                                        null,
+                                        'New Constraction Property'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        null,
+                                        'Old Constraction Property'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        null,
+                                        'All Constraction Property'
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: '' },
+                                _react2.default.createElement(
+                                    'select',
+                                    { className: 'option__select__picker', 'data-style': 'btn-info' },
+                                    _react2.default.createElement(
+                                        'option',
+                                        null,
+                                        'Buy(590)'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        null,
+                                        'Rent(203)'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        null,
+                                        'Sell(1)'
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'search__field' },
+                                _react2.default.createElement(
+                                    'svg',
+                                    { className: 'search__field__icon', width: '24', height: '24', fill: 'none', viewBox: '0 0 24 24' },
+                                    _react2.default.createElement('circle', { cx: '11', cy: '11', r: '6.25', stroke: 'currentColor', strokeLinecap: 'round',
+                                        strokeLinejoin: 'round', strokeWidth: '1.5' }),
+                                    _react2.default.createElement('path', { fill: 'currentColor',
+                                        d: 'M18.7197 19.7803C19.0126 20.0732 19.4874 20.0732 19.7803 19.7803C20.0732 19.4874 20.0732 19.0126 19.7803 18.7197L18.7197 19.7803ZM14.9697 16.0303L18.7197 19.7803L19.7803 18.7197L16.0303 14.9697L14.9697 16.0303Z' })
+                                ),
+                                _react2.default.createElement('input', { placeholder: 'Enter city,street,zip code', type: 'text' })
+                            ),
+                            _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { to: '/homes' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'jumbo__info__search__button' },
+                                    '535 properties found',
+                                    _react2.default.createElement(
+                                        'svg',
+                                        { width: '24', height: '24', fill: 'none', viewBox: '0 0 24 24' },
+                                        _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                            strokeWidth: '1.5', d: 'M13.75 6.75L19.25 12L13.75 17.25' }),
+                                        _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                            strokeWidth: '1.5', d: 'M19 12H4.75' })
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'jumbo__info__requests' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'jumbo__info__requests__one' },
+                                _react2.default.createElement(
+                                    'span',
+                                    { className: 'jumbo__info__requests__one-icon' },
+                                    _react2.default.createElement(
+                                        'svg',
+                                        { width: '24', height: '24', fill: 'none', viewBox: '0 0 24 24' },
+                                        _react2.default.createElement('circle', { cx: '12', cy: '8', r: '3.25', stroke: 'currentColor', strokeLinecap: 'round',
+                                            strokeLinejoin: 'round', strokeWidth: '1.5' }),
+                                        _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                            strokeWidth: '1.5',
+                                            d: 'M6.8475 19.25H17.1525C18.2944 19.25 19.174 18.2681 18.6408 17.2584C17.8563 15.7731 16.068 14 12 14C7.93201 14 6.14367 15.7731 5.35924 17.2584C4.82597 18.2681 5.70558 19.25 6.8475 19.25Z' })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'jumbo__info__requests__one-largeText' },
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        'Want to sell a house in St.Lucia?'
+                                    ),
+                                    _react2.default.createElement(
+                                        'button',
+                                        null,
+                                        _react2.default.createElement(
+                                            'svg',
+                                            { width: '24', height: '24', fill: 'none', viewBox: '0 0 24 24' },
+                                            _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                                strokeWidth: '1.5', d: 'M13.75 6.75L19.25 12L13.75 17.25' }),
+                                            _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                                strokeWidth: '1.5', d: 'M19 12H4.75' })
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'jumbo__info__requests__one-miniText' },
+                                    'Call the broker for a quote!'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'jumbo__info__requests__two' },
+                                _react2.default.createElement(
+                                    'span',
+                                    { className: 'jumbo__info__requests__one-icon' },
+                                    _react2.default.createElement(
+                                        'svg',
+                                        { width: '24', height: '24', fill: 'none', viewBox: '0 0 24 24' },
+                                        _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                            strokeWidth: '1.5',
+                                            d: 'M6.75024 19.2502H17.2502C18.3548 19.2502 19.2502 18.3548 19.2502 17.2502V9.75025L12.0002 4.75024L4.75024 9.75025V17.2502C4.75024 18.3548 5.64568 19.2502 6.75024 19.2502Z' }),
+                                        _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                            strokeWidth: '1.5',
+                                            d: 'M9.74963 15.7493C9.74963 14.6447 10.6451 13.7493 11.7496 13.7493H12.2496C13.3542 13.7493 14.2496 14.6447 14.2496 15.7493V19.2493H9.74963V15.7493Z' })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'jumbo__info__requests__one-largeText' },
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        'What is the value of your home?'
+                                    ),
+                                    _react2.default.createElement(
+                                        'button',
+                                        null,
+                                        _react2.default.createElement(
+                                            'svg',
+                                            { width: '24', height: '24', fill: 'none', viewBox: '0 0 24 24' },
+                                            _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                                strokeWidth: '1.5', d: 'M13.75 6.75L19.25 12L13.75 17.25' }),
+                                            _react2.default.createElement('path', { stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round',
+                                                strokeWidth: '1.5', d: 'M19 12H4.75' })
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'jumbo__info__requests__one-miniText' },
+                                    ' Calculate the estimated value!'
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return LandingPage;
+}(_react.Component);
+
+exports.default = LandingPage;
+
+/***/ }),
+
+/***/ 185:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -457,27 +737,31 @@ exports.default = (0, _reactRouterDom.withRouter)(HomePage);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(106);
+var _reactDom = __webpack_require__(39);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(60);
+var _reactRouterDom = __webpack_require__(38);
 
-var _Header = __webpack_require__(236);
+var _Header = __webpack_require__(178);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _HomePage = __webpack_require__(238);
+var _HomePage = __webpack_require__(180);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _CreateAds = __webpack_require__(237);
+var _CreateAds = __webpack_require__(179);
 
 var _CreateAds2 = _interopRequireDefault(_CreateAds);
+
+var _LandingPage = __webpack_require__(181);
+
+var _LandingPage2 = _interopRequireDefault(_LandingPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -521,7 +805,8 @@ var App = function (_Component) {
                             _reactRouterDom.Route,
                             { path: "/createads" },
                             _react2.default.createElement(_CreateAds2.default, null)
-                        )
+                        ),
+                        _react2.default.createElement(_LandingPage2.default, null)
                     )
                 )
             );
@@ -536,7 +821,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), app);
 
 /***/ }),
 
-/***/ 244:
+/***/ 186:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -548,11 +833,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(60);
+var _reactRouterDom = __webpack_require__(38);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -615,9 +900,9 @@ var mobileNavigation = function (_Component) {
                     "nav",
                     null,
                     _react2.default.createElement(
-                        "a",
-                        { href: "#", className: "login" },
-                        "Log In"
+                        _reactRouterDom.Link,
+                        { to: "/homes", className: "homes" },
+                        "Homes"
                     )
                 ),
                 this.state.openMenu && _react2.default.createElement(
@@ -648,7 +933,7 @@ var mobileNavigation = function (_Component) {
                             null,
                             _react2.default.createElement(
                                 _reactRouterDom.Link,
-                                { to: "/createads" },
+                                { to: "#" },
                                 "Create Ads"
                             )
                         ),
@@ -657,7 +942,7 @@ var mobileNavigation = function (_Component) {
                             null,
                             _react2.default.createElement(
                                 _reactRouterDom.Link,
-                                { to: "/aboutus" },
+                                { to: "#" },
                                 "About us"
                             )
                         ),
@@ -665,9 +950,9 @@ var mobileNavigation = function (_Component) {
                             "li",
                             null,
                             _react2.default.createElement(
-                                "a",
-                                { href: "#" },
-                                "Log In"
+                                _reactRouterDom.Link,
+                                { to: "/homes", className: "homes" },
+                                "Homes"
                             )
                         ),
                         _react2.default.createElement(
@@ -692,7 +977,7 @@ exports.default = mobileNavigation;
 
 /***/ }),
 
-/***/ 245:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -703,11 +988,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Navigation;
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(60);
+var _reactRouterDom = __webpack_require__(38);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -730,18 +1015,18 @@ function Navigation() {
             null,
             _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/createads', className: 'createads' },
+                { to: '/homes', className: 'homes' },
+                'Homes'
+            ),
+            _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '#', className: 'createads' },
                 'Create Ads'
             ),
             _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/aboutus', className: 'aboutus' },
+                { to: '#', className: 'aboutus' },
                 'About us'
-            ),
-            _react2.default.createElement(
-                'a',
-                { href: '#', className: 'login' },
-                'Log In'
             ),
             _react2.default.createElement(
                 'a',
@@ -754,7 +1039,7 @@ function Navigation() {
 
 /***/ }),
 
-/***/ 246:
+/***/ 188:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -766,7 +1051,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -793,6 +1078,7 @@ var Filter = function (_Component) {
     _this.homeTypes = _this.homeTypes.bind(_this);
     _this.bedrooms = _this.bedrooms.bind(_this);
     _this.scrollAndCloseFilter = _this.scrollAndCloseFilter.bind(_this);
+    _this.resetFilter = _this.resetFilter.bind(_this);
     return _this;
   }
 
@@ -864,6 +1150,46 @@ var Filter = function (_Component) {
       filterSection.scrollTo(0, 0);
       document.body.style.overflow = "auto";
     }
+
+    //This function resets filter to default values
+
+  }, {
+    key: "resetFilter",
+    value: function resetFilter() {
+      var _this2 = this;
+
+      //All input and selects avalible
+      var formInputs = document.querySelectorAll('select,input');
+
+      formInputs.forEach(function (element) {
+        console.log(_this2);
+        var type = element.type;
+        var name = element.name;
+        var tag = element.tagName.toLowerCase(); // normalize case
+        // it's ok to reset the value attr of text inputs, 
+        // password inputs, and textareas
+        // type == 'text' is left out ignoring search the input
+        if (type == 'number' || type == 'password' || tag == 'textarea') {
+          element.defaultValue = element.dataset.originalValue;
+          _this2.props.globalState[name] = element.defaultValue;
+
+          // checkboxes and radios need to have their checked state cleared 
+          // but should *not* have their 'value' changed
+        } else if (type == 'checkbox' || type == 'radio') {
+          element.checked = false;
+          _this2.props.globalState[name] = element.checked;
+
+          // select elements need to have their 'selectedIndex' property set to -1
+          // (this works for both single and multiple select elements)
+        } else if (tag == 'select') {
+          element.selectedIndex = 0;
+          _this2.props.globalState[name] = element.value;
+        }
+      });
+
+      // Rerender or Recall filter data after all value have been reset in "globalState"
+      this.props.filterData();
+    }
     // bathrooms() {
     //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
     //     var { bedrooms } = this.props.globalState.populateFormsData;
@@ -920,7 +1246,7 @@ var Filter = function (_Component) {
             "select",
             {
               name: "homeType",
-              className: "filters homeType",
+              className: "filters homeType threeRem",
               onChange: this.props.change
             },
             _react2.default.createElement(
@@ -978,7 +1304,7 @@ var Filter = function (_Component) {
             "select",
             {
               name: "bedrooms",
-              className: "filters bedrooms",
+              className: "filters bedrooms threeRem",
               onChange: this.props.change
             },
             this.bedrooms()
@@ -992,41 +1318,45 @@ var Filter = function (_Component) {
               "Price"
             ),
             _react2.default.createElement("input", {
-              type: "text",
+              type: "number",
               name: "min_price",
               className: "min-price",
               onChange: this.props.change,
-              value: this.props.globalState.min_price
+              value: this.props.globalState.min_price,
+              "data-original-value": "0"
             }),
             _react2.default.createElement("input", {
-              type: "text",
+              type: "number",
               name: "max_price",
               className: "max-price",
               onChange: this.props.change,
-              value: this.props.globalState.max_price
+              value: this.props.globalState.max_price,
+              "data-original-value": "10000000"
             })
           ),
           _react2.default.createElement(
             "div",
-            { className: "filters floor-space" },
+            { className: "filters floor-space threeRem" },
             _react2.default.createElement(
               "span",
               { className: "title" },
               "Floor Space"
             ),
             _react2.default.createElement("input", {
-              type: "text",
+              type: "number",
               name: "min_floor_space",
               className: "min-floor-space",
               onChange: this.props.change,
-              value: this.props.globalState.min_floor_space
+              value: this.props.globalState.min_floor_space,
+              "data-original-value": "0"
             }),
             _react2.default.createElement("input", {
-              type: "text",
+              type: "number",
               name: "max_floor_space",
               className: "max-floor-space",
               onChange: this.props.change,
-              value: this.props.globalState.max_floor_space
+              value: this.props.globalState.max_floor_space,
+              "data-original-value": "50000"
             })
           ),
           _react2.default.createElement(
@@ -1039,63 +1369,123 @@ var Filter = function (_Component) {
             ),
             _react2.default.createElement(
               "label",
-              { htmlFor: "extras" },
-              _react2.default.createElement(
-                "span",
-                null,
-                "Elevators"
-              ),
+              { className: "extras__checkbox__label" },
+              "Elevators",
               _react2.default.createElement("input", {
                 type: "checkbox",
                 name: "elevator",
                 value: "elevator",
                 onChange: this.props.change
-              })
+              }),
+              _react2.default.createElement(
+                "span",
+                { className: "extras__custom__checkbox" },
+                _react2.default.createElement(
+                  "svg",
+                  {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    "aria-hidden": "true",
+                    focusable: "false"
+                  },
+                  _react2.default.createElement("path", {
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "3",
+                    d: "M1.73 12.91l6.37 6.37L22.79 4.59"
+                  })
+                )
+              )
             ),
             _react2.default.createElement(
               "label",
-              { htmlFor: "extras" },
-              _react2.default.createElement(
-                "span",
-                null,
-                "Swimming Pool"
-              ),
+              { className: "extras__checkbox__label" },
+              "Swimming Pool",
               _react2.default.createElement("input", {
                 type: "checkbox",
                 name: "swimming_pool",
                 value: "swimming_pool",
                 onChange: this.props.change
-              })
+              }),
+              _react2.default.createElement(
+                "span",
+                { className: "extras__custom__checkbox" },
+                _react2.default.createElement(
+                  "svg",
+                  {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    "aria-hidden": "true",
+                    focusable: "false"
+                  },
+                  _react2.default.createElement("path", {
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "3",
+                    d: "M1.73 12.91l6.37 6.37L22.79 4.59"
+                  })
+                )
+              )
             ),
             _react2.default.createElement(
               "label",
-              { htmlFor: "extras" },
-              _react2.default.createElement(
-                "span",
-                null,
-                "Finished Basement"
-              ),
+              { className: "extras__checkbox__label" },
+              "Finished Basement",
               _react2.default.createElement("input", {
                 type: "checkbox",
                 name: "finished_basement",
                 value: "finished_basement",
                 onChange: this.props.change
-              })
+              }),
+              _react2.default.createElement(
+                "span",
+                { className: "extras__custom__checkbox" },
+                _react2.default.createElement(
+                  "svg",
+                  {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    "aria-hidden": "true",
+                    focusable: "false"
+                  },
+                  _react2.default.createElement("path", {
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "3",
+                    d: "M1.73 12.91l6.37 6.37L22.79 4.59"
+                  })
+                )
+              )
             ),
             _react2.default.createElement(
               "label",
-              { htmlFor: "extras" },
-              _react2.default.createElement(
-                "span",
-                null,
-                "Gym"
-              ),
+              { className: "extras__checkbox__label" },
+              "Gym",
               _react2.default.createElement("input", {
                 type: "checkbox",
                 name: "gym",
                 value: "gym",
                 onChange: this.props.change
-              })
+              }),
+              _react2.default.createElement(
+                "span",
+                { className: "extras__custom__checkbox" },
+                _react2.default.createElement(
+                  "svg",
+                  {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    "aria-hidden": "true",
+                    focusable: "false"
+                  },
+                  _react2.default.createElement("path", {
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "3",
+                    d: "M1.73 12.91l6.37 6.37L22.79 4.59"
+                  })
+                )
+              )
             )
           ),
           _react2.default.createElement(
@@ -1103,7 +1493,7 @@ var Filter = function (_Component) {
             { className: "filter__footer" },
             _react2.default.createElement(
               "button",
-              { className: "filter__footer__reset-btn" },
+              { className: "filter__footer__reset-btn", onClick: this.resetFilter },
               "Reset"
             ),
             _react2.default.createElement(
@@ -1124,7 +1514,7 @@ exports.default = Filter;
 
 /***/ }),
 
-/***/ 247:
+/***/ 189:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1136,15 +1526,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Pagination = __webpack_require__(248);
+var _Pagination = __webpack_require__(190);
 
 var _Pagination2 = _interopRequireDefault(_Pagination);
 
-var _reactRouterDom = __webpack_require__(60);
+var _reactRouterDom = __webpack_require__(38);
+
+var _reactCssTransitionReplace = __webpack_require__(110);
+
+var _reactCssTransitionReplace2 = _interopRequireDefault(_reactCssTransitionReplace);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1173,6 +1567,11 @@ var Listings = function (_Component) {
   }
 
   _createClass(Listings, [{
+    key: "isActiveClass",
+    value: function isActiveClass(value) {
+      return value === this.props.changeView ? 'active' : '';
+    }
+  }, {
     key: "openFilter",
     value: function openFilter() {
       this.props.showFilter.call(this);
@@ -1206,7 +1605,7 @@ var Listings = function (_Component) {
           //THIS IS THE BOX VIEW
           return _react2.default.createElement(
             "div",
-            { className: "col-md-4", key: index },
+            { className: "col-md-4 col-xxl-3", key: index },
             _react2.default.createElement(
               "div",
               { className: "listing" },
@@ -1219,12 +1618,20 @@ var Listings = function (_Component) {
                 _react2.default.createElement(
                   "div",
                   {
-                    className: "listing-img",
-                    style: {
-                      background: "url(\"" + listing.image + "\")\n                  no-repeat center center",
-                      backgroundSize: 'cover'
-                    }
+                    className: "listing-img"
+                    // style={{
+                    //   background: `url("${listing.image}")
+                    //   no-repeat center center`,
+                    //   backgroundSize: 'cover'
+                    // }}
                   },
+                  _react2.default.createElement(
+                    "picture",
+                    null,
+                    _react2.default.createElement("source", { srcSet: "" + listing.thumbnailImg.webp, type: "image/webp" }),
+                    _react2.default.createElement("source", { srcSet: "" + listing.thumbnailImg.jpg, type: "image/jpeg" }),
+                    _react2.default.createElement("img", { src: "" + listing.thumbnailImg.jpg, alt: "apartment" })
+                  ),
                   _react2.default.createElement(
                     "span",
                     { className: "furnished" },
@@ -1305,7 +1712,7 @@ var Listings = function (_Component) {
           //THIS IS THE LONG VIEW
           return _react2.default.createElement(
             "div",
-            { className: "col-md-12 col-lg-12", key: index },
+            { className: "col-md-12 col-lg-12 col-xxl-6", key: index },
             _react2.default.createElement(
               "div",
               { className: "listing", id: "listing__long__view" },
@@ -1318,12 +1725,20 @@ var Listings = function (_Component) {
                 _react2.default.createElement(
                   "div",
                   {
-                    className: "listing-img",
-                    style: {
-                      background: "url(\"" + listing.image + "\")\n                  no-repeat center center",
-                      backgroundSize: 'cover'
-                    }
+                    className: "listing-img"
+                    // style={{
+                    //   background: `url("${listing.image}")
+                    //   no-repeat center center`,
+                    //   backgroundSize: 'cover'
+                    // }}
                   },
+                  _react2.default.createElement(
+                    "picture",
+                    null,
+                    _react2.default.createElement("source", { srcSet: "" + listing.thumbnailImg.webp, type: "image/webp" }),
+                    _react2.default.createElement("source", { srcSet: "" + listing.thumbnailImg.jpg, type: "image/jpeg" }),
+                    _react2.default.createElement("img", { src: "" + listing.thumbnailImg.jpg, alt: "apartment" })
+                  ),
                   _react2.default.createElement(
                     "div",
                     { className: "details" },
@@ -1489,17 +1904,7 @@ var Listings = function (_Component) {
             { className: "filter-btn", onClick: this.openFilter },
             _react2.default.createElement("i", { className: "fa fa-sliders", "aria-hidden": "true" })
           ),
-          _react2.default.createElement("input", { type: "text", name: "search", onChange: this.props.change })
-        ),
-        _react2.default.createElement(
-          "section",
-          { className: "sortby-area" },
-          _react2.default.createElement(
-            "div",
-            { className: "results" },
-            this.props.globalState.filteredData.length,
-            " results found"
-          ),
+          _react2.default.createElement("input", { type: "text", name: "search", onChange: this.props.change, placeholder: "Search..." }),
           _react2.default.createElement(
             "div",
             { className: "sort-options" },
@@ -1525,30 +1930,46 @@ var Listings = function (_Component) {
               "div",
               { className: "view" },
               _react2.default.createElement("i", {
-                className: "fa fa-th-list",
+                className: "fa fa-th-list " + (this.props.globalState.view === 'long' ? 'active' : ''),
                 "aria-hidden": "true",
-                onClick: this.props.changeView.bind(null, "long")
+                onClick: this.props.changeView.bind(console.log(this.props.globalState.view), "long")
               }),
               _react2.default.createElement("i", {
-                className: "fa fa-th",
+                className: "fa fa-th " + (this.props.globalState.view === 'box' ? 'active' : ''),
                 "aria-hidden": "true",
-                onClick: this.props.changeView.bind(null, "box")
+                onClick: this.props.changeView.bind(console.log(this.props.globalState.view), "box")
               })
             )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "sortby-area" },
+          _react2.default.createElement(
+            "div",
+            { className: "results" },
+            this.props.globalState.filteredData.length,
+            " results found"
           )
         ),
         _react2.default.createElement(
           "div",
           { className: "row" },
           _react2.default.createElement(
-            "section",
-            { className: "listings-results" },
-            this.loopListing()
+            _reactCssTransitionReplace2.default,
+            { transitionName: "fade-wait",
+              transitionEnterTimeout: 700, transitionLeaveTimeout: 300 },
+            _react2.default.createElement(
+              "section",
+              { key: this.props.currentView || this.state.currentPage, className: "listings-results" },
+              this.loopListing()
+            )
           )
         ),
         _react2.default.createElement(_Pagination2.default, {
           postPerPage: this.state.postPerPage,
           totalPost: this.props.listingData.length,
+          currentPage: this.state.currentPage,
           paginate: this.paginate
         })
       );
@@ -1562,7 +1983,7 @@ exports.default = (0, _reactRouterDom.withRouter)(Listings);
 
 /***/ }),
 
-/***/ 248:
+/***/ 190:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1572,13 +1993,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _immutabilityHelper = __webpack_require__(467);
+var _immutabilityHelper = __webpack_require__(413);
 
 var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 
@@ -1641,12 +2064,52 @@ var Pagination = function (_Component) {
         this.calcPagination();
       }
     }
+
+    //increments current page by one
+
+  }, {
+    key: "calcNextPage",
+    value: function calcNextPage() {
+      //Selects last Page number
+      var _state$pageNumbers$sl = this.state.pageNumbers.slice(-1),
+          _state$pageNumbers$sl2 = _slicedToArray(_state$pageNumbers$sl, 1),
+          lastItem = _state$pageNumbers$sl2[0];
+      // only increments if last page number is larger
+
+
+      if (lastItem > this.props.currentPage) {
+        var nextPage = this.props.currentPage + 1;
+        // this changes current page to nextPage
+        this.props.paginate(nextPage);
+      }
+    }
+
+    //decrements current page by one
+
+  }, {
+    key: "calcPrevPage",
+    value: function calcPrevPage() {
+      //Selects first Page number
+      var _state$pageNumbers$sl3 = this.state.pageNumbers.slice(0),
+          _state$pageNumbers$sl4 = _slicedToArray(_state$pageNumbers$sl3, 1),
+          firstItem = _state$pageNumbers$sl4[0];
+      // only decrements if fast page number is smaller
+
+
+      if (firstItem < this.props.currentPage) {
+        var prevPage = this.props.currentPage - 1;
+        console.log(this.props.currentPage);
+        // this changes current page to prevPage
+        this.props.paginate(prevPage);
+      }
+    }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      console.log(this.props.totalPost);
+      // console.log(this.props.totalPost);
+      console.log(this.state.pageNumbers);
       return _react2.default.createElement(
         "section",
         { id: "pagination" },
@@ -1658,7 +2121,9 @@ var Pagination = function (_Component) {
             { className: "pagination-nums" },
             _react2.default.createElement(
               "li",
-              null,
+              { onClick: function onClick() {
+                  return _this2.calcPrevPage();
+                } },
               "Prev"
             ),
             this.state.pageNumbers.map(function (number, index) {
@@ -1682,7 +2147,9 @@ var Pagination = function (_Component) {
             }),
             _react2.default.createElement(
               "li",
-              null,
+              { onClick: function onClick() {
+                  return _this2.calcNextPage();
+                } },
               "Next"
             )
           )
@@ -1698,7 +2165,7 @@ exports.default = Pagination;
 
 /***/ }),
 
-/***/ 249:
+/***/ 191:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1708,17 +2175,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var listingData = [{
+  id: 0,
   address: "Grand Riviere",
   city: "Castries",
   state: "SLU",
-  bedrooms: 1,
-  bathrooms: 2,
+  bedrooms: 6,
+  bathrooms: 3,
   price: 2100,
   floorSpace: 2000,
   extra: ["elevator", "gym"],
   homeType: "Apartment",
-  image: "https://passiveincomemd.com/wp-content/uploads/2017/06/Front-Back-Building.jpg"
+  description: "This is a 6 bedrooms, 3 full baths single-Family Home. Located in the Central Sunset. It features 4 bonus bedrooms, with 2 baths (built to code). 1-car garage with plenty of street parking. View of Golden gate. Walking distance to Corinth Secondary School. Fantastic opportunity to move into a turn-key, move-in ready home or use as a rental investment.",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_1.webp",
+    jpg: "/img/thumbnails/house_id_1.jpg",
+    // jpg:"https://passiveincomemd.com/wp-content/uploads/2017/06/Front-Back-Building.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 1,
   address: "Cap Estate",
   city: "Gros Islet",
   state: "SLU",
@@ -1728,8 +2216,28 @@ var listingData = [{
   floorSpace: 22000,
   extra: ["elevator", "gym"],
   homeType: "Duplex",
-  image: "https://q-xx.bstatic.com/images/hotel/max1024x768/100/10016411.jpg"
+  description: "This one-of-a-kind Cap Estate property has gorgeous mid-century bones with stunning city and Bay views. The expansive multi-level home is the perfect blank slate to add your personal touches and upgrades. The home welcomes you with a foyer and dining room then leads to the mezzanine overlooking the dramatic living room with soaring beamed ceilings and ...",
+  // image: "https://q-xx.bstatic.com/images/hotel/max1024x768/100/10016411.jpg",
+  thumbnailImg: {
+    webp: "https://q-xx.bstatic.com/images/hotel/max1024x768/100/10016411.webp",
+    jpg: "https://q-xx.bstatic.com/images/hotel/max1024x768/100/10016411.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 2,
   address: "Black Bay",
   city: "Vieux Fort",
   state: "SLU",
@@ -1739,8 +2247,29 @@ var listingData = [{
   floorSpace: 10000,
   extra: ["elevator", "gym", "swimming_pool"],
   homeType: "Apartment",
-  image: "https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739"
+  description: "Sweeping View home from 3 levels! Fully renovated Mid-Century Home atop GG Heights with light filled gated entry & skylight. Enter the main level which offers 2 bedrooms, 1 bathroom w/skylight. The open living/dining, and kitchen w/island area with view balcony allow for entertainer's dream!",
+  // image:
+  //   "https://idesign161.files.wordpress.com/2017/09/gorgeous-evening-view-of-russet-residence-1025x450.jpg?w=739",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_2.webp",
+    jpg: "/img/thumbnails/house_id_2.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/listingDetails/home-display2.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 3,
   address: "Lime Stone",
   city: "Dennery",
   state: "SLU",
@@ -1750,8 +2279,29 @@ var listingData = [{
   floorSpace: 7000,
   extra: ["elevator", "Garage"],
   homeType: "Studio",
-  image: "https://images.squarespace-cdn.com/content/5abbea6fc258b4f56d09219e/1524087111985-FMCVW3XY42FBBRZEC5Z5/greenfab.jpeg?content-type=image%2Fjpeg"
+  description: "Panoramic Lime Stone Views will immediately greet you from the zen garden entry of this spacious remodeled home. Dramatic vaulted ceilings in the open living area make this a perfect space for entertaining or cozy nights with the family. The renovated showcase kitchen with a grand quartz island and stainless steel appliances opens to the living and dining areas and is surrounded by multiple outdoor spaces and views. Stairs down lead to the large primary bedroom with ensuite bath, second bedroom, full bath, laundry and storage room.",
+  // image:
+  //   "https://images.squarespace-cdn.com/content/5abbea6fc258b4f56d09219e/1524087111985-FMCVW3XY42FBBRZEC5Z5/greenfab.jpeg?content-type=image%2Fjpeg",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_3.webp",
+    jpg: "/img/thumbnails/house_id_3.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 4,
   address: "25th main street",
   city: "Laborie",
   state: "SLU",
@@ -1761,8 +2311,29 @@ var listingData = [{
   floorSpace: 8000,
   extra: ["beach"],
   homeType: "Room",
-  image: "https://rentivo.imagekit.io/cdn/tr:n-max/http://dujlrb80v4oq5.cloudfront.net/578/83959073_gw1418680.jpg"
+  description: "Welcome to this gorgeous 1 Bed 1 Bath CORNER UNIT with impressive sea view, 2 balconies and parking. Getting this room include a Heated Pool, Beach, Landscaped Courtyard with Furniture, Onsite Management. Close to Grace Cathedral, Union Square and the Street corridor - Enjoy living in the heart of the Laborie!",
+  // image:
+  //   "https://rentivo.imagekit.io/cdn/tr:n-max/http://dujlrb80v4oq5.cloudfront.net/578/83959073_gw1418680.jpg",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_4.webp",
+    jpg: "/img/thumbnails/house_id_4.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 5,
   address: "Beach Pavillion",
   city: "Soufriere",
   state: "SLU",
@@ -1772,8 +2343,29 @@ var listingData = [{
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
   homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+  description: "Flooded with light, inspired by nature, and crafted with Troon Pacific's unmatched expertise, Residence 2582 demonstrates the best of modern Beach Pavillion architecture rarely seen in the heart of Soufriere. Generous terraces on each floor and an outdoor garden oasis with 72' lap pool offer enticing reasons to spend more time outside.",
+  // image:
+  //   "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_5.webp",
+    jpg: "/img/thumbnails/house_id_5.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 6,
   address: "Beach Pavillion",
   city: "Soufriere",
   state: "SLU",
@@ -1783,8 +2375,29 @@ var listingData = [{
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
   homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+  description: "This 2 level beautifully renovated Penthouse at the Beach Pavillion showcases sweeping views from the sea to Piton Mountain. Sophistication is found at every moment, from the prominent entry hall with sweeping stair and fireplace, to the nearly 50' long grand gallery framing Bay views.",
+  // image:
+  //   "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_6.webp",
+    jpg: "/img/thumbnails/house_id_6.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 7,
   address: "Beach Pavillion",
   city: "Soufriere",
   state: "SLU",
@@ -1794,8 +2407,28 @@ var listingData = [{
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
   homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+  description: "This 2 level beautifully renovated Penthouse at the Beach Pavillion showcases sweeping views from the sea to Piton Mountain. Sophistication is found at every moment, from the prominent entry hall with sweeping stair and fireplace, to the nearly 50' long grand gallery framing Bay views.",
+  // image:
+  //   "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_7.webp",
+    jpg: "/img/thumbnails/house_id_7.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg"
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 8,
   address: "Beach Pavillion",
   city: "Soufriere",
   state: "SLU",
@@ -1805,8 +2438,28 @@ var listingData = [{
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
   homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+  description: "This 2 level beautifully renovated Penthouse at the Beach Pavillion showcases sweeping views from the sea to Piton Mountain. Sophistication is found at every moment, from the prominent entry hall with sweeping stair and fireplace, to the nearly 50' long grand gallery framing Bay views.",
+  // image:
+  //   "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_8.webp",
+    jpg: "/img/thumbnails/house_id_8.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg"
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }, {
+  id: 9,
   address: "Beach Pavillion",
   city: "Soufriere",
   state: "SLU",
@@ -1816,14 +2469,34 @@ var listingData = [{
   floorSpace: 7000,
   extra: ["elevator", "swimming_pool"],
   homeType: "Hotel",
-  image: "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg"
+  description: "This 2 level beautifully renovated Penthouse at the Beach Pavillion showcases sweeping views from the sea to Piton Mountain. Sophistication is found at every moment, from the prominent entry hall with sweeping stair and fireplace, to the nearly 50' long grand gallery framing Bay views.",
+  // image:
+  //   "https://cdn.villa-bali.com/cache/fullSize/villas/noku-beach-house/noku-beach-house-noku-beach-house-exquisite-villa-feature-5b8f4a6f08970.jpg",
+  thumbnailImg: {
+    webp: "/img/thumbnails/house_id_9.webp",
+    jpg: "/img/thumbnails/house_id_9.jpg",
+    alt: ''
+  },
+  detailImg: [{
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }, {
+    webp: "/img/apartment.webp",
+    jpg: "/img/apartment.jpg",
+    alt: ''
+  }]
 }];
 
 exports.default = listingData;
 
 /***/ }),
 
-/***/ 250:
+/***/ 192:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1835,11 +2508,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(17);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(60);
+var _reactRouterDom = __webpack_require__(38);
+
+var _reactCssTransitionReplace = __webpack_require__(110);
+
+var _reactCssTransitionReplace2 = _interopRequireDefault(_reactCssTransitionReplace);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1867,6 +2544,7 @@ var ListingDetails = function (_Component) {
     _this.state = {
       listing: _this.checkListingResult(),
       properties: _this.props.listingData,
+      // isLoaded:false,
       // property:this.props.listingData[0],
       propertyIndexNumber: _this.propertyID,
       sliderShift: 0
@@ -1883,7 +2561,7 @@ var ListingDetails = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      //call your listing api through link and update state with new props
+      //call your listing api through link and update state with new props/new data to displayed
       this.setState({
         listing: nextProps.location.state
       });
@@ -1897,8 +2575,14 @@ var ListingDetails = function (_Component) {
 
     //Function that is ran when component starts
     value: function initializeComponent() {
+      //Check if location state is not defined then assign it ':id' slug(This is fixes manually typing url)
+      if (this.props.location.state == undefined) {
+        this.props.location.state = this.state.properties[this.props.match.params.id];
+      }
+
       // This sets state listing to location.state
       this.state.listing = this.props.location.state;
+      // this.state.listing = this.state.properties[this.props.match.params.id];
 
       //This sets the slider listing to width to the variable
       var listingCardWidth = document.querySelector('.col-md-4').clientWidth;
@@ -1945,12 +2629,20 @@ var ListingDetails = function (_Component) {
               _react2.default.createElement(
                 'div',
                 {
-                  className: 'listing-img',
-                  style: {
-                    background: 'url("' + listing.image + '")\n                  no-repeat center center',
-                    backgroundSize: 'cover'
-                  }
+                  className: 'listing-img'
+                  // style={{
+                  //   background: `url("${listing.image}")
+                  //   no-repeat center center`,
+                  //   backgroundSize: 'cover'
+                  // }}
                 },
+                _react2.default.createElement(
+                  'picture',
+                  null,
+                  _react2.default.createElement('source', { srcSet: '' + listing.thumbnailImg.webp, type: 'image/webp' }),
+                  _react2.default.createElement('source', { srcSet: '../../img/home-display1.png', type: 'image/png' }),
+                  _react2.default.createElement('img', { src: '../../img/home-display2.png', alt: 'apartment' })
+                ),
                 _react2.default.createElement(
                   'span',
                   { className: 'furnished' },
@@ -2059,143 +2751,186 @@ var ListingDetails = function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      // const imageUrl = './img/home-details.png';
+      // console.log(this.state.properties[this.props.match.params.id]);
+      // console.log(this.props.location);
+      // console.log(this.state.listing.detailImg[0].webp);
+      // console.log(this.props.listingData[this.props.match.params.id]);
 
       return _react2.default.createElement(
         'section',
         { className: 'current__listing' },
         _react2.default.createElement(
-          'div',
-          { className: 'current__listing__info' },
+          _reactCssTransitionReplace2.default,
+          { transitionName: 'fade-wait',
+            transitionEnterTimeout: 700, transitionLeaveTimeout: 300 },
           _react2.default.createElement(
             'div',
-            { className: 'current__listing__images' },
-            _react2.default.createElement('div', { className: 'image__main', style: {
-                background: 'url(\'../../img/home-display1.png\')\n          no-repeat center center',
-                backgroundSize: 'cover'
-              } }),
+            { className: 'current__listing__info', key: this.state.listing.id },
             _react2.default.createElement(
               'div',
-              { className: 'image__sub' },
-              _react2.default.createElement('div', { className: 'image__sub__option', style: {
-                  background: 'url(\'../../img/home-display2.png\')\n          no-repeat center center',
-                  backgroundSize: 'cover'
-                } }),
-              _react2.default.createElement('div', { className: 'image__sub__option', style: {
-                  background: 'url(\'../../img/home-display3.png\')\n          no-repeat center center',
-                  backgroundSize: 'cover'
-                } }),
-              _react2.default.createElement('div', { className: 'image__sub__option', style: {
-                  background: 'url(\'../../img/home-display4.png\')\n          no-repeat center center',
-                  backgroundSize: 'cover'
-                } })
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'current__listing__details' },
-            _react2.default.createElement(
-              'div',
-              { className: 'details__info' },
-              _react2.default.createElement(
-                'span',
-                { className: 'details__info__price' },
-                '$15,000 /Year'
-              ),
-              _react2.default.createElement(
-                'p',
-                { className: 'details__info__location' },
-                this.state.listing.address,
-                ', peachfield, UK'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'details__plan' },
+              { className: 'current__listing__images' },
               _react2.default.createElement(
                 'div',
-                { className: 'details__plan__bedroom' },
-                'Bedroom',
+                { className: 'image__main'
+                  // style={{
+                  //       background: `url('../../img/home-display1.png')
+                  //       no-repeat center center`,
+                  //       backgroundSize: 'cover'
+                  //     }}
+                },
                 _react2.default.createElement(
-                  'div',
-                  { className: 'details__plan__amount' },
-                  this.state.listing.bedrooms,
-                  ' ',
-                  _react2.default.createElement('i', { className: 'fa fa-bed', 'aria-hidden': 'true' })
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'details__plan__bathroom' },
-                'Bathroom',
-                _react2.default.createElement(
-                  'div',
-                  { className: 'details__plan__amount' },
-                  '4 ',
-                  _react2.default.createElement('i', { className: 'fa fa-bath', 'aria-hidden': 'true' })
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'details__plan__squarefoot' },
-                'Area',
-                _react2.default.createElement(
-                  'div',
-                  { className: 'details__plan__amount' },
-                  ' 2309ft \xB2'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'details__description' },
-              _react2.default.createElement(
-                'span',
-                { className: 'details__description__title' },
-                'Description'
-              ),
-              _react2.default.createElement(
-                'p',
-                null,
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus laudantium voluptas dolores magni, aliquam vitae reiciendis blanditiis quae velit, cum modi? Cum labore earum provident.'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'details__nearby' },
-              _react2.default.createElement(
-                'span',
-                { className: 'details__nearby__title' },
-                'Close Locations'
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'details__nearby__spot' },
-                _react2.default.createElement(
-                  'span',
+                  'picture',
                   null,
-                  _react2.default.createElement('i', { className: 'fa fa-graduation-cap', 'aria-hidden': 'true' }),
-                  ' School'
+                  _react2.default.createElement('source', { srcSet: '' + this.state.listing.detailImg[0].webp, type: 'image/webp' }),
+                  _react2.default.createElement('source', { srcSet: '../../img/home-display1.png', type: 'image/png' }),
+                  _react2.default.createElement('img', { src: '../../img/home-display2.png', alt: 'apartment' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'image__sub' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'image__sub__option'
+                  },
+                  _react2.default.createElement(
+                    'picture',
+                    null,
+                    _react2.default.createElement('source', { srcSet: '/img/listingDetails/home-display2.webp', type: 'image/webp' }),
+                    _react2.default.createElement('source', { srcSet: '../../img/listingDetails/home-display2.jpg', type: 'image/jpeg' }),
+                    _react2.default.createElement('img', { src: '../../img/listingDetails/home-display2.jpg', alt: 'house_display_2' })
+                  )
                 ),
                 _react2.default.createElement(
+                  'div',
+                  { className: 'image__sub__option' },
+                  _react2.default.createElement(
+                    'picture',
+                    null,
+                    _react2.default.createElement('source', { srcSet: '/img/apartment.webp', type: 'image/webp' }),
+                    _react2.default.createElement('source', { srcSet: '../../img/home-display3.png', type: 'image/png' }),
+                    _react2.default.createElement('img', { src: '../../img/home-display2.png', alt: 'apartment' })
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'image__sub__option' },
+                  _react2.default.createElement(
+                    'picture',
+                    null,
+                    _react2.default.createElement('source', { srcSet: '/img/apartment.webp', type: 'image/webp' }),
+                    _react2.default.createElement('source', { srcSet: '../../img/home-display4.png', type: 'image/png' }),
+                    _react2.default.createElement('img', { src: '../../img/home-display2.png', alt: 'apartment' })
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'current__listing__details' },
+              _react2.default.createElement(
+                'div',
+                { className: 'details__info' },
+                _react2.default.createElement(
                   'span',
-                  { className: 'details__nearby__amount' },
-                  ' 0.8 miles'
+                  { className: 'details__info__price' },
+                  '$15,000 /Year'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'details__info__location' },
+                  this.state.listing.address,
+                  ', peachfield, UK'
                 )
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'details__nearby__spot' },
+                { className: 'details__plan' },
                 _react2.default.createElement(
-                  'span',
-                  null,
-                  _react2.default.createElement('i', { className: 'fa fa-university', 'aria-hidden': 'true' }),
-                  ' State Banks'
+                  'div',
+                  { className: 'details__plan__bedroom' },
+                  'Bedroom',
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'details__plan__amount' },
+                    this.state.listing.bedrooms,
+                    ' ',
+                    _react2.default.createElement('i', { className: 'fa fa-bed', 'aria-hidden': 'true' })
+                  )
                 ),
                 _react2.default.createElement(
+                  'div',
+                  { className: 'details__plan__bathroom' },
+                  'Bathroom',
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'details__plan__amount' },
+                    '4 ',
+                    _react2.default.createElement('i', { className: 'fa fa-bath', 'aria-hidden': 'true' })
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'details__plan__squarefoot' },
+                  'Area',
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'details__plan__amount' },
+                    ' 2309ft \xB2'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'details__description' },
+                _react2.default.createElement(
                   'span',
-                  { className: 'details__nearby__amount' },
-                  ' 1.5 miles'
+                  { className: 'details__description__title' },
+                  'Description'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  this.state.listing.description
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'details__nearby' },
+                _react2.default.createElement(
+                  'span',
+                  { className: 'details__nearby__title' },
+                  'Close Locations'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'details__nearby__spot' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-graduation-cap', 'aria-hidden': 'true' }),
+                    ' School'
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'details__nearby__amount' },
+                    ' 0.8 miles'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'details__nearby__spot' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-university', 'aria-hidden': 'true' }),
+                    ' State Banks'
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'details__nearby__amount' },
+                    ' 1.5 miles'
+                  )
                 )
               )
             )
@@ -2250,4 +2985,4 @@ exports.default = (0, _reactRouterDom.withRouter)(ListingDetails);
 
 /***/ })
 
-},[243]);
+},[185]);

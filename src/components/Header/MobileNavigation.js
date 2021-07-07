@@ -46,10 +46,10 @@ export default class mobileNavigation extends Component {
                         </Link>
                     </div>
                     <ul className="mobileNav__menu__nav">
-                        <li><Link to="/createads">
+                        <li><Link to="#">
                         Create Ads
                         </Link></li>
-                        <li><Link to="/aboutus">
+                        <li><Link to="#">
                         About us
                         </Link></li>
                         <li><Link to="/homes" className="homes">Homes</Link></li>

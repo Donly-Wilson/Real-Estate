@@ -61,3 +61,15 @@
     }
   }
 }
+
+@media #{$breakpoint-xxl} {
+  .container {
+    width: 95%;
+    max-width: $grid-max-width;
+  }
+  @for $i from 1 through $grid-columns {
+    .col-xxl-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
+  }
+}

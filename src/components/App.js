@@ -1,10 +1,11 @@
-import React, { Component,Fragment } from "react";
+import React, { Component} from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 // import {HashRouter as Router, Route, Switch} from 'react-router-dom'; maybe for netlify
 import Header from "./Header/Header";
 import HomePage from "./homepage/HomePage";
 import CreateAds from "./createAds/CreateAds";
+import LandingPage from "./homepage/LandingPage";
 
 class App extends Component {
 render() {
@@ -20,15 +21,7 @@ render() {
                     <Route path = "/createads">
                         <CreateAds />
                     </Route>
-                    {/* <Route path = "/aboutus">
-                        <AboutUs />
-                    </Route> */}
-                    {/* <div className="landing__page">
-                        <p>Landing Page under Constraction </p>
-                        <Link to="/homes">
-                            View House Listings
-                        </Link>
-                    </div> */}
+                    <LandingPage/>
                 </Switch>
             </div>
         </Router>

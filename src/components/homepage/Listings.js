@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Pagination from "./Pagination";
 import { Link, withRouter } from 'react-router-dom';
+import ReactCSSTransitionReplace from 'react-css-transition-replace';
 
 class Listings extends Component {
   constructor() {
@@ -12,6 +13,10 @@ class Listings extends Component {
     this.loopListing = this.loopListing.bind(this);
     this.paginate = this.paginate.bind(this);
     this.openFilter = this.openFilter.bind(this);
+  }
+
+  isActiveClass(value){
+    return value === this.props.changeView ? 'active':'';
   }
 
   openFilter(){
@@ -40,7 +45,7 @@ class Listings extends Component {
       if (this.props.globalState.view == "box") {
         //THIS IS THE BOX VIEW
         return (
-          <div className="col-md-4" key={index}>
+          <div className="col-md-4 col-xxl-3" key={index}>
             <div className="listing">
             <Link to={{
                       pathname: `${this.props.match.url}/listing/${index}`,
@@ -48,12 +53,17 @@ class Listings extends Component {
                       }}>
               <div
                 className="listing-img"
-                style={{
-                  background: `url("${listing.image}")
-                  no-repeat center center`,
-                  backgroundSize: 'cover'
-                }}
+                // style={{
+                //   background: `url("${listing.image}")
+                //   no-repeat center center`,
+                //   backgroundSize: 'cover'
+                // }}
               >
+                <picture>
+                  <source srcSet={`${listing.thumbnailImg.webp}`} type="image/webp"/> 
+                  <source srcSet={`${listing.thumbnailImg.jpg}`} type="image/jpeg"/> 
+                  <img src={`${listing.thumbnailImg.jpg}`} alt="apartment"/>
+                </picture>
                 <span className="furnished">Furnished</span>
                 <div className="details">
                   <div className="user__img">
@@ -96,7 +106,7 @@ class Listings extends Component {
       } else {
         //THIS IS THE LONG VIEW
         return (
-          <div className="col-md-12 col-lg-12" key={index}>
+          <div className="col-md-12 col-lg-12 col-xxl-6" key={index}>
             <div className="listing" id="listing__long__view">
             {/* <Link to={this.props.match.path+'/listing/'+index}> */}
             <Link to={{
@@ -105,12 +115,17 @@ class Listings extends Component {
                       }}>
               <div
                 className="listing-img"
-                style={{
-                  background: `url("${listing.image}")
-                  no-repeat center center`,
-                  backgroundSize: 'cover'
-                }}
+                // style={{
+                //   background: `url("${listing.image}")
+                //   no-repeat center center`,
+                //   backgroundSize: 'cover'
+                // }}
               >
+                <picture>
+                        <source srcSet={`${listing.thumbnailImg.webp}`} type="image/webp"/> 
+                        <source srcSet={`${listing.thumbnailImg.jpg}`} type="image/jpeg"/> 
+                        <img src={`${listing.thumbnailImg.jpg}`} alt="apartment"/>
+                </picture>
                 <div className="details">
                   <div className="user__img">
                     <div className="user__img__icon"></div>
@@ -170,12 +185,7 @@ class Listings extends Component {
           <button className="filter-btn" onClick={this.openFilter}>
             <i className="fa fa-sliders" aria-hidden="true"></i>
           </button>
-          <input type="text" name="search" onChange={this.props.change} />
-        </section>
-        <section className="sortby-area">
-          <div className="results">
-            {this.props.globalState.filteredData.length} results found
-          </div>
+          <input type="text" name="search" onChange={this.props.change} placeholder="Search..."/>
           <div className="sort-options">
             <select
               name="sortby"
@@ -187,24 +197,33 @@ class Listings extends Component {
             </select>
             <div className="view">
               <i
-                className="fa fa-th-list"
+                className={`fa fa-th-list ${this.props.globalState.view ==='long'? 'active':''}`}
                 aria-hidden="true"
-                onClick={this.props.changeView.bind(null, "long")}
+                onClick={this.props.changeView.bind(console.log(this.props.globalState.view), "long")}
               ></i>
               <i
-                className="fa fa-th"
+                className={`fa fa-th ${this.props.globalState.view ==='box'? 'active':''}`}
                 aria-hidden="true"
-                onClick={this.props.changeView.bind(null, "box")}
+                onClick={this.props.changeView.bind(console.log(this.props.globalState.view), "box")}
               ></i>
             </div>
           </div>
         </section>
+        <section className="sortby-area">
+          <div className="results">
+            {this.props.globalState.filteredData.length} results found
+          </div>
+        </section>
         <div className="row">
-          <section className="listings-results">{this.loopListing()}</section>
+        <ReactCSSTransitionReplace transitionName="fade-wait"
+                           transitionEnterTimeout={700} transitionLeaveTimeout={300}>
+          <section key={this.props.currentView || this.state.currentPage} className="listings-results">{this.loopListing()}</section>
+          </ReactCSSTransitionReplace>
         </div>
         <Pagination
           postPerPage={this.state.postPerPage}
           totalPost={this.props.listingData.length}
+          currentPage={this.state.currentPage}
           paginate={this.paginate}
         />
       </section>

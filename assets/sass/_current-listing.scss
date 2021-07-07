@@ -1,6 +1,7 @@
 .current__listing {
+  // min-width: 79%;
   // width: 79%;
-  // width: 100%;
+  width: 100%;
   overflow: hidden;
   background: $offWhite;
   &__info {
@@ -12,10 +13,22 @@
     width: 50%;
     padding: 20px 10px 20px 20px;
     .image__main {
-      background: grey;
+      // background: grey;
       border-radius: 5px;
       height: 450px;
       margin-bottom: 25px;
+
+      picture {
+        source,
+        img {
+          background-size: cover;
+          background-repeat: no-repeat;
+          width: 100%;
+          height: 100%;
+          background-position: center center;
+          border-radius: 5px;
+        }
+      }
     }
     .image__sub {
       display: flex;
@@ -24,9 +37,18 @@
         // display: inline-block;
         width: 32%;
         height: 150px;
-        background: green;
-
         border-radius: 5px;
+        picture {
+          source,
+          img {
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            background-position: center center;
+            border-radius: 5px;
+          }
+        }
       }
     }
   }
@@ -84,6 +106,8 @@
         font-size: 0.9rem;
         font-weight: 500;
         color: #7a7b7f;
+        font-weight: 600;
+        line-height: 1.2rem;
       }
     }
     .details__nearby {

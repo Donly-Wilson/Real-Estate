@@ -16,6 +16,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "browser-sync": "^2.18.8",
+    "framer-motion": "^3.10.6",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
@@ -29,11 +30,13 @@
     "html-webpack-plugin": "^2.28.0",
     "immutability-helper": "^3.1.1",
     "node-sass": "^4.5.2",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^16.4.0",
+    "react-css-transition-replace": "^4.0.4",
+    "react-dom": "^16.4.0",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^5.2.0",
+    "react-transition-group": "^4.4.2",
     "redux": "^3.6.0",
     "sass-loader": "^6.0.3",
     "standard": "^10.0.2",
@@ -48,7 +51,6 @@
     "js": "gulp webpack"
   },
   "devDependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-plugin-transform-class-properties": "^6.24.1"
   }
 }

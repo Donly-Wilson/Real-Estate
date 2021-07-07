@@ -44,13 +44,39 @@ export default class Pagination extends Component {
     }
   }
 
+  //increments current page by one
+  calcNextPage(){
+    //Selects last Page number
+    const [lastItem] = this.state.pageNumbers.slice(-1);
+    // only increments if last page number is larger
+    if(lastItem > this.props.currentPage){
+      let nextPage = this.props.currentPage + 1;
+      // this changes current page to nextPage
+      this.props.paginate(nextPage);
+    }
+  }
+  
+  //decrements current page by one
+  calcPrevPage(){
+    //Selects first Page number
+    const [firstItem] = this.state.pageNumbers.slice(0);
+    // only decrements if fast page number is smaller
+    if(firstItem < this.props.currentPage){
+      let prevPage = this.props.currentPage - 1;
+      console.log(this.props.currentPage);
+      // this changes current page to prevPage
+      this.props.paginate(prevPage);
+    }
+  }
+
   render() {
-    console.log(this.props.totalPost);
+    // console.log(this.props.totalPost);
+    console.log(this.state.pageNumbers);
     return (
       <section id="pagination">
         <div className="raw">
           <ul className="pagination-nums">
-            <li>Prev</li>
+            <li onClick={() => this.calcPrevPage()}>Prev</li>
             {/* Loop through each index and output it with a list tag */}
             {this.state.pageNumbers.map((number, index) => {
               return (
@@ -63,7 +89,7 @@ export default class Pagination extends Component {
                 </li>
               );
             })}
-            <li>Next</li>
+            <li onClick={() => this.calcNextPage()}>Next</li>
           </ul>
         </div>
       </section>

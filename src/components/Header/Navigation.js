@@ -11,13 +11,13 @@ export default function Navigation() {
                 </div>
             </Link>
             <nav>
-                <Link to="/createads" className="createads">
+                <Link to="/homes" className="homes">Homes</Link>
+                <Link to="#" className="createads">
                 Create Ads
                 </Link>
-                <Link to="/aboutus" className="aboutus">
+                <Link to="#" className="aboutus">
                 About us
                 </Link>
-                <a href="#" className="login">Log In</a>
                 <a href="#" className="register-btn">
                 Register
                 </a>

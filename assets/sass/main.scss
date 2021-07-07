@@ -18,18 +18,10 @@ body {
   color: $customBlack;
 }
 
-.landing__page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  height: 80vh;
-  p {
-    color: $lightGrey;
-  }
-}
-
 @import "header";
+@import "landingPage";
 @import "content-area";
+@import "filter";
 @import "current-listing";
 @import "slider-system";
+@import "transition-group";
