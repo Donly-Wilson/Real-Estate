@@ -272,6 +272,13 @@
         margin-top: 20px;
       }
     }
+    &__requests {
+      flex-direction: column;
+      width: 410px;
+      &__one {
+        margin-right: 0;
+      }
+    }
   }
 }
 
@@ -365,7 +372,7 @@
         }
       }
       &__requests {
-        flex-direction: column;
+        // flex-direction: column;
         margin-top: 70px;
         width: auto;
         /* background: #f1f1f1; */
