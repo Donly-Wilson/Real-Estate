@@ -72,6 +72,7 @@ export default class Pagination extends Component {
   render() {
     // console.log(this.props.totalPost);
     console.log(this.state.pageNumbers);
+    console.log(this.props.currentPage);
     return (
       <section id="pagination">
         <div className="raw">
@@ -82,6 +83,7 @@ export default class Pagination extends Component {
               return (
                 <li
                   // key={number + 1}
+                  className ={this.props.currentPage === number ? 'active':''}
                   key={index}
                   onClick={() => this.props.paginate(number)}
                 >

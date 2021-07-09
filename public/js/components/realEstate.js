@@ -2112,6 +2112,7 @@ var Pagination = function (_Component) {
 
       // console.log(this.props.totalPost);
       console.log(this.state.pageNumbers);
+      console.log(this.props.currentPage);
       return _react2.default.createElement(
         "section",
         { id: "pagination" },
@@ -2133,6 +2134,7 @@ var Pagination = function (_Component) {
                 "li",
                 {
                   // key={number + 1}
+                  className: _this2.props.currentPage === number ? 'active' : '',
                   key: index,
                   onClick: function onClick() {
                     return _this2.props.paginate(number);

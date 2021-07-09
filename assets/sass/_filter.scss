@@ -199,6 +199,14 @@
         font-weight: 700;
         font-size: 1.2rem;
       }
+      &__reset-btn {
+        background: #f95a47;
+        color: #fff;
+        transition: opacity 0.2s linear;
+        &:disabled {
+          opacity: 0.2;
+        }
+      }
     }
   }
 }
