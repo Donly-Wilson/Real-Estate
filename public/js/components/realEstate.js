@@ -1191,6 +1191,12 @@ var Filter = function (_Component) {
 
       // Rerender or Recall filter data after all value have been reset in "globalState"
       this.props.filterData();
+
+      // [
+      //   one input remove disable reset btn
+      //   on reset btn click add disable
+      // ]
+
     }
     // bathrooms() {
     //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
@@ -1216,9 +1222,18 @@ var Filter = function (_Component) {
           "div",
           { className: "inside" },
           _react2.default.createElement(
-            "h4",
-            null,
-            "Filter"
+            "div",
+            { className: "filter__header" },
+            _react2.default.createElement(
+              "h4",
+              null,
+              "Filter"
+            ),
+            _react2.default.createElement(
+              "button",
+              { className: "filter__header__reset-btn", onClick: this.resetFilter },
+              "Reset"
+            )
           ),
           _react2.default.createElement(
             "label",

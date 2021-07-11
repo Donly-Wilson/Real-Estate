@@ -101,6 +101,13 @@ export default class Filter extends Component {
       
     // Rerender or Recall filter data after all value have been reset in "globalState"
     this.props.filterData()
+
+    // [
+    //   one input remove disable reset btn
+    //   on reset btn click add disable
+    // ]
+
+    
   }
   // bathrooms() {
   //   if (this.props.globalState.populateFormsData.bedrooms != undefined) {
@@ -120,7 +127,10 @@ export default class Filter extends Component {
     return (
       <section id="filter" style={{display: this.props.globalState.showFilter ? 'block' : 'none' }}>
         <div className="inside">
-          <h4>Filter</h4>
+          <div className="filter__header">
+            <h4>Filter</h4>
+            <button className="filter__header__reset-btn" onClick={this.resetFilter}>Reset</button>
+          </div>
           <label htmlFor="city">City</label>
           <select
             name="city"

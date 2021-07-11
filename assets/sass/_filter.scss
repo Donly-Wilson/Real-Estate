@@ -18,11 +18,36 @@
     }
   }
 
-  h4 {
-    font-size: 0.9rem;
-    font-weight: 500px;
+  .filter__header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 25px;
+    align-items: center;
     text-transform: uppercase;
+
+    h4 {
+      font-size: 0.9rem;
+      font-weight: 500px;
+    }
+
+    &__reset-btn {
+      border: none;
+      border-radius: 5px;
+      height: 30px;
+      width: 60px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      // opacity: 0.2;
+      background: #f95a47;
+      color: #fff;
+      &:hover {
+        background: #ea5142;
+      }
+      &:disabled {
+        opacity: 0;
+      }
+    }
   }
 
   select {
@@ -187,6 +212,11 @@
     //   overflow: scroll;
     //   height: 100vh;
     // }
+    .filter__header {
+      &__reset-btn {
+        display: none;
+      }
+    }
     .filter__footer {
       display: flex;
       justify-content: space-between;
